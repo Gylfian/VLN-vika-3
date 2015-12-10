@@ -19,13 +19,22 @@ SOURCES += main.cpp\
     cscientist.cpp \
     data.cpp \
     domain.cpp \
-    relation.cpp
+    relation.cpp \
+    listoptions.cpp \
+    addconnection.cpp \
+    addentry.cpp
 
 HEADERS  += mainwindow.h \
     computer.h \
     cscientist.h \
     data.h \
     domain.h \
-    relation.h
+    relation.h \
+    listoptions.h \
+    addconnection.h \
+    addentry.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    listoptions.ui \
+    addconnection.ui \
+    addentry.ui
