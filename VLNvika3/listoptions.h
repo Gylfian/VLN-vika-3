@@ -1,7 +1,11 @@
 #ifndef LISTOPTIONS_H
 #define LISTOPTIONS_H
+#include "cscientist.h"
+#include "computer.h"
 
 #include <QDialog>
+#include <iostream>
+#include <vector>
 
 namespace Ui {
 class ListOptions;
@@ -16,6 +20,8 @@ public:
     ~ListOptions();
 
 private:
+    void displayAllScientists();
+    void displayScientists(std::vector<CScientist> scientists);
     Ui::ListOptions *ui;
 };
 
