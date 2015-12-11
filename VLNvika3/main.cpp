@@ -5,8 +5,8 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    ListOptions w;
-    //MainWindow w;
+   // ListOptions w;
+    MainWindow w;
     w.show();
 
     return a.exec();

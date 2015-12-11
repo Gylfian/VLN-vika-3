@@ -23,7 +23,8 @@ SOURCES += main.cpp\
     listoptions.cpp \
     addconnection.cpp \
     addentry.cpp \
-    editscientist.cpp
+    editscientist.cpp \
+    search.cpp
 
 HEADERS  += mainwindow.h \
     computer.h \
@@ -34,10 +35,12 @@ HEADERS  += mainwindow.h \
     listoptions.h \
     addconnection.h \
     addentry.h \
-    editscientist.h
+    editscientist.h \
+    search.h
 
 FORMS    += mainwindow.ui \
     listoptions.ui \
     addconnection.ui \
     addentry.ui \
-    editscientist.ui
+    editscientist.ui \
+    search.ui
