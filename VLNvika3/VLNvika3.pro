@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     relation.cpp \
     listoptions.cpp \
     addconnection.cpp \
-    addentry.cpp
+    addentry.cpp \
+    search.cpp
 
 HEADERS  += mainwindow.h \
     computer.h \
@@ -32,9 +33,11 @@ HEADERS  += mainwindow.h \
     relation.h \
     listoptions.h \
     addconnection.h \
-    addentry.h
+    addentry.h \
+    search.h
 
 FORMS    += mainwindow.ui \
     listoptions.ui \
     addconnection.ui \
-    addentry.ui
+    addentry.ui \
+    search.ui
