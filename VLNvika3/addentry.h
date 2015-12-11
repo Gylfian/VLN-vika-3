@@ -2,6 +2,12 @@
 #define ADDENTRY_H
 
 #include <QDialog>
+#include <string>
+#include "cscientist.h"
+#include "computer.h"
+#include "domain.h"
+#include <QMessageBox>
+using namespace std;
 
 namespace Ui {
 class AddEntry;
@@ -28,10 +34,20 @@ private slots:
 
     void on_comBuiltButton_clicked(bool checked);
 
+    void on_addOrCancelSci_accepted();
 
+    void on_addOrCancelCom_accepted();
+
+    void on_addOrCancelCom_rejected();
+
+    void on_addOrCancelSci_rejected();
 
 private:
     Ui::AddEntry *ui;
+    CScientist getSciData();
+    Computer getComData();
+    bool sciErrorCheck();
+    bool comErrorCheck();
 };
 
 #endif // ADDENTRY_H

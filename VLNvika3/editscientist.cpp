@@ -21,7 +21,7 @@ Editscientist::~Editscientist()
 
 void editScientist()
 {
-    CScientist;
+
 }
 
 QString Editscientist:: name()
