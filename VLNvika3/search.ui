@@ -32,7 +32,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Add</string>
+   <string>Search</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
@@ -221,16 +221,23 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
-           <widget class="QRadioButton" name="sciMaleButton">
+           <widget class="QCheckBox" name="checkBox">
             <property name="text">
-             <string>Male</string>
+             <string>CheckBox</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QRadioButton" name="sciFemaleButton">
+           <widget class="QCheckBox" name="checkBox_2">
             <property name="text">
-             <string>Female</string>
+             <string>CheckBox</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="checkBox_3">
+            <property name="text">
+             <string>CheckBox</string>
             </property>
            </widget>
           </item>
@@ -278,26 +285,24 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
-           <widget class="QRadioButton" name="sciAlivButton">
+           <widget class="QCheckBox" name="checkBox_5">
             <property name="text">
-             <string>Yes</string>
+             <string>CheckBox</string>
             </property>
-            <property name="checked">
-             <bool>false</bool>
-            </property>
-            <attribute name="buttonGroup">
-             <string notr="true">buttonGroup</string>
-            </attribute>
            </widget>
           </item>
           <item>
-           <widget class="QRadioButton" name="sciDeadButton">
+           <widget class="QCheckBox" name="checkBox_6">
             <property name="text">
-             <string>No</string>
+             <string>CheckBox</string>
             </property>
-            <attribute name="buttonGroup">
-             <string notr="true">buttonGroup</string>
-            </attribute>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="checkBox_4">
+            <property name="text">
+             <string>CheckBox</string>
+            </property>
            </widget>
           </item>
          </layout>
