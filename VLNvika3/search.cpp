@@ -20,13 +20,5 @@ Search::~Search()
 
 void Search::on_searchComboBox_currentIndexChanged(const QString &arg1)
 {
-    string option = arg1.toStdString();
-    if(option == "Scientists")
-    {
-       ui->pageStacks->setCurrentIndex(0);
-    }
-    else if(option == "Computers")
-    {
-       ui->pageStacks->setCurrentIndex(1);
-    }
+
 }
