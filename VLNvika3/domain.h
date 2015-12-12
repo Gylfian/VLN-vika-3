@@ -28,6 +28,8 @@ public:
 
     void search(vector<Computer> &cComList, Computer cCom);
 
+    void findScientist(CScientist cSci);
+
     /*
      * Name: sortBy
      * Parameter/s: vector<CScientist> &cSciList or vector<Computer> &, int child, int child2
