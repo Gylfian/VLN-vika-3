@@ -158,6 +158,16 @@
          </widget>
         </item>
         <item>
+         <widget class="QCheckBox" name="builtUnknown">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string>Unknown</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QSpinBox" name="comYearBuiltInput">
           <property name="enabled">
            <bool>false</bool>
