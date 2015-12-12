@@ -28,7 +28,7 @@ public:
 
     void search(vector<Computer> &cComList, Computer cCom);
 
-    void findScientist(CScientist cSci);
+    CScientist findScientist(CScientist cSci);
 
     /*
      * Name: sortBy

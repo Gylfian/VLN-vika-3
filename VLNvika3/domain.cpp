@@ -219,7 +219,7 @@ void Domain::updateEntryCom(string sid)
     data.updateStatus(cCom);
 }
 
-void Domain::findScientist(CScientist cSci)
+CScientist Domain::findScientist(CScientist cSci)
 {
     vector<CScientist> allScientists;
     CScientist empty;
@@ -232,6 +232,7 @@ void Domain::findScientist(CScientist cSci)
             cSci = allScientists[i];
         }
     }
+    return cSci;
 }
 
 void Domain::getRelationList(vector<string> &strSci, vector<string> &strCom, vector<int> &idRelations)
