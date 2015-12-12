@@ -2,7 +2,7 @@
 #define EDITSCIENTIST_H
 
 #include <QDialog>
-#include <QComboBox>
+//#include <QComboBox>
 
 namespace Ui {
 class Editscientist;
@@ -21,17 +21,7 @@ public:
     QString yearOfDeath();
 
 private slots:
-
-    //void on_maleRadioButton_clicked();
-
-   // void on_femaleRadioPushButtonSci_clicked();
-
-   // void on_maleRadioButton_clicked(bool checked);
-
-    //void on_femaleRadioPushButtonSci_clicked(bool checked);
-
     void on_confirmSciEditPushButton_clicked();
-
     void on_backPushButtonEditSci_clicked();
 
 private:

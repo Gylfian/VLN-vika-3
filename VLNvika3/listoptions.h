@@ -33,6 +33,12 @@ private slots:
     void on_scientistsList_clicked(const QModelIndex &index);
 
 
+    void on_editComputers_clicked();
+
+    void on_computersList_clicked(const QModelIndex &index);
+
+    void on_scientistsList_doubleClicked(const QModelIndex &index);
+
 private:
     void displayAllScientists();
     void displayScientists(std::vector<CScientist> scientists);

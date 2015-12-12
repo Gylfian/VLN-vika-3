@@ -2,6 +2,8 @@
 #include "ui_listoptions.h"
 #include "domain.h"
 #include "editscientist.h"
+#include "editcomputer.h"
+#include <QDebug>
 
 ListOptions::ListOptions(QWidget *parent) :
     QDialog(parent),
@@ -139,6 +141,35 @@ void ListOptions::on_editScientist_clicked()
 
 void ListOptions::on_scientistsList_clicked(const QModelIndex &index)
 {
-    //if(on_editScientist_clicked())
-    //ui->scientistsList->cellChanged(row, column)
+        qDebug() << "index: " << index;
+    ui->editScientist->setEnabled(true);
+}
+
+void ListOptions::on_editComputers_clicked()
+{
+    Editcomputer editcomputer;
+    int wasRejected = editcomputer.exec();
+    if(wasRejected == QDialog::Rejected)
+        return;
+    int row = ui->computersList->currentItem()->row();
+    int column = ui->computersList->currentItem()->column();
+    string name = editcomputer.name().toStdString();
+    string type = editcomputer.type().toStdString();
+    string wasBuilt = editcomputer.wasBuilt().toStdString();
+    string yearBuilt = editcomputer.yearBuilt().toStdString();
+    Computer temp(row, name, yearBuilt, type, wasBuilt);
+    Domain dom;
+    dom.editEntry(temp);
+    displayAllComputers();
+}
+
+void ListOptions::on_computersList_clicked(const QModelIndex &index)
+{
+    qDebug() << "index: " << index;
+    ui->editComputers->setEnabled(true);
+}
+
+void ListOptions::on_scientistsList_doubleClicked(const QModelIndex &index)
+{
+;
 }

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>523</width>
+    <width>473</width>
     <height>642</height>
    </rect>
   </property>
@@ -16,8 +16,11 @@
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
     <widget class="QTabWidget" name="tabList">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tabScientists">
       <attribute name="title">
@@ -98,6 +101,9 @@
        </property>
       </widget>
       <widget class="QPushButton" name="editScientist">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -203,19 +209,6 @@
        <column/>
        <column/>
       </widget>
-      <widget class="QLabel" name="lableEditComputer">
-       <property name="geometry">
-        <rect>
-         <x>440</x>
-         <y>50</y>
-         <width>181</width>
-         <height>19</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Edit computer</string>
-       </property>
-      </widget>
       <widget class="QLabel" name="label_8">
        <property name="geometry">
         <rect>
@@ -229,69 +222,10 @@
         <string/>
        </property>
       </widget>
-      <widget class="QLabel" name="labelType">
-       <property name="geometry">
-        <rect>
-         <x>450</x>
-         <y>160</y>
-         <width>68</width>
-         <height>19</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Type</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="labeWasBuilt">
-       <property name="geometry">
-        <rect>
-         <x>440</x>
-         <y>230</y>
-         <width>201</width>
-         <height>19</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Was the computer built?</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="labelName">
-       <property name="geometry">
-        <rect>
-         <x>450</x>
-         <y>100</y>
-         <width>91</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Name</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="labelYearBuilt">
-       <property name="geometry">
-        <rect>
-         <x>440</x>
-         <y>300</y>
-         <width>68</width>
-         <height>19</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Year built</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="lineEdit_11">
-       <property name="geometry">
-        <rect>
-         <x>440</x>
-         <y>120</y>
-         <width>141</width>
-         <height>25</height>
-        </rect>
-       </property>
-      </widget>
       <widget class="QPushButton" name="editComputers">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -302,52 +236,6 @@
        </property>
        <property name="text">
         <string>Edit</string>
-       </property>
-      </widget>
-      <widget class="QRadioButton" name="radioButton_3">
-       <property name="geometry">
-        <rect>
-         <x>440</x>
-         <y>260</y>
-         <width>119</width>
-         <height>23</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Yes</string>
-       </property>
-      </widget>
-      <widget class="QRadioButton" name="radioButton_4">
-       <property name="geometry">
-        <rect>
-         <x>540</x>
-         <y>260</y>
-         <width>119</width>
-         <height>23</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>No</string>
-       </property>
-      </widget>
-      <widget class="QComboBox" name="comboBox_4">
-       <property name="geometry">
-        <rect>
-         <x>440</x>
-         <y>330</y>
-         <width>141</width>
-         <height>25</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QComboBox" name="comboBox_5">
-       <property name="geometry">
-        <rect>
-         <x>440</x>
-         <y>190</y>
-         <width>131</width>
-         <height>25</height>
-        </rect>
        </property>
       </widget>
       <widget class="QLineEdit" name="findComLineEdit">

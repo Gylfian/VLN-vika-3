@@ -2,7 +2,6 @@
 #include "ui_editscientist.h"
 #include "cscientist.h"
 #include <iostream>
-#include <sstream>
 using namespace std;
 
 Editscientist::Editscientist(QWidget *parent) :
@@ -19,11 +18,6 @@ Editscientist::~Editscientist()
     delete ui;
 }
 
-void editScientist()
-{
-    CScientist;
-}
-
 QString Editscientist:: name()
 {
     QString name = ui->sciNameLineEdit->text();
@@ -35,9 +29,9 @@ QString Editscientist:: gender()
     bool female = ui->femaleRadioPushButtonSci->isChecked();
     bool male = ui->maleRadioButton->isChecked();
     if(female)
-        return "f";
+        return "Female";
     else if(male)
-        return "m";
+        return "Male";
     return "u";
 }
 
