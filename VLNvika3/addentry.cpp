@@ -1,7 +1,5 @@
 #include "addentry.h"
 #include "ui_addentry.h"
-#include <string>
-#include <QDebug>
 
 using namespace std;
 
@@ -70,4 +68,129 @@ void AddEntry::on_comBuiltButton_clicked(bool checked)
     {
         ui->comYearBuiltInput->setEnabled(true);
     }
+}
+
+void AddEntry::on_addOrCancelSci_accepted()
+{
+    if (sciErrorCheck())
+    {
+        QMessageBox::warning(this, "WARNING!", "You must fill everything out!");
+    }
+    else
+    {
+        CScientist cSci = getSciData();
+        Domain dom;
+        dom.addEntry(cSci);
+        accept();
+    }
+}
+
+CScientist AddEntry::getSciData()
+{
+    string name = ui->sciNameInput->text().toStdString();
+    string Dob = ui->sciBirthInput->text().toStdString();
+    string gender, Dod;
+    if (ui->sciMaleButton->isChecked())
+    {
+        gender = "Male";
+    }
+    else
+    {
+        gender = "Female";
+    }
+
+    if(ui->sciAlivButton->isChecked())
+    {
+        Dod = "Alive";
+    }
+    else
+    {
+        Dod = ui->sciDeathInput->text().toStdString();
+    }
+
+    CScientist cSci(0, name, gender, Dob, Dod, 1);
+    return cSci;
+
+}
+
+void AddEntry::on_addOrCancelCom_accepted()
+{
+    if (comErrorCheck())
+    {
+        QMessageBox::warning(this, "WARNING!", "You must fill everything out!");
+    }
+    else
+    {
+        Computer com = getComData();
+        Domain dom;
+        dom.addEntry(com);
+        accept();
+    }
+}
+
+Computer AddEntry::getComData()
+{
+    string name = ui->comNameInput->text().toStdString();
+    string type = ui->comTypeInput->text().toStdString();
+    string built, year;
+    if (ui->comBuiltButton->isEnabled())
+    {
+        built = "Yes";
+        year = ui->comYearBuiltInput->text().toStdString();
+    }
+    else
+    {
+        built = "No";
+        year = "";
+    }
+
+    Computer com(0, name, year, type, built);
+    return com;
+}
+
+void AddEntry::on_addOrCancelCom_rejected()
+{
+    reject();
+}
+
+void AddEntry::on_addOrCancelSci_rejected()
+{
+    reject();
+}
+
+bool AddEntry::sciErrorCheck()
+{
+    if (ui->sciNameInput->text().size() == 0)
+    {
+        return true;
+    }
+    if (!ui->sciMaleButton->isChecked() && !ui->sciFemaleButton->isChecked())
+    {
+        return true;
+    }
+    if (!ui->sciAlivButton->isChecked() && !ui->sciDeadButton->isChecked())
+    {
+        return true;
+    }
+
+    return false;
+
+}
+
+bool AddEntry::comErrorCheck()
+{
+    if (ui->comNameInput->text().size() == 0)
+    {
+        return true;
+    }
+    if (ui->comTypeInput->text().size() == 0)
+    {
+        return true;
+    }
+    if (!ui->comBuiltButton->isChecked() && !ui->comNotBuiltButton->isChecked())
+    {
+        return true;
+    }
+
+    return false;
 }

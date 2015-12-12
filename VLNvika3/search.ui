@@ -47,12 +47,12 @@
    <item>
     <widget class="QLabel" name="label_5">
      <property name="text">
-      <string>Select what you want to add</string>
+      <string>Please enter your search parameters</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QComboBox" name="whichToPick">
+    <widget class="QComboBox" name="searchComboBox">
      <property name="cursor">
       <cursorShape>ArrowCursor</cursorShape>
      </property>
@@ -69,9 +69,9 @@
     </widget>
    </item>
    <item>
-    <widget class="QStackedWidget" name="whichToAdd">
+    <widget class="QStackedWidget" name="pageStack">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="page">
       <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -128,16 +128,23 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <item>
-           <widget class="QRadioButton" name="comBuiltButton">
+           <widget class="QRadioButton" name="yesBuiltRadio">
             <property name="text">
              <string>Yes</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QRadioButton" name="comNotBuiltButton">
+           <widget class="QRadioButton" name="noBuiltRadio">
             <property name="text">
              <string>No</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="maybeBuiltRadio">
+            <property name="text">
+             <string>Unknown</string>
             </property>
            </widget>
           </item>
@@ -177,9 +184,9 @@
          </spacer>
         </item>
         <item>
-         <widget class="QDialogButtonBox" name="buttonBox">
+         <widget class="QDialogButtonBox" name="adddOrCancelComp">
           <property name="standardButtons">
-           <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+           <set>QDialogButtonBox::Abort|QDialogButtonBox::Ok</set>
           </property>
          </widget>
         </item>
@@ -221,23 +228,23 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
-           <widget class="QCheckBox" name="checkBox">
+           <widget class="QRadioButton" name="maleRadio">
             <property name="text">
-             <string>CheckBox</string>
+             <string>Male</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QCheckBox" name="checkBox_2">
+           <widget class="QRadioButton" name="femaleRadio">
             <property name="text">
-             <string>CheckBox</string>
+             <string>Female</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QCheckBox" name="checkBox_3">
+           <widget class="QRadioButton" name="unknownRadio">
             <property name="text">
-             <string>CheckBox</string>
+             <string>Unknown</string>
             </property>
            </widget>
           </item>
@@ -246,7 +253,14 @@
         <item>
          <widget class="QLabel" name="sciBirthYearText">
           <property name="text">
-           <string>Enter year of birth</string>
+           <string>Select year of birth</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="checkBox">
+          <property name="text">
+           <string>Unknown</string>
           </property>
          </widget>
         </item>
@@ -285,24 +299,33 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
-           <widget class="QCheckBox" name="checkBox_5">
+           <widget class="QRadioButton" name="yesRadio">
             <property name="text">
-             <string>CheckBox</string>
+             <string>Yes</string>
             </property>
+            <attribute name="buttonGroup">
+             <string notr="true">buttonGroup</string>
+            </attribute>
            </widget>
           </item>
           <item>
-           <widget class="QCheckBox" name="checkBox_6">
+           <widget class="QRadioButton" name="noRadio">
             <property name="text">
-             <string>CheckBox</string>
+             <string>No</string>
             </property>
+            <attribute name="buttonGroup">
+             <string notr="true">buttonGroup</string>
+            </attribute>
            </widget>
           </item>
           <item>
-           <widget class="QCheckBox" name="checkBox_4">
+           <widget class="QRadioButton" name="unknownRadioAlive">
             <property name="text">
-             <string>CheckBox</string>
+             <string>Unknown</string>
             </property>
+            <attribute name="buttonGroup">
+             <string notr="true">buttonGroup</string>
+            </attribute>
            </widget>
           </item>
          </layout>

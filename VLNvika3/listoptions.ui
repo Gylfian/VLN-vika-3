@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>473</width>
+    <width>517</width>
     <height>642</height>
    </rect>
   </property>
@@ -31,7 +31,7 @@
         <rect>
          <x>10</x>
          <y>70</y>
-         <width>471</width>
+         <width>421</width>
          <height>461</height>
         </rect>
        </property>
@@ -49,6 +49,9 @@
        </property>
        <property name="lineWidth">
         <number>0</number>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
        </property>
        <property name="showGrid">
         <bool>false</bool>
@@ -134,7 +137,7 @@
         <rect>
          <x>15</x>
          <y>20</y>
-         <width>361</width>
+         <width>311</width>
          <height>31</height>
         </rect>
        </property>
@@ -145,7 +148,7 @@
       <widget class="QPushButton" name="findSciButton">
        <property name="geometry">
         <rect>
-         <x>380</x>
+         <x>330</x>
          <y>20</y>
          <width>101</width>
          <height>31</height>
@@ -166,7 +169,7 @@
          <x>10</x>
          <y>70</y>
          <width>421</width>
-         <height>451</height>
+         <height>461</height>
         </rect>
        </property>
        <property name="minimumSize">
@@ -180,6 +183,9 @@
        </property>
        <property name="lineWidth">
         <number>0</number>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
        </property>
        <property name="showGrid">
         <bool>false</bool>
@@ -229,7 +235,7 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>530</y>
+         <y>540</y>
          <width>112</width>
          <height>34</height>
         </rect>
@@ -243,7 +249,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>291</width>
+         <width>311</width>
          <height>31</height>
         </rect>
        </property>
@@ -254,7 +260,7 @@
       <widget class="QPushButton" name="findComButton">
        <property name="geometry">
         <rect>
-         <x>310</x>
+         <x>330</x>
          <y>20</y>
          <width>101</width>
          <height>31</height>

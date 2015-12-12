@@ -18,10 +18,13 @@ class ListOptions : public QDialog
 
 public:
     explicit ListOptions(QWidget *parent = 0);
+    CScientist getsci();
+    Ui::ListOptions *ui;
     ~ListOptions();
 
 private slots:
     //void onFindSciButtonClicked();
+    void setCurrent();
     void on_findSciButton_clicked();
     void on_findComButton_clicked();
 
@@ -39,15 +42,20 @@ private slots:
 
     void on_scientistsList_doubleClicked(const QModelIndex &index);
 
+    void on_analyzeScientistBotton_clicked();
+
+    void on_computersList_doubleClicked(const QModelIndex &index);
+
 private:
     void displayAllScientists();
     void displayScientists(std::vector<CScientist> scientists);
     void designScientistsWidget(vector <CScientist> scientists);
-    Ui::ListOptions *ui;
+
     void displayComputers(vector<Computer> computers);
     //void displayConnections();
     void displayAllComputers();
     void designComputersWidget(vector<Computer> computers);
+    CScientist scientist;
 };
 
 #endif // LISTOPTIONS_H

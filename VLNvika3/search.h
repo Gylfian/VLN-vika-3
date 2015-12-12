@@ -2,6 +2,9 @@
 #define SEARCH_H
 
 #include <QDialog>
+#include <iostream>
+
+using namespace std;
 
 namespace Ui {
 class Search;
@@ -19,7 +22,32 @@ private slots:
 
     void on_searchComboBox_currentIndexChanged(const QString &arg1);
 
+    void on_addOrCancelSci_accepted();
+
+    void on_addOrCancelSci_rejected();
+
+    void on_noRadio_clicked(bool checked);
+
+    void on_yesRadio_clicked(bool checked);
+
+    void on_unknownRadioAlive_clicked(bool checked);
+
+
+    void on_checkBox_clicked(bool checked);
+
+    void on_comBuiltButton_clicked(bool checked);
+
+    void on_comNotBuiltButton_clicked(bool checked);
+
+    void on_comUnawareButton_clicked(bool checked);
+
+    void on_adddOrCancelComp_accepted();
+
 private:
+    string getGender();
+    string getdob();
+    string getdod();
+    string getBuilt();
     Ui::Search *ui;
 };
 

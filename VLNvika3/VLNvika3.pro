@@ -25,7 +25,8 @@ SOURCES += main.cpp\
     addentry.cpp \
     editscientist.cpp \
     search.cpp \
-    editcomputer.cpp
+    editcomputer.cpp \
+    analyze.cpp
 
 HEADERS  += mainwindow.h \
     computer.h \
@@ -38,7 +39,8 @@ HEADERS  += mainwindow.h \
     addentry.h \
     editscientist.h \
     search.h \
-    editcomputer.h
+    editcomputer.h \
+    analyze.h
 
 FORMS    += mainwindow.ui \
     listoptions.ui \
@@ -46,4 +48,5 @@ FORMS    += mainwindow.ui \
     addentry.ui \
     editscientist.ui \
     search.ui \
-    editcomputer.ui
+    editcomputer.ui \
+    analyze.ui

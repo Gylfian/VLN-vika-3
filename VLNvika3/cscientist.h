@@ -7,6 +7,7 @@ class CScientist
 {
 public:
     CScientist();
+    //CScientist(string cName, string cGender, string date1, string date2, bool cIsActive);
     CScientist(int id, string cName, string cGender, string date1, string date2, bool isActive);
     string getName() const;
     int getId() const;

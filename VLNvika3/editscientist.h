@@ -2,7 +2,9 @@
 #define EDITSCIENTIST_H
 
 #include <QDialog>
-//#include <QComboBox>
+#include "editscientist.h"
+#include "ui_editscientist.h"
+#include "cscientist.h"
 
 namespace Ui {
 class Editscientist;
@@ -19,6 +21,8 @@ public:
     QString gender();
     QString yearBorn();
     QString yearOfDeath();
+    void setScientist(CScientist scientist);
+    void setDefault();
 
 private slots:
     void on_confirmSciEditPushButton_clicked();
@@ -26,6 +30,7 @@ private slots:
 
 private:
     Ui::Editscientist *ui;
+    CScientist scientist;
 };
 
 #endif // EDITSCIENTIST_H

@@ -1,4 +1,6 @@
 #include "editscientist.h"
+#include "listoptions.h"
+#include "ui_listoptions.h"
 #include "ui_editscientist.h"
 #include "cscientist.h"
 #include <iostream>
@@ -10,13 +12,21 @@ Editscientist::Editscientist(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowTitle("Edit scientist");
-
+    cout << "Name: " << scientist.getName() << endl;
+    cout << "Gender: " << scientist.getGender() << endl;
+    cout << "YB: " << scientist.getDob() << endl;
+    cout << "YD: " << scientist.getDod() << endl;
+    ListOptions listo;
+    scientist = listo.getsci();
+    cout << scientist.getName();
+    setDefault();
 }
 
 Editscientist::~Editscientist()
 {
     delete ui;
 }
+
 
 QString Editscientist:: name()
 {
@@ -44,6 +54,20 @@ QString Editscientist:: yearBorn()
 QString Editscientist:: yearOfDeath()
 {
     return ui->sciDeathYearSpinBox->text();
+}
+
+void Editscientist::setScientist(CScientist scientistToSet)
+{
+    scientist.setName(scientistToSet.getName());
+    scientist.setGender(scientistToSet.getGender());
+    scientist.setDob(scientistToSet.getDob());
+    scientist.setDod(scientistToSet.getDod());
+}
+
+void Editscientist::setDefault()
+{
+    cout << "Name in edit: " << scientist.getName();
+//    ui->sciNameLineEdit->setText(QString::fromStdString(scientist.getName()));
 }
 
 void Editscientist::on_confirmSciEditPushButton_clicked()

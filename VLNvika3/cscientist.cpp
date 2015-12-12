@@ -20,6 +20,17 @@ CScientist::CScientist(int cId, string cName, string cGender, string date1, stri
     isActive = cIsActive;
 }
 
+/*
+CScientist::CScientist(string cName, string cGender, string date1, string date2, bool cIsActive)
+{
+    name = cName;
+    gender = cGender;
+    dateBorn = date1;
+    dateDeath = date2;
+    isActive = cIsActive;
+}
+*/
+
 int CScientist::getId() const
 {
     return id;
