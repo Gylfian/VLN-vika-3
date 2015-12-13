@@ -47,6 +47,7 @@ void Search::on_addOrCancelSci_accepted()
     d1.search(Scientists,c1);
     accept();
     Searchresults s1;
+    s1.initialize(0);
     s1.exec();
 
 }
@@ -203,6 +204,7 @@ void Search::on_adddOrCancelComp_accepted()
     d1.search(Computers,c1);
     accept();
     Searchresults s1;
+    s1.initialize(1);
     s1.exec();
 
 }

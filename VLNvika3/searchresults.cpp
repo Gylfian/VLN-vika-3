@@ -12,7 +12,14 @@ Searchresults::~Searchresults()
 {
     delete ui;
 }
-void initialize()
+void Searchresults::initialize(int indexnumber)
 {
-
+    if(indexnumber==0)
+    {
+        ui->pageWidget->setCurrentIndex(0);
+    }
+    if(indexnumber==1)
+    {
+        ui->pageWidget->setCurrentIndex(1);
+    }
 }
