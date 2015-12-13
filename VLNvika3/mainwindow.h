@@ -29,6 +29,8 @@ private slots:
 
     void on_pushButtonListOptions_clicked();
 
+    void on_pinata_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

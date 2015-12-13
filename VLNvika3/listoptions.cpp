@@ -5,6 +5,10 @@
 #include "editcomputer.h"
 #include "analyze.h"
 #include "ui_analyze.h"
+#include "noentriesfound.h"
+#include "ui_noentriesfound.h"
+#include "warningmessage.h"
+#include "ui_warningmessage.h"
 #include <QDebug>
 
 ListOptions::ListOptions(QWidget *parent) :
@@ -124,6 +128,9 @@ void ListOptions::on_findSciButton_clicked()
     temp.setName(searchString);
     d1.search(scientists, temp);
     displayScientists(scientists);
+    cout << ui->scientistsList->rowCount();
+    if(ui->scientistsList->rowCount() == 0)
+    errorMessage();
 }
 
 void ListOptions::on_findComButton_clicked()
@@ -136,6 +143,8 @@ void ListOptions::on_findComButton_clicked()
     temp.setName(searchString);
     d1.search(computers, temp);
     displayComputers(computers);
+    if(ui->computersList->rowCount() == 0)
+    errorMessage();
 }
 
 void ListOptions::on_editScientist_clicked()
@@ -168,12 +177,17 @@ void ListOptions::on_editScientist_clicked()
 void ListOptions::on_scientistsList_clicked(const QModelIndex &index)
 {
     //qDebug() << "index: " << index;
+    ui->editScientist->setEnabled(true);
+    ui->analyzeScientistBotton->setEnabled(true);
+    ui->deleteScientistButton->setEnabled(true);
     int row = ui->scientistsList->currentItem()->row();
     scientist.setName(ui->scientistsList->item(row, 0)->text().toStdString());
     scientist.setGender(ui->scientistsList->item(row, 1)->text().toStdString());
     scientist.setDob(ui->scientistsList->item(row, 2)->text().toStdString());
     scientist.setDod(ui->scientistsList->item(row, 3)->text().toStdString());
     ui->editScientist->setEnabled(true);
+    ui->analyzeScientistBotton->setEnabled(true);
+    ui->deleteScientistButton->setEnabled(true);
 }
 
 void ListOptions::on_editComputers_clicked()
@@ -198,6 +212,8 @@ void ListOptions::on_computersList_clicked(const QModelIndex &index)
 {
     //qDebug() << "index: " << index;
     ui->editComputers->setEnabled(true);
+    ui->analyzeComButton->setEnabled(true);
+    ui->deleteComButton->setEnabled(true);
 }
 
 void ListOptions::on_scientistsList_doubleClicked(const QModelIndex &index)
@@ -214,17 +230,102 @@ void ListOptions::on_scientistsList_doubleClicked(const QModelIndex &index)
 
 void ListOptions::on_analyzeScientistBotton_clicked()
 {
-    Analyze analyze;
-    analyze.exec();
+    analyzeCom();
 }
 
 void ListOptions::on_computersList_doubleClicked(const QModelIndex &index)
+{
+    analyzeCom();
+}
+
+void ListOptions::on_deleteComButton_clicked()
+{
+    int row = ui->computersList->currentRow();
+    string name = ui->computersList->item(row, 0)->text().toStdString();
+    string type = ui->computersList->item(row, 1)->text().toStdString();
+    string wasBuilt = ui->computersList->item(row, 2)->text().toStdString();
+    string yearBuilt = ui->computersList->item(row, 3)->text().toStdString();
+    Computer temp(row, name, yearBuilt, type, wasBuilt);
+    stringstream ss;
+    ss << row;
+    string id = ss.str();
+    domain.updateEntryCom(id);
+}
+
+void ListOptions::on_analyzeComButton_clicked()
+{
+    analyzeCom();
+}
+
+void ListOptions::analyzeCom()
 {
     int row = ui->computersList->currentRow();
     string name = ui->computersList->item(row, 0)->text().toStdString();
     string type = ui->computersList->item(row, 1)->text().toStdString();
     string wasBuilt = ui->computersList->item(row, 2)->text().toStdString();
     string year = ui->computersList->item(row, 3)->text().toStdString();
-    Analyze analyze;
-    analyze.exec();
+    if(ui->scientistsList->rowCount() == 0)
+    errorMessage();
+    else
+    {
+        Analyze analyze;
+        analyze.exec();
+    }
+}
+void ListOptions::on_findComLineEdit_textChanged(const QString &arg1)
+{
+    ui->editComputers->setEnabled(false);
+    ui->analyzeComButton->setEnabled(false);
+    ui->deleteComButton->setEnabled(false);
+    ui->findComButton->setEnabled(true);
+    string searchString = ui->findSciLineEdit->text().toStdString();
+    vector <CScientist> scientists;
+    Domain d1;
+    CScientist temp;
+    d1.sortBy(scientists, 1, 1);
+    temp.setName(searchString);
+    d1.search(scientists, temp);
+    displayScientists(scientists);
+}
+
+void ListOptions::on_findSciLineEdit_textChanged(const QString &arg1)
+{
+    ui->editScientist->setEnabled(false);
+    ui->analyzeScientistBotton->setEnabled(false);
+    ui->deleteScientistButton->setEnabled(false);
+    ui->findSciButton->setEnabled(true);
+    string searchString = ui->findSciLineEdit->text().toStdString();
+    vector <CScientist> scientists;
+    Domain d1;
+    CScientist temp;
+    d1.sortBy(scientists, 1, 1);
+    temp.setName(searchString);
+    d1.search(scientists, temp);
+    displayScientists(scientists);
+}
+
+void ListOptions::errorMessage()
+{
+    Noentriesfound warning;
+    warning.exec();
+}
+
+void ListOptions::on_deleteScientistButton_clicked()
+{
+    int row = ui->scientistsList->currentRow();
+    string name = ui->scientistsList->item(row, 0)->text().toStdString();
+    string gender = ui->scientistsList->item(row, 1)->text().toStdString();
+    string yearBorn = ui->scientistsList->item(row, 2)->text().toStdString();
+    string yearOfDeath = ui->scientistsList->item(row, 3)->text().toStdString();
+    CScientist temp(row, name, gender, yearBorn, yearOfDeath, true);
+    stringstream ss;
+    ss << row;
+    string id = ss.str();
+    Warningmessage warningmessage;
+    int wasRejected = warningmessage.exec();
+    if(wasRejected == QDialog::Rejected)
+    {
+        return;
+    }
+    domain.updateEntrySci(id);
 }

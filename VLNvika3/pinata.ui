@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Pinata</class>
+ <widget class="QDialog" name="Pinata">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QAxWidget" name="axWidget">
+   <property name="control" stdset="0">
+    <string>{6bf52a52-394a-11d3-b153-00c04f79faa6}</string>
+   </property>
+   <property name="URL" stdset="0">
+    <string>https://www.youtube.com/watch?v=4xjxT9QcrXM</string>
+   </property>
+   <property name="geometry" stdset="0">
+    <rect>
+     <x>160</x>
+     <y>180</y>
+     <width>80</width>
+     <height>70</height>
+    </rect>
+   </property>
+   <property name="fullScreen" stdset="0">
+    <bool>false</bool>
+   </property>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QAxWidget</class>
+   <extends>QWidget</extends>
+   <header>qaxwidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

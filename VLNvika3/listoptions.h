@@ -1,6 +1,7 @@
 #ifndef LISTOPTIONS_H
 #define LISTOPTIONS_H
 #include "cscientist.h"
+#include "domain.h"
 #include "computer.h"
 #include "relation.h"
 #include <QDialog>
@@ -22,6 +23,7 @@ public:
     Ui::ListOptions *ui;
     ~ListOptions();
 
+    void errorMessage();
 private slots:
     //void onFindSciButtonClicked();
     void setCurrent();
@@ -46,6 +48,17 @@ private slots:
 
     void on_computersList_doubleClicked(const QModelIndex &index);
 
+    void on_deleteComButton_clicked();
+
+    void on_analyzeComButton_clicked();
+    void analyzeCom();
+
+    void on_findComLineEdit_textChanged(const QString &arg1);
+
+    void on_findSciLineEdit_textChanged(const QString &arg1);
+
+    void on_deleteScientistButton_clicked();
+
 private:
     void displayAllScientists();
     void displayScientists(std::vector<CScientist> scientists);
@@ -56,6 +69,7 @@ private:
     void displayAllComputers();
     void designComputersWidget(vector<Computer> computers);
     CScientist scientist;
+    Domain domain;
 };
 
 #endif // LISTOPTIONS_H

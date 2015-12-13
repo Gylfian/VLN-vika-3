@@ -4,6 +4,8 @@
 #include "search.h"
 #include "addentry.h"
 #include "addconnection.h"
+#include "pinata.h"
+#include "ui_pinata.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -49,4 +51,10 @@ void MainWindow::on_pushButtonListOptions_clicked()
 {
     ListOptions listoptions;
     listoptions.exec();
+}
+
+void MainWindow::on_pinata_clicked()
+{
+    Pinata pinata;
+    pinata.exec();
 }

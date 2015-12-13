@@ -141,6 +141,25 @@ string Search::getBuilt()
     string built = "";
     //if(ui->yesBuiltRadio->isEnabled())
     return built;
+    if(ui->yesBuiltRadio->isEnabled())
+    {
+        built = "yes";
+    }
+    if(ui->noBuiltRadio->isEnabled())
+    {
+        built = "no";
+    }
+    return built;
+}
+
+string Search::getBuiltYear()
+{
+    string builtyear = "";
+    if((ui->yesBuiltRadio->isEnabled())&&!ui->builtUnknown->isEnabled())
+    {
+        builtyear = ui->comYearBuiltInput->text().toStdString();
+    }
+    return builtyear;
 }
 
 void Search::on_comBuiltButton_clicked(bool checked)
@@ -171,5 +190,53 @@ void Search::on_adddOrCancelComp_accepted()
 {
     string name = ui->comNameInput->text().toStdString();
     string type = ui->comTypeText->text().toStdString();
+    string built = getBuilt();
+    string builtyear = getBuiltYear();
 
+    Computer c1(0,name,builtyear,type,built);
+    Domain d1;
+
+    vector<Computer> Computers;
+    d1.search(Computers,c1);
+    accept();
+
+}
+
+void Search::on_builtUnknown_clicked(bool checked)
+{
+    if(checked)
+    {
+        ui->comYearBuiltInput->setEnabled(false);
+    }
+    else if(checked==false)
+    {
+        ui->comYearBuiltInput->setEnabled(true);
+    }
+}
+
+void Search::on_yesBuiltRadio_clicked(bool checked)
+{
+    if(checked)
+    {
+        ui->comYearBuiltInput->setEnabled(true);
+        ui->builtUnknown->setEnabled(true);
+    }
+}
+
+void Search::on_noBuiltRadio_clicked(bool checked)
+{
+    if(checked)
+    {
+        ui->comYearBuiltInput->setEnabled(false);
+        ui->builtUnknown->setEnabled(false);
+    }
+}
+
+void Search::on_maybeBuiltRadio_clicked(bool checked)
+{
+    if(checked)
+    {
+        ui->comYearBuiltInput->setEnabled(false);
+        ui->builtUnknown->setEnabled(false);
+    }
 }

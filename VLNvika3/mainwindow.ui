@@ -7,16 +7,10 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>315</height>
+    <height>406</height>
    </rect>
   </property>
   <property name="minimumSize">
-   <size>
-    <width>400</width>
-    <height>315</height>
-   </size>
-  </property>
-  <property name="maximumSize">
    <size>
     <width>400</width>
     <height>315</height>
@@ -26,59 +20,66 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QVBoxLayout" name="verticalLayout_2">
+   <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <item>
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>                                       Main Menu</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButtonListOptions">
-        <property name="text">
-         <string>List options</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButtonSearch">
-        <property name="text">
-         <string>Search</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButtonAddEntry">
-        <property name="text">
-         <string>Add an entry</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButtonAddConnection">
-        <property name="text">
-         <string>Add connection</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButtonDelete">
-        <property name="text">
-         <string>Delete</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButtonExit">
-        <property name="text">
-         <string>Exit</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Main menu&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButtonListOptions">
+      <property name="text">
+       <string>List options</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButtonSearch">
+      <property name="text">
+       <string>Search</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButtonAddEntry">
+      <property name="text">
+       <string>Add an entry</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButtonAddConnection">
+      <property name="text">
+       <string>Add connection</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButtonDelete">
+      <property name="text">
+       <string>Delete</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButtonExit">
+      <property name="text">
+       <string>Exit</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pinata">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>:/new/images/pinata.jpg</normaloff>:/new/images/pinata.jpg</iconset>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -88,7 +89,7 @@
      <x>0</x>
      <y>0</y>
      <width>400</width>
-     <height>26</height>
+     <height>31</height>
     </rect>
    </property>
   </widget>

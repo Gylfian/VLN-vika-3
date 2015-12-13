@@ -12,6 +12,9 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = VLNvika3
 TEMPLATE = app
 
+RESOURCES +=    error.qrc \
+    warning.qrc
+
 
 SOURCES += main.cpp\
         mainwindow.cpp \
@@ -26,7 +29,10 @@ SOURCES += main.cpp\
     editscientist.cpp \
     search.cpp \
     editcomputer.cpp \
-    analyze.cpp
+    analyze.cpp \
+    noentriesfound.cpp \
+    warningmessage.cpp \
+    pinata.cpp
 
 HEADERS  += mainwindow.h \
     computer.h \
@@ -40,7 +46,10 @@ HEADERS  += mainwindow.h \
     editscientist.h \
     search.h \
     editcomputer.h \
-    analyze.h
+    analyze.h \
+    noentriesfound.h \
+    warningmessage.h \
+    pinata.h
 
 FORMS    += mainwindow.ui \
     listoptions.ui \
@@ -49,4 +58,9 @@ FORMS    += mainwindow.ui \
     editscientist.ui \
     search.ui \
     editcomputer.ui \
-    analyze.ui
+    analyze.ui \
+    noentriesfound.ui \
+    warningmessage.ui \
+    pinata.ui
+
+DISTFILES +=

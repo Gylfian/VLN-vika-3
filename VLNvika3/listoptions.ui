@@ -91,6 +91,9 @@
        <column/>
       </widget>
       <widget class="QPushButton" name="analyzeScientistBotton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>140</x>
@@ -120,9 +123,12 @@
        </property>
       </widget>
       <widget class="QPushButton" name="deleteScientistButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
-         <x>300</x>
+         <x>320</x>
          <y>540</y>
          <width>112</width>
          <height>34</height>
@@ -144,8 +150,14 @@
        <property name="placeholderText">
         <string>Find scientist...</string>
        </property>
+       <property name="clearButtonEnabled">
+        <bool>true</bool>
+       </property>
       </widget>
       <widget class="QPushButton" name="findSciButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>330</x>
@@ -256,8 +268,14 @@
        <property name="placeholderText">
         <string>Find computer...</string>
        </property>
+       <property name="clearButtonEnabled">
+        <bool>true</bool>
+       </property>
       </widget>
       <widget class="QPushButton" name="findComButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="geometry">
         <rect>
          <x>330</x>
@@ -270,6 +288,38 @@
         <string>Find</string>
        </property>
       </widget>
+      <widget class="QPushButton" name="analyzeComButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>540</y>
+         <width>112</width>
+         <height>34</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Analyze</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="deleteComButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>320</x>
+         <y>540</y>
+         <width>112</width>
+         <height>34</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Delete</string>
+       </property>
+      </widget>
      </widget>
      <widget class="QWidget" name="tabConnections">
       <attribute name="title">
@@ -279,14 +329,14 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>20</y>
-         <width>461</width>
-         <height>192</height>
+         <y>70</y>
+         <width>421</width>
+         <height>461</height>
         </rect>
        </property>
        <property name="minimumSize">
         <size>
-         <width>401</width>
+         <width>421</width>
          <height>0</height>
         </size>
        </property>
@@ -296,6 +346,12 @@
        <property name="lineWidth">
         <number>0</number>
        </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="showGrid">
+        <bool>false</bool>
+       </property>
        <property name="rowCount">
         <number>5</number>
        </property>
@@ -304,6 +360,9 @@
        </property>
        <attribute name="horizontalHeaderDefaultSectionSize">
         <number>100</number>
+       </attribute>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
        </attribute>
        <attribute name="verticalHeaderDefaultSectionSize">
         <number>30</number>
@@ -318,14 +377,36 @@
        <column/>
        <column/>
       </widget>
-      <widget class="QComboBox" name="comboBox">
+      <widget class="QLineEdit" name="findConnLineEdit">
        <property name="geometry">
         <rect>
-         <x>141</x>
-         <y>340</y>
-         <width>191</width>
-         <height>25</height>
+         <x>10</x>
+         <y>20</y>
+         <width>311</width>
+         <height>31</height>
         </rect>
+       </property>
+       <property name="placeholderText">
+        <string>Find connection...</string>
+       </property>
+       <property name="clearButtonEnabled">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="findConnButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>330</x>
+         <y>20</y>
+         <width>101</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Find</string>
        </property>
       </widget>
      </widget>

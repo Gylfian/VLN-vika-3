@@ -219,6 +219,22 @@ void Domain::updateEntryCom(string sid)
     data.updateStatus(cCom);
 }
 
+CScientist Domain::findScientist(CScientist cSci)
+{
+    vector<CScientist> allScientists;
+    CScientist empty;
+    data.select(empty, 1, 1);
+    allScientists = data.getSciVector();
+    for(int i = 0; i < allScientists.size(); i++)
+    {
+        if(allScientists[i].getName() == cSci.getName() && allScientists[i].getGender() == cSci.getGender() && allScientists[i].getDob() == cSci.getDob() && allScientists[i].getDod() == cSci.getDod())
+        {
+            cSci = allScientists[i];
+        }
+    }
+    return cSci;
+}
+
 void Domain::getRelationList(vector<string> &strSci, vector<string> &strCom, vector<int> &idRelations)
 {
     vector<Relation> cRelList;

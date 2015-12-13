@@ -43,11 +43,20 @@ private slots:
 
     void on_adddOrCancelComp_accepted();
 
+    void on_builtUnknown_clicked(bool checked);
+
+    void on_yesBuiltRadio_clicked(bool checked);
+
+    void on_noBuiltRadio_clicked(bool checked);
+
+    void on_maybeBuiltRadio_clicked(bool checked);
+
 private:
     string getGender();
     string getdob();
     string getdod();
     string getBuilt();
+    string getBuiltYear();
     Ui::Search *ui;
 };
 
