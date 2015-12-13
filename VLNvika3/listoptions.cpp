@@ -5,10 +5,7 @@
 #include "editcomputer.h"
 #include "analyze.h"
 #include "ui_analyze.h"
-#include "noentriesfound.h"
-#include "ui_noentriesfound.h"
-#include "warningmessage.h"
-#include "ui_warningmessage.h"
+#include <QMessageBox>
 #include <QDebug>
 
 ListOptions::ListOptions(QWidget *parent) :
@@ -16,32 +13,20 @@ ListOptions::ListOptions(QWidget *parent) :
     ui(new Ui::ListOptions)
 {
     ui->setupUi(this);
-    setWindowTitle("List options");
-    ui->scientistsList->setColumnWidth(0, 160);
-    ui->scientistsList->setColumnWidth(1, 70);
-    ui->scientistsList->setColumnWidth(2, 90);
-    ui->scientistsList->setColumnWidth(3, 100);
-    ui->computersList->setColumnWidth(0, 150);
-    ui->computersList->setColumnWidth(1, 115);
-    ui->computersList->setColumnWidth(2, 55);
-    ui->computersList->setColumnWidth(3, 100);
-    displayAllScientists();
-    displayAllComputers();
+    setUp();
+    ui->scientistsList->setHorizontalHeaderLabels(QString("Name;Gender;Birth year;Death year").split(";"));
+    ui->computersList->setHorizontalHeaderLabels(QString("Name;Type;Built?;Year built").split(";"));
+    ui->connectionsList->setHorizontalHeaderLabels(QString("Scienist name; Computer name").split(";"));
 }
 
-CScientist ListOptions::getsci()
-{
-    return scientist;
-}
+//CScientist ListOptions::getsci()
+//{
+  //  return scientist;
+//}
 
 ListOptions::~ListOptions()
 {
     delete ui;
-}
-
-void ListOptions::setCurrent()
-{
-
 }
 
 void ListOptions::displayAllScientists()
@@ -62,16 +47,15 @@ void ListOptions::displayAllComputers()
     displayComputers(computers);
 }
 
-/*
-void ListOptions::displayConnections()
+void ListOptions::displayAllConnections()
 {
     Domain d1;
     vector <string> computers;
     vector <string> scientists;
     vector <int> connections;
     d1.getRelationList(scientists, computers, connections);
-    displayScientists(connections);
-}*/
+    displayConnections(scientists, computers, connections);
+}
 
 void ListOptions::displayScientists(vector <CScientist> scientists)
 {
@@ -99,11 +83,20 @@ void ListOptions::displayComputers(vector <Computer> computers)
     }
 }
 
+void ListOptions::displayConnections(vector <string> scientists, vector <string> computers, vector <int> idRelations)
+{
+    designRelationsWidget(idRelations);
+    for(int i = 0; i < idRelations.size(); i++)
+    {
+        ui->connectionsList->setItem(i,0,new QTableWidgetItem(QString::fromStdString(scientists[i])));
+        ui->connectionsList->setItem(i,1,new QTableWidgetItem(QString::fromStdString(computers[i])));
+    }
+}
+
 void ListOptions::designScientistsWidget(vector <CScientist> scientists)
 {
     ui->scientistsList->clear();
-    int size = scientists.size();
-    ui->scientistsList->setHorizontalHeaderLabels(QString("Name;Gender;Birth year;Death year").split(";"));
+    int size = scientists.size();  
     ui->scientistsList->setRowCount(size);
 
 }
@@ -112,9 +105,31 @@ void ListOptions::designComputersWidget(vector <Computer> computers)
 {
     ui->computersList->clear();
     int size = computers.size();
-    ui->computersList->setHorizontalHeaderLabels(QString("Name;Type;Built?;Year built").split(";"));
     ui->computersList->setRowCount(size);
 
+}
+
+void ListOptions::designRelationsWidget(vector<int> id)
+{
+    ui->connectionsList->clear();
+    int size = id.size();
+    ui->connectionsList->setRowCount(size);
+}
+
+void ListOptions::on_scientistsList_clicked(const QModelIndex &index)
+{
+    ui->scientistsList->selectRow(index.row());
+    ui->editScientist->setEnabled(true);
+    ui->analyzeScientistBotton->setEnabled(true);
+    ui->deleteScientistButton->setEnabled(true);
+    int row = ui->scientistsList->currentItem()->row();
+    scientist.setName(ui->scientistsList->item(row, 0)->text().toStdString());
+    scientist.setGender(ui->scientistsList->item(row, 1)->text().toStdString());
+    scientist.setDob(ui->scientistsList->item(row, 2)->text().toStdString());
+    scientist.setDod(ui->scientistsList->item(row, 3)->text().toStdString());
+    ui->editScientist->setEnabled(true);
+    ui->analyzeScientistBotton->setEnabled(true);
+    ui->deleteScientistButton->setEnabled(true);
 }
 
 void ListOptions::on_findSciButton_clicked()
@@ -130,21 +145,7 @@ void ListOptions::on_findSciButton_clicked()
     displayScientists(scientists);
     cout << ui->scientistsList->rowCount();
     if(ui->scientistsList->rowCount() == 0)
-    errorMessage();
-}
-
-void ListOptions::on_findComButton_clicked()
-{
-    string searchString = ui->findComLineEdit->text().toStdString();
-    vector <Computer> computers;
-    Domain d1;
-    Computer temp;
-    d1.sortBy(computers, 1, 1);
-    temp.setName(searchString);
-    d1.search(computers, temp);
-    displayComputers(computers);
-    if(ui->computersList->rowCount() == 0)
-    errorMessage();
+    QMessageBox::warning(this, "WARNING!", "No entries found!");
 }
 
 void ListOptions::on_editScientist_clicked()
@@ -174,20 +175,78 @@ void ListOptions::on_editScientist_clicked()
    //displayAllScientists();
 }
 
-void ListOptions::on_scientistsList_clicked(const QModelIndex &index)
+void ListOptions::on_scientistsList_doubleClicked(const QModelIndex &index)
+{
+    int row = ui->scientistsList->currentRow();
+    string name = ui->scientistsList->item(row, 0)->text().toStdString();
+    string gender = ui->scientistsList->item(row, 1)->text().toStdString();
+    string yearBorn = ui->scientistsList->item(row, 2)->text().toStdString();
+    string yearOfDeath = ui->scientistsList->item(row, 3)->text().toStdString();
+    CScientist temp(row, name, gender, yearBorn, yearOfDeath, true);
+    Analyze analyze;
+    analyze.exec();
+}
+
+void ListOptions::on_analyzeScientistBotton_clicked()
+{
+    analyzeCom();
+}
+
+void ListOptions::on_findSciLineEdit_textChanged(const QString &arg1)
+{
+    ui->editScientist->setEnabled(false);
+    ui->analyzeScientistBotton->setEnabled(false);
+    ui->deleteScientistButton->setEnabled(false);
+    ui->findSciButton->setEnabled(true);
+    string searchString = ui->findSciLineEdit->text().toStdString();
+    vector <CScientist> scientists;
+    Domain d1;
+    CScientist temp;
+    d1.sortBy(scientists, 1, 1);
+    temp.setName(searchString);
+    d1.search(scientists, temp);
+    displayScientists(scientists);
+}
+
+void ListOptions::on_deleteScientistButton_clicked()
+{
+    int row = ui->scientistsList->currentRow();
+    string name = ui->scientistsList->item(row, 0)->text().toStdString();
+    string gender = ui->scientistsList->item(row, 1)->text().toStdString();
+    string yearBorn = ui->scientistsList->item(row, 2)->text().toStdString();
+    string yearOfDeath = ui->scientistsList->item(row, 3)->text().toStdString();
+    CScientist temp(row, name, gender, yearBorn, yearOfDeath, true);
+    stringstream ss;
+    ss << row;
+    string id = ss.str();
+    int ret = QMessageBox::warning(this, tr("Warning"), tr("You are about to delete a scientist!\n" "Do you want to continue?"), QMessageBox::Ok | QMessageBox::Cancel);
+    if(ret == QDialog::Rejected)
+    {
+        return;
+    }
+    domain.updateEntrySci(id);
+}
+
+void ListOptions::on_computersList_clicked(const QModelIndex &index)
 {
     //qDebug() << "index: " << index;
-    ui->editScientist->setEnabled(true);
-    ui->analyzeScientistBotton->setEnabled(true);
-    ui->deleteScientistButton->setEnabled(true);
-    int row = ui->scientistsList->currentItem()->row();
-    scientist.setName(ui->scientistsList->item(row, 0)->text().toStdString());
-    scientist.setGender(ui->scientistsList->item(row, 1)->text().toStdString());
-    scientist.setDob(ui->scientistsList->item(row, 2)->text().toStdString());
-    scientist.setDod(ui->scientistsList->item(row, 3)->text().toStdString());
-    ui->editScientist->setEnabled(true);
-    ui->analyzeScientistBotton->setEnabled(true);
-    ui->deleteScientistButton->setEnabled(true);
+    ui->editComputers->setEnabled(true);
+    ui->analyzeComButton->setEnabled(true);
+    ui->deleteComButton->setEnabled(true);
+}
+
+void ListOptions::on_findComButton_clicked()
+{
+    string searchString = ui->findComLineEdit->text().toStdString();
+    vector <Computer> computers;
+    Domain d1;
+    Computer temp;
+    d1.sortBy(computers, 1, 1);
+    temp.setName(searchString);
+    d1.search(computers, temp);
+    displayComputers(computers);
+    if(ui->computersList->rowCount() == 0)
+    QMessageBox::warning(this, "WARNING!", "No entries found!");
 }
 
 void ListOptions::on_editComputers_clicked()
@@ -208,34 +267,30 @@ void ListOptions::on_editComputers_clicked()
     displayAllComputers();
 }
 
-void ListOptions::on_computersList_clicked(const QModelIndex &index)
-{
-    //qDebug() << "index: " << index;
-    ui->editComputers->setEnabled(true);
-    ui->analyzeComButton->setEnabled(true);
-    ui->deleteComButton->setEnabled(true);
-}
-
-void ListOptions::on_scientistsList_doubleClicked(const QModelIndex &index)
-{
-    int row = ui->scientistsList->currentRow();
-    string name = ui->scientistsList->item(row, 0)->text().toStdString();
-    string gender = ui->scientistsList->item(row, 1)->text().toStdString();
-    string yearBorn = ui->scientistsList->item(row, 2)->text().toStdString();
-    string yearOfDeath = ui->scientistsList->item(row, 3)->text().toStdString();
-    CScientist temp(row, name, gender, yearBorn, yearOfDeath, true);
-    Analyze analyze;
-    analyze.exec();
-}
-
-void ListOptions::on_analyzeScientistBotton_clicked()
-{
-    analyzeCom();
-}
-
 void ListOptions::on_computersList_doubleClicked(const QModelIndex &index)
 {
     analyzeCom();
+}
+
+void ListOptions::on_analyzeComButton_clicked()
+{
+    analyzeCom();
+}
+
+void ListOptions::on_findComLineEdit_textChanged(const QString &arg1)
+{
+    ui->editComputers->setEnabled(false);
+    ui->analyzeComButton->setEnabled(false);
+    ui->deleteComButton->setEnabled(false);
+    ui->findComButton->setEnabled(true);
+    string searchString = ui->findComLineEdit->text().toStdString();
+    vector <Computer> computers;
+    Domain d1;
+    Computer temp;
+    d1.sortBy(computers, 1, 1);
+    temp.setName(searchString);
+    d1.search(computers, temp);
+    displayComputers(computers);
 }
 
 void ListOptions::on_deleteComButton_clicked()
@@ -249,12 +304,12 @@ void ListOptions::on_deleteComButton_clicked()
     stringstream ss;
     ss << row;
     string id = ss.str();
+    int ret = QMessageBox::warning(this, tr("Warning"), tr("You are about to delete a computer!\n" "Do you want to continue?"), QMessageBox::Ok | QMessageBox::Cancel);
+    if(ret == QDialog::Rejected)
+    {
+        return;
+    }
     domain.updateEntryCom(id);
-}
-
-void ListOptions::on_analyzeComButton_clicked()
-{
-    analyzeCom();
 }
 
 void ListOptions::analyzeCom()
@@ -265,67 +320,28 @@ void ListOptions::analyzeCom()
     string wasBuilt = ui->computersList->item(row, 2)->text().toStdString();
     string year = ui->computersList->item(row, 3)->text().toStdString();
     if(ui->scientistsList->rowCount() == 0)
-    errorMessage();
+        QMessageBox::warning(this, "WARNING!", "No entries found!");
     else
     {
         Analyze analyze;
         analyze.exec();
     }
 }
-void ListOptions::on_findComLineEdit_textChanged(const QString &arg1)
-{
-    ui->editComputers->setEnabled(false);
-    ui->analyzeComButton->setEnabled(false);
-    ui->deleteComButton->setEnabled(false);
-    ui->findComButton->setEnabled(true);
-    string searchString = ui->findSciLineEdit->text().toStdString();
-    vector <CScientist> scientists;
-    Domain d1;
-    CScientist temp;
-    d1.sortBy(scientists, 1, 1);
-    temp.setName(searchString);
-    d1.search(scientists, temp);
-    displayScientists(scientists);
-}
 
-void ListOptions::on_findSciLineEdit_textChanged(const QString &arg1)
+void ListOptions::setUp()
 {
-    ui->editScientist->setEnabled(false);
-    ui->analyzeScientistBotton->setEnabled(false);
-    ui->deleteScientistButton->setEnabled(false);
-    ui->findSciButton->setEnabled(true);
-    string searchString = ui->findSciLineEdit->text().toStdString();
-    vector <CScientist> scientists;
-    Domain d1;
-    CScientist temp;
-    d1.sortBy(scientists, 1, 1);
-    temp.setName(searchString);
-    d1.search(scientists, temp);
-    displayScientists(scientists);
-}
-
-void ListOptions::errorMessage()
-{
-    Noentriesfound warning;
-    warning.exec();
-}
-
-void ListOptions::on_deleteScientistButton_clicked()
-{
-    int row = ui->scientistsList->currentRow();
-    string name = ui->scientistsList->item(row, 0)->text().toStdString();
-    string gender = ui->scientistsList->item(row, 1)->text().toStdString();
-    string yearBorn = ui->scientistsList->item(row, 2)->text().toStdString();
-    string yearOfDeath = ui->scientistsList->item(row, 3)->text().toStdString();
-    CScientist temp(row, name, gender, yearBorn, yearOfDeath, true);
-    stringstream ss;
-    ss << row;
-    string id = ss.str();
-    Warningmessage warningmessage;
-    int wasRejected = warningmessage.exec();
-    if(wasRejected == QDialog::Rejected)
-    {
-        return;
-    }
-    domain.updateEntrySci(id);
+    setWindowTitle("List options");
+    ui->scientistsList->setColumnWidth(0, 160);
+    ui->scientistsList->setColumnWidth(1, 70);
+    ui->scientistsList->setColumnWidth(2, 90);
+    ui->scientistsList->setColumnWidth(3, 100);
+    ui->computersList->setColumnWidth(0, 150);
+    ui->computersList->setColumnWidth(1, 115);
+    ui->computersList->setColumnWidth(2, 55);
+    ui->computersList->setColumnWidth(3, 100);
+    ui->connectionsList->setColumnWidth(0, 230);
+    ui->connectionsList->setColumnWidth(1, 210);
+    displayAllScientists();
+    displayAllComputers();
+    displayAllConnections();
 }

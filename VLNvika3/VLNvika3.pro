@@ -5,15 +5,16 @@
 #-------------------------------------------------
 
 QT       += core gui
-QT += sql
+QT  += sql
+QT += multimedia
+QT += multimediawidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = VLNvika3
 TEMPLATE = app
 
-RESOURCES +=    error.qrc \
-    warning.qrc
+RESOURCES +=    error.qrc
 
 
 SOURCES += main.cpp\
@@ -30,8 +31,6 @@ SOURCES += main.cpp\
     search.cpp \
     editcomputer.cpp \
     analyze.cpp \
-    noentriesfound.cpp \
-    warningmessage.cpp \
     pinata.cpp \
     searchresults.cpp
 
@@ -48,8 +47,6 @@ HEADERS  += mainwindow.h \
     search.h \
     editcomputer.h \
     analyze.h \
-    noentriesfound.h \
-    warningmessage.h \
     pinata.h \
     searchresults.h
 
@@ -61,8 +58,6 @@ FORMS    += mainwindow.ui \
     search.ui \
     editcomputer.ui \
     analyze.ui \
-    noentriesfound.ui \
-    warningmessage.ui \
     pinata.ui \
     searchresults.ui
 

@@ -76,8 +76,8 @@
        <string/>
       </property>
       <property name="icon">
-       <iconset>
-        <normaloff>:/new/images/pinata.jpg</normaloff>:/new/images/pinata.jpg</iconset>
+       <iconset resource="error.qrc">
+        <normaloff>:/pinata.jpg</normaloff>:/pinata.jpg</iconset>
       </property>
      </widget>
     </item>
@@ -104,7 +104,9 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="error.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>pushButtonExit</sender>

@@ -17,7 +17,7 @@ Editscientist::Editscientist(QWidget *parent) :
     cout << "YB: " << scientist.getDob() << endl;
     cout << "YD: " << scientist.getDod() << endl;
     ListOptions listo;
-    scientist = listo.getsci();
+    //scientist = listo.getsci();
     cout << scientist.getName();
     setDefault();
 }

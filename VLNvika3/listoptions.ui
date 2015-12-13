@@ -20,7 +20,7 @@
       <bool>true</bool>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="tabScientists">
       <attribute name="title">
@@ -356,7 +356,7 @@
         <number>5</number>
        </property>
        <property name="columnCount">
-        <number>4</number>
+        <number>2</number>
        </property>
        <attribute name="horizontalHeaderDefaultSectionSize">
         <number>100</number>
@@ -372,8 +372,6 @@
        <row/>
        <row/>
        <row/>
-       <column/>
-       <column/>
        <column/>
        <column/>
       </widget>
