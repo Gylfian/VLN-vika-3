@@ -51,6 +51,8 @@ private slots:
 
     void on_maybeBuiltRadio_clicked(bool checked);
 
+    void on_adddOrCancelComp_rejected();
+
 private:
     string getGender();
     string getdob();

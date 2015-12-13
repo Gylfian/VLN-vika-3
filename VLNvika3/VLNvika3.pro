@@ -32,7 +32,8 @@ SOURCES += main.cpp\
     analyze.cpp \
     noentriesfound.cpp \
     warningmessage.cpp \
-    pinata.cpp
+    pinata.cpp \
+    searchresults.cpp
 
 HEADERS  += mainwindow.h \
     computer.h \
@@ -49,7 +50,8 @@ HEADERS  += mainwindow.h \
     analyze.h \
     noentriesfound.h \
     warningmessage.h \
-    pinata.h
+    pinata.h \
+    searchresults.h
 
 FORMS    += mainwindow.ui \
     listoptions.ui \
@@ -61,6 +63,7 @@ FORMS    += mainwindow.ui \
     analyze.ui \
     noentriesfound.ui \
     warningmessage.ui \
-    pinata.ui
+    pinata.ui \
+    searchresults.ui
 
 DISTFILES +=

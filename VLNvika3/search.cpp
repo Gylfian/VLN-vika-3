@@ -3,6 +3,8 @@
 #include <iostream>
 #include "cscientist.h"
 #include "domain.h"
+#include "searchresults.h"
+
 using namespace std;
 
 Search::Search(QWidget *parent) :
@@ -44,6 +46,9 @@ void Search::on_addOrCancelSci_accepted()
     vector<CScientist> Scientists;
     d1.search(Scientists,c1);
     accept();
+    Searchresults s1;
+    s1.exec();
+
 }
 
 void Search::on_addOrCancelSci_rejected()
@@ -139,8 +144,6 @@ string Search::getdod()
 string Search::getBuilt()
 {
     string built = "";
-    //if(ui->yesBuiltRadio->isEnabled())
-    return built;
     if(ui->yesBuiltRadio->isEnabled())
     {
         built = "yes";
@@ -199,6 +202,8 @@ void Search::on_adddOrCancelComp_accepted()
     vector<Computer> Computers;
     d1.search(Computers,c1);
     accept();
+    Searchresults s1;
+    s1.exec();
 
 }
 
@@ -239,4 +244,9 @@ void Search::on_maybeBuiltRadio_clicked(bool checked)
         ui->comYearBuiltInput->setEnabled(false);
         ui->builtUnknown->setEnabled(false);
     }
+}
+
+void Search::on_adddOrCancelComp_rejected()
+{
+    //loka
 }
