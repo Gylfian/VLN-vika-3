@@ -140,7 +140,7 @@ void Restore::on_restoreButtonSci_clicked()
 {
     Domain d1;
     CScientist s1;
-    s1 = d1.findScientist(scientist);
+    s1 = d1.findInactiveScientist(scientist);
     string strengur = s1.getDod();
     int id=s1.getId();
     qDebug() << s1.getId();

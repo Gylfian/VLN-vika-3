@@ -6,7 +6,7 @@
 #include "addconnection.h"
 #include "restore.h"
 #include "pinata.h"
-#include "ui_pinata.h"
+//#include "ui_pinata.h"
 #include <QDialog>
 #include <QtMultimedia/QMediaPlayer>
 #include <QtMultimedia/QMediaPlaylist>
