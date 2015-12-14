@@ -1,6 +1,7 @@
 #ifndef ADDCONNECTION_H
 #define ADDCONNECTION_H
 
+#include "domain.h"
 #include <QDialog>
 
 namespace Ui {
@@ -16,7 +17,6 @@ public:
     ~AddConnection();
     void enable();
     void dragEnterEvent(QDragEnterEvent *event);
-
     void dropEvent(QDropEvent *event);
 private slots:
     void on_dragScientists_entered(const QModelIndex &index);
@@ -27,6 +27,11 @@ private slots:
 
 private:
     Ui::AddConnection *ui;
+    Domain domain;
+    void displayAllScientists();
+    void displayScientists(vector <CScientist> scientists);
+    void designScientistsWidget(vector <CScientist> scientists);
+    void setUp();
 };
 
 #endif // ADDCONNECTION_H
