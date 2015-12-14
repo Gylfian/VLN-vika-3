@@ -127,22 +127,6 @@ void ListOptions::on_scientistsList_clicked(const QModelIndex &index)
     scientist.setDod(ui->scientistsList->item(row, 3)->text().toStdString());
 }
 
-void ListOptions::on_findSciButton_clicked()
-{
-    ui->editScientist->setEnabled(false);
-    string searchString = ui->findSciLineEdit->text().toStdString();
-    vector <CScientist> scientists;
-    Domain d1;
-    CScientist temp;
-    d1.sortBy(scientists, 1, 1);
-    temp.setName(searchString);
-    d1.search(scientists, temp);
-    displayScientists(scientists);
-    cout << ui->scientistsList->rowCount();
-    if(ui->scientistsList->rowCount() == 0)
-    QMessageBox::warning(this, "WARNING!", "No entries found!");
-}
-
 void ListOptions::on_editScientist_clicked()
 {
    Editscientist editscientist;
@@ -165,14 +149,12 @@ void ListOptions::on_editScientist_clicked()
 
 void ListOptions::on_scientistsList_doubleClicked(const QModelIndex &index)
 {
-    Analyze analyze;
-    analyze.setScientist(scientist);
-    analyze.exec();
+    analyzeSci();
 }
 
 void ListOptions::on_analyzeScientistBotton_clicked()
 {
-    analyzeCom();
+    analyzeSci();
 }
 
 void ListOptions::on_findSciLineEdit_textChanged(const QString &arg1)
@@ -180,7 +162,6 @@ void ListOptions::on_findSciLineEdit_textChanged(const QString &arg1)
     ui->editScientist->setEnabled(false);
     ui->analyzeScientistBotton->setEnabled(false);
     ui->deleteScientistButton->setEnabled(false);
-    ui->findSciButton->setEnabled(true);
     string searchString = ui->findSciLineEdit->text().toStdString();
     vector <CScientist> scientists;
     CScientist temp;
@@ -221,19 +202,6 @@ void ListOptions::on_computersList_clicked(const QModelIndex &index)
     computer.setYear(ui->computersList->item(row, 3)->text().toStdString());
 }
 
-void ListOptions::on_findComButton_clicked()
-{
-    string searchString = ui->findComLineEdit->text().toStdString();
-    vector <Computer> computers;
-    Computer temp;
-    domain.sortBy(computers, 1, 1);
-    temp.setName(searchString);
-    domain.search(computers, temp);
-    displayComputers(computers);
-    if(ui->computersList->rowCount() == 0)
-    QMessageBox::warning(this, "WARNING!", "No entries found!");
-}
-
 void ListOptions::on_editComputers_clicked()
 {
     Editcomputer editcomputer;
@@ -267,7 +235,6 @@ void ListOptions::on_findComLineEdit_textChanged(const QString &arg1)
     ui->editComputers->setEnabled(false);
     ui->analyzeComButton->setEnabled(false);
     ui->deleteComButton->setEnabled(false);
-    ui->findComButton->setEnabled(true);
     string searchString = ui->findComLineEdit->text().toStdString();
     vector <Computer> computers;
     Domain d1;
@@ -299,16 +266,24 @@ void ListOptions::on_deleteComButton_clicked()
 
 void ListOptions::analyzeCom()
 {
-    int row = ui->computersList->currentRow();
-    string name = ui->computersList->item(row, 0)->text().toStdString();
-    string type = ui->computersList->item(row, 1)->text().toStdString();
-    string wasBuilt = ui->computersList->item(row, 2)->text().toStdString();
-    string year = ui->computersList->item(row, 3)->text().toStdString();
     if(ui->scientistsList->rowCount() == 0)
         QMessageBox::warning(this, "WARNING!", "No entries found!");
     else
     {
         Analyze analyze;
+        analyze.setComputer(computer);
+        analyze.exec();
+    }
+}
+
+void ListOptions::analyzeSci()
+{
+    if(ui->scientistsList->rowCount() == 0)
+        QMessageBox::warning(this, "WARNING!", "No entries found!");
+    else
+    {
+        Analyze analyze;
+        analyze.setScientist(scientist);
         analyze.exec();
     }
 }

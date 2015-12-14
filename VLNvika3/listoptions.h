@@ -27,18 +27,17 @@ public:
 private slots:
     void on_scientistsList_clicked(const QModelIndex &index);
     void on_editScientist_clicked();
-    void on_findSciButton_clicked();
     void on_scientistsList_doubleClicked(const QModelIndex &index);
     void on_analyzeScientistBotton_clicked();
     void on_findSciLineEdit_textChanged(const QString &arg1);
     void on_deleteScientistButton_clicked();
     void on_computersList_clicked(const QModelIndex &index);
     void on_editComputers_clicked();
-    void on_findComButton_clicked();
     void on_computersList_doubleClicked(const QModelIndex &index);
     void on_analyzeComButton_clicked();
     void on_deleteComButton_clicked();
     void analyzeCom();
+    void analyzeSci();
     void on_findComLineEdit_textChanged(const QString &arg1);
 
 private:
