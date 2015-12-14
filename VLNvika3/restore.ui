@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>550</width>
+    <height>500</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>400</width>
-    <height>300</height>
+    <width>550</width>
+    <height>500</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>400</width>
-    <height>300</height>
+    <width>550</width>
+    <height>500</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -28,8 +28,11 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QTabWidget" name="tabs">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
@@ -37,10 +40,13 @@
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <widget class="QListWidget" name="scientistList"/>
+        <widget class="QTableWidget" name="scientistList"/>
        </item>
        <item>
         <widget class="QPushButton" name="restoreButtonSci">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="text">
           <string>Restore</string>
          </property>
@@ -54,10 +60,13 @@
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
-        <widget class="QListWidget" name="computerList"/>
+        <widget class="QTableWidget" name="computerList"/>
        </item>
        <item>
         <widget class="QPushButton" name="restoreButtonComp">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="text">
           <string>Restore</string>
          </property>
