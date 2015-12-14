@@ -21,8 +21,9 @@ Editcomputer::~Editcomputer()
 
 void Editcomputer:: setComputer(Computer computerToSet)
 {
-    ui->comNameLineEdit->setText(QString::fromStdString(computerToSet.getName()));
-    ui->comTypeComboBox->setCurrentText(QString::fromStdString(computerToSet.getType()));
+    computer = computerToSet;
+    ui->comNameLineEdit->setText(QString::fromStdString(computer.getName()));
+    ui->comTypeComboBox->setCurrentText(QString::fromStdString(computer.getType()));
     if(computerToSet.getBuilt() == "Yes")
     {
         ui->yesRadioButtonCom->setChecked(true);
@@ -34,7 +35,7 @@ void Editcomputer:: setComputer(Computer computerToSet)
         ui->comBuiltYearSpinBox->setEnabled(false);
     }
     Domain dom;
-    ui->comBuiltYearSpinBox->setValue(dom.convertToInt(computerToSet.getYear()));
+    ui->comBuiltYearSpinBox->setValue(dom.convertToInt(computer.getYear()));
 }
 
 QString Editcomputer:: name()
@@ -74,7 +75,7 @@ void Editcomputer::on_confirmComEditPushButton_clicked()
 {
     Computer newInfo;
     Domain dom;
-    //newInfo.setId(3); Hér kemur rétta id!
+    newInfo = dom.findComputer(computer);
     newInfo.setName(name().toStdString());
     newInfo.setType(type().toStdString());
     newInfo.setBuilt(wasBuilt().toStdString());

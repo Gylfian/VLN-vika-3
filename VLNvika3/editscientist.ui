@@ -94,7 +94,7 @@
    <item>
     <widget class="QSpinBox" name="sciDeathYearSpinBox">
      <property name="enabled">
-      <bool>false</bool>
+      <bool>true</bool>
      </property>
      <property name="maximum">
       <number>2015</number>

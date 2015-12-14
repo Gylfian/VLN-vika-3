@@ -19,10 +19,17 @@ public:
     explicit Analyze(QWidget *parent = 0);
     ~Analyze();
 
+private slots:
+    void on_analyzeOk_accepted();
+
 private:
     Ui::Analyze *ui;
+    void printBasicInfo();
+    void printDetailedInfo();
+    void getPicture();
     CScientist scientist;
     Computer computer;
+
 };
 
 #endif // ANALYZE_H
