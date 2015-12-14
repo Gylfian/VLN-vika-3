@@ -1,7 +1,7 @@
 #ifndef RELATION_H
 #define RELATION_H
 #include <iostream>
-#include "computerscientist.h"
+#include "cscientist.h"
 #include "computer.h"
 
 class Relation

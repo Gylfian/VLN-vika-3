@@ -15,12 +15,18 @@ public:
     string getGender() const;
     string getDob() const;
     string getDod() const;
+    string getBio() const;
+    string getQuote() const;
+    string getBooks() const;
     void setName(string nameToSet);
     void setGender(string genderToSet);
     void setDob(string dateToSet);
     void setDod(string dateToSet);
     void setId(int idToSet);
     void setIsActive(bool isActiveToSet);
+    void setBio(string bioToSet);
+    void setQuote(string quoteToSet);
+    void setBooks(string booksToSet);
 
 private:
     int id;
@@ -29,6 +35,9 @@ private:
     string dateBorn;
     string dateDeath;
     bool isActive;
+    string bio;
+    string quote;
+    string books;
 
 };
 

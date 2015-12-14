@@ -1,6 +1,6 @@
 #ifndef DATA_H
 #define DATA_H
-#include "computerscientist.h"
+#include "cscientist.h"
 #include "computer.h"
 #include "relation.h"
 #include <QDebug>

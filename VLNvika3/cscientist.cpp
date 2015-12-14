@@ -1,4 +1,4 @@
-#include "computerscientist.h"
+#include "cscientist.h"
 
 CScientist::CScientist()
 {
@@ -56,6 +56,21 @@ string CScientist::getDod() const
    return dateDeath;
 }
 
+string CScientist::getBio() const
+{
+    return bio;
+}
+
+string CScientist::getQuote() const
+{
+    return quote;
+}
+
+string CScientist::getBooks() const
+{
+    return books;
+}
+
 bool CScientist::getIsActive() const
 {
    return isActive;
@@ -90,3 +105,19 @@ void CScientist::setIsActive(bool isActiveToSet)
 {
     isActive=isActiveToSet;
 }
+
+void CScientist::setBio(string bioToSet)
+{
+    bio = bioToSet;
+}
+
+void CScientist::setQuote(string quoteToSet)
+{
+    quote = quoteToSet;
+}
+
+void CScientist::setBooks(string booksToSet)
+{
+    books = booksToSet;
+}
+
