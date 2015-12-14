@@ -1,8 +1,5 @@
 #include "search.h"
 #include "ui_search.h"
-#include <iostream>
-#include "cscientist.h"
-#include "domain.h"
 #include "searchresults.h"
 
 using namespace std;
@@ -41,14 +38,12 @@ void Search::on_addOrCancelSci_accepted()
     string dob = getdob();
     string dod = getdod();
 
-    CScientist c1(0,name,gender,dob,dod,1);
-    Domain d1;
-    vector<CScientist> Scientists;
-    d1.search(Scientists,c1);
+    CScientist s1(0,name,gender,dob,dod,1);
+    Computer c1;
     accept();
-    Searchresults s1;
-    s1.initialize(0);
-    s1.exec();
+    Searchresults results;
+    results.initialize(0,c1,s1);
+    results.exec();
 
 }
 
@@ -198,14 +193,11 @@ void Search::on_adddOrCancelComp_accepted()
     string builtyear = getBuiltYear();
 
     Computer c1(0,name,builtyear,type,built);
-    Domain d1;
-
-    vector<Computer> Computers;
-    d1.search(Computers,c1);
+    CScientist s1;
+    Searchresults results;
+    results.initialize(1,c1,s1);
+    results.exec();
     accept();
-    Searchresults s1;
-    s1.initialize(1);
-    s1.exec();
 
 }
 

@@ -15,7 +15,7 @@ Pinata::Pinata(QWidget *parent) :
     QMediaPlayer *player=new QMediaPlayer;
     QVideoWidget *videowidget=new QVideoWidget;
     QMediaPlaylist *playlist=new QMediaPlaylist;
-    playlist->addMedia(QUrl("C:/Users/Johanna/Desktop/VLN-vika-3/VLNvika3/Human Pinata with LL Cool J, Kaley Cuoco-Sweeting & James Corden.mp4"));
+    playlist->addMedia(QUrl("pinatasong.mp4"));
     player->setVideoOutput(videowidget);
     playlist->setCurrentIndex(1);
     player->setPlaylist(playlist);

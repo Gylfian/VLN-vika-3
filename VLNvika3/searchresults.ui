@@ -29,7 +29,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QListWidget" name="listWidget"/>
+        <widget class="QListWidget" name="scientistList"/>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout">
@@ -120,7 +120,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QListWidget" name="listWidget_2"/>
+        <widget class="QListWidget" name="computerList"/>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_2">
