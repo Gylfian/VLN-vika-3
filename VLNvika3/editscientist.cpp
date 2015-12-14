@@ -53,7 +53,6 @@ void Editscientist::setScientist(CScientist scientistToSet)
 {
     scientist = scientistToSet;
     ui->sciNameLineEdit->setText(QString::fromStdString(scientist.getName()));
-    cout << scientist.getGender();
     if(scientist.getGender() == "Female")
     {
         ui->maleRadioButton->setChecked(false);
@@ -87,6 +86,8 @@ void Editscientist::on_confirmSciEditPushButton_clicked()
     newInfo.setGender(gender().toStdString());
     newInfo.setDob(yearBorn().toStdString());
     newInfo.setDod(yearOfDeath().toStdString());
+    if(ui->yesAliveButton->isChecked())
+       newInfo.setDod("Alive");
     accept();
     dom.editEntry(newInfo);
 }
@@ -94,4 +95,14 @@ void Editscientist::on_confirmSciEditPushButton_clicked()
 void Editscientist::on_backPushButtonEditSci_clicked()
 {
     reject();
+}
+
+void Editscientist::on_noAliveButton_clicked()
+{
+    ui->sciDeathYearSpinBox->setEnabled(true);
+}
+
+void Editscientist::on_yesAliveButton_clicked()
+{
+    ui->sciDeathYearSpinBox->setEnabled(false);
 }
