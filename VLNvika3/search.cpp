@@ -1,6 +1,7 @@
 #include "search.h"
 #include "ui_search.h"
 #include "searchresults.h"
+#include <QDebug>
 
 using namespace std;
 
@@ -94,15 +95,15 @@ void Search::on_checkBox_clicked(bool checked)
 string Search::getGender()
 {
     string gender = "";
-    if(ui->maleRadio->isEnabled())
+    if(ui->maleRadio->isChecked())
     {
         gender = "Male";
     }
-    if(ui->femaleRadio->isEnabled())
+    if(ui->femaleRadio->isChecked())
     {
         gender = "Female";
     }
-    if(ui->unknownRadio->isEnabled())
+    if(ui->unknownRadio->isChecked())
     {
         gender = "";
     }
@@ -125,11 +126,11 @@ string Search::getdod()
 {
     string dod = "";
 
-    if(ui->yesRadio->isEnabled())
+    if(ui->yesRadio->isChecked())
     {
         dod = "Alive";
     }
-    if(ui->noRadio->isEnabled())
+    if(ui->noRadio->isChecked())
     {
         dod=ui->sciDeathInput->text().toStdString();
     }
@@ -140,11 +141,11 @@ string Search::getdod()
 string Search::getBuilt()
 {
     string built = "";
-    if(ui->yesBuiltRadio->isEnabled())
+    if(ui->yesBuiltRadio->isChecked())
     {
         built = "yes";
     }
-    if(ui->noBuiltRadio->isEnabled())
+    if(ui->noBuiltRadio->isChecked())
     {
         built = "no";
     }
@@ -154,7 +155,7 @@ string Search::getBuilt()
 string Search::getBuiltYear()
 {
     string builtyear = "";
-    if((ui->yesBuiltRadio->isEnabled())&&!ui->builtUnknown->isEnabled())
+    if(ui->yesBuiltRadio->isChecked())
     {
         builtyear = ui->comYearBuiltInput->text().toStdString();
     }
@@ -188,7 +189,7 @@ void Search::on_comUnawareButton_clicked(bool checked)
 void Search::on_adddOrCancelComp_accepted()
 {
     string name = ui->comNameInput->text().toStdString();
-    string type = ui->comTypeText->text().toStdString();
+    string type = ui->comTypeInput->text().toStdString();
     string built = getBuilt();
     string builtyear = getBuiltYear();
 
