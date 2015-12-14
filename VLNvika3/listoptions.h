@@ -40,6 +40,8 @@ private slots:
     void analyzeSci();
     void on_findComLineEdit_textChanged(const QString &arg1);
 
+    void on_findConnLineEdit_textChanged(const QString &arg1);
+
 private:
     CScientist scientist;
     Computer computer;

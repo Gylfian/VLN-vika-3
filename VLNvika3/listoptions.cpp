@@ -26,34 +26,29 @@ ListOptions::~ListOptions()
 
 void ListOptions::displayAllScientists()
 {
-    Domain d1;
     vector <CScientist> scientists;
-
-    d1.sortBy(scientists, 1, 1);
+    domain.sortBy(scientists, 1, 1);
     displayScientists(scientists);
 }
 
 void ListOptions::displayAllComputers()
 {
-    Domain d1;
     vector <Computer> computers;
-
-    d1.sortBy(computers, 1, 1);
+    domain.sortBy(computers, 1, 1);
     displayComputers(computers);
 }
 
 void ListOptions::displayAllConnections()
 {
-    Domain d1;
     vector <Relation> relation;
-    d1.getRelationList(relation);
+    domain.getRelationList(relation);
     displayConnections(relation);
 }
 
 void ListOptions::displayScientists(vector <CScientist> scientists)
 {
     designScientistsWidget(scientists);
-    for(int i = 0; i < scientists.size(); i++)
+    for(unsigned int i = 0; i < scientists.size(); i++)
     {
         CScientist currentSci = scientists[i];
         ui->scientistsList->setItem(i,0,new QTableWidgetItem(QString::fromStdString(currentSci.getName())));
@@ -66,7 +61,7 @@ void ListOptions::displayScientists(vector <CScientist> scientists)
 void ListOptions::displayComputers(vector <Computer> computers)
 {
     designComputersWidget(computers);
-    for(int i = 0; i < computers.size(); i++)
+    for(unsigned int i = 0; i < computers.size(); i++)
     {
         Computer currentCom = computers[i];
         ui->computersList->setItem(i,0,new QTableWidgetItem(QString::fromStdString(currentCom.getName())));
@@ -81,7 +76,7 @@ void ListOptions::displayConnections(vector<Relation> relations)
     CScientist sci;
     Computer com;
     designRelationsWidget(relations);
-    for(int i = 0; i < relations.size(); i++)
+    for(unsigned int i = 0; i < relations.size(); i++)
     {
         sci = relations[i].getScientist();
         com = relations[i].getComputer();
@@ -96,7 +91,6 @@ void ListOptions::designScientistsWidget(vector <CScientist> scientists)
     ui->scientistsList->setHorizontalHeaderLabels(QString("Name;Gender;Birth year;Death year").split(";"));
     int size = scientists.size();  
     ui->scientistsList->setRowCount(size);
-
 }
 
 void ListOptions::designComputersWidget(vector <Computer> computers)
@@ -104,7 +98,6 @@ void ListOptions::designComputersWidget(vector <Computer> computers)
     ui->computersList->clear();
     int size = computers.size();
     ui->computersList->setRowCount(size);
-
 }
 
 void ListOptions::designRelationsWidget(vector<Relation> cRelList)
@@ -193,6 +186,7 @@ void ListOptions::on_deleteScientistButton_clicked()
 void ListOptions::on_computersList_clicked(const QModelIndex &index)
 {
     int row = ui->computersList->currentRow();
+    ui->computersList->selectRow(index.row());
     ui->editComputers->setEnabled(true);
     ui->analyzeComButton->setEnabled(true);
     ui->deleteComButton->setEnabled(true);
@@ -270,6 +264,11 @@ void ListOptions::analyzeCom()
         QMessageBox::warning(this, "WARNING!", "No entries found!");
     else
     {
+        int row = ui->computersList->currentRow();
+        computer.setName(ui->computersList->item(row, 0)->text().toStdString());
+        computer.setType(ui->computersList->item(row, 1)->text().toStdString());
+        computer.setBuilt(ui->computersList->item(row, 2)->text().toStdString());
+        computer.setYear(ui->computersList->item(row, 3)->text().toStdString());
         Analyze analyze;
         analyze.setComputer(computer);
         analyze.exec();
@@ -282,6 +281,11 @@ void ListOptions::analyzeSci()
         QMessageBox::warning(this, "WARNING!", "No entries found!");
     else
     {
+        int row = ui->scientistsList->currentRow();
+        scientist.setName(ui->scientistsList->item(row, 0)->text().toStdString());
+        scientist.setGender(ui->scientistsList->item(row, 1)->text().toStdString());
+        scientist.setDob(ui->scientistsList->item(row, 2)->text().toStdString());
+        scientist.setDod(ui->scientistsList->item(row, 3)->text().toStdString());
         Analyze analyze;
         analyze.setScientist(scientist);
         analyze.exec();
@@ -304,4 +308,18 @@ void ListOptions::setUp()
     displayAllScientists();
     displayAllComputers();
     displayAllConnections();
+}
+
+void ListOptions::on_findConnLineEdit_textChanged(const QString &arg1)
+{
+    //ui->editComputers->setEnabled(false);
+    //ui->deleteComButton->setEnabled(false);
+    string searchString = ui->findConnLineEdit->text().toStdString();
+    vector <Computer> computers;
+    Domain d1;
+    Computer temp;
+    domain.sortBy(computers, 1, 1);
+    temp.setName(searchString);
+    domain.search(computers, temp);
+    displayComputers(computers);
 }

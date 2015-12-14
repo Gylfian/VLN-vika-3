@@ -51,18 +51,22 @@
     </widget>
    </item>
    <item>
-    <widget class="QRadioButton" name="femaleRadioPushButtonSci">
-     <property name="text">
-      <string>Female</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QRadioButton" name="maleRadioButton">
-     <property name="text">
-      <string>Male</string>
-     </property>
-    </widget>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QRadioButton" name="femaleRadioPushButtonSci">
+       <property name="text">
+        <string>Female</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="maleRadioButton">
+       <property name="text">
+        <string>Male</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item>
     <widget class="QLabel" name="birthYearLabel">
@@ -83,6 +87,31 @@
       <number>2015</number>
      </property>
     </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Is this person alive?</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QRadioButton" name="yesAliveButton">
+       <property name="text">
+        <string>Yes</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="noAliveButton">
+       <property name="text">
+        <string>No</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item>
     <widget class="QLabel" name="deathYearLabel">

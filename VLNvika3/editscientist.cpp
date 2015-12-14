@@ -59,6 +59,10 @@ void Editscientist::setScientist(CScientist scientistToSet)
         ui->maleRadioButton->setChecked(true);
     Domain dom;
     ui->sciBirthYearSpinBox->setValue(dom.convertToInt(scientist.getDob()));
+    if(scientist.getDod() == "")
+    {
+        ui->noAliveButton->setChecked(true);
+    }
     ui->sciDeathYearSpinBox->setValue(dom.convertToInt(scientist.getDod()));
 }
 
@@ -78,4 +82,14 @@ void Editscientist::on_confirmSciEditPushButton_clicked()
 void Editscientist::on_backPushButtonEditSci_clicked()
 {
     reject();
+}
+
+void Editscientist::on_yesAliveButton_clicked()
+{
+
+}
+
+void Editscientist::on_noAliveButton_clicked()
+{
+
 }
