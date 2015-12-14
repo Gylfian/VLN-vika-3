@@ -9,12 +9,12 @@ AddConnection::AddConnection(QWidget *parent) :
     ui(new Ui::AddConnection)
 {
     ui->setupUi(this);
+
 }
 
 AddConnection::~AddConnection()
 {
     delete ui;
-
 }
 void AddConnection::enable()
 {

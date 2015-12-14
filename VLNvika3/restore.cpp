@@ -157,4 +157,5 @@ void Restore::on_restoreButtonComp_clicked()
     string converted = ss.str();
     d1.updateEntryCom(converted);
     displayAllComputers();
+
 }
