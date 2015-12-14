@@ -9,21 +9,16 @@ AddConnection::AddConnection(QWidget *parent) :
     ui(new Ui::AddConnection)
 {
     ui->setupUi(this);
+
 }
 
 AddConnection::~AddConnection()
 {
     delete ui;
-
 }
 void AddConnection::enable()
 {
-    ui->listScientists->setDragEnabled(true);
-    ui->listComputers->setDragEnabled(true);
-    ui->dragComputers->setAcceptDrops(true);
-    ui->dragScientists->setAcceptDrops(true);
-    ui->dragComputers->setDragDropOverwriteMode(true);
-    ui->dragScientists->setDragDropOverwriteMode(true);
+
 }
 
 void AddConnection::dragEnterEvent(QDragEnterEvent *event)

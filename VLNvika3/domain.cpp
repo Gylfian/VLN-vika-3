@@ -227,6 +227,35 @@ vector<Relation> Domain::findRelation(string filter)
     return cRelList;
 }
 
+CScientist Domain::findInactiveScientist(CScientist cSci)
+{
+    vector<CScientist> allScientists;
+    data.scientistToRestore();
+    allScientists = data.getSciVector();
+    for(unsigned int i = 0; i < allScientists.size(); i++)
+    {
+        if(allScientists[i].getName() == cSci.getName() && allScientists[i].getGender() == cSci.getGender() && allScientists[i].getDob() == cSci.getDob() && allScientists[i].getDod() == cSci.getDod())
+        {
+            cSci = allScientists[i];
+        }
+    }
+    return cSci;
+}
+
+Computer Domain::findInactiveComputer(Computer cCom)
+{
+    vector<Computer> allComputers;
+    data.computerToRestore();
+    allComputers = data.getComVector();
+    for(unsigned int i = 0; i < allComputers.size(); i++)
+    {
+        if(allComputers[i].getName() == cCom.getName() && allComputers[i].getType() == cCom.getType() && allComputers[i].getBuilt() == cCom.getBuilt() && allComputers[i].getYear() == cCom.getYear())
+        {
+            cCom = allComputers[i];
+        }
+    }
+    return cCom;
+}
 
 CScientist Domain::findScientist(CScientist cSci)
 {

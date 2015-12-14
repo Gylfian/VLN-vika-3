@@ -129,6 +129,8 @@ void Data::makeQuery(Computer& temp, QSqlQuery query)
     temp.setYear(qYear);
     bool qIsActive = query.value("isActive").toBool();
     temp.setIsActive(qIsActive);
+    string about = query.value("About").toString().toStdString();
+    temp.setAbout(about);
 }
 
 void Data::makeQuery(Relation& temp, QSqlQuery query)
