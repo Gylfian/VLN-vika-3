@@ -167,7 +167,7 @@ public:
      * Usage: getRelations(strSci, strCom)
      * Output/Return:
      */
-    void getRelationList(vector<string> &strSci, vector<string> &strCom, vector<int> &idRelations);
+    void getRelationList(vector<Relation> &cRelList);
 
     /*
      * Name: checkIdVector

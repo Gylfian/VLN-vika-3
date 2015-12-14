@@ -51,9 +51,9 @@ private:
     void displayAllConnections();
     void displayAllComputers();
     void designComputersWidget(vector<Computer> computers);
-    void designRelationsWidget(vector<int> id);
+    void designRelationsWidget(vector<Relation> relations);
     void displayRelations(vector<string> scientists, vector<string> computers);
-    void displayConnections(vector<string> scientists, vector<string> computers, vector<int> idRelations);
+    void displayConnections(vector<Relation> relations);
 };
 
 #endif // LISTOPTIONS_H

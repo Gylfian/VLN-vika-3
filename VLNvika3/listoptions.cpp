@@ -50,11 +50,9 @@ void ListOptions::displayAllComputers()
 void ListOptions::displayAllConnections()
 {
     Domain d1;
-    vector <string> computers;
-    vector <string> scientists;
-    vector <int> connections;
-    d1.getRelationList(scientists, computers, connections);
-    displayConnections(scientists, computers, connections);
+    vector <Relation> relation;
+    d1.getRelationList(relation);
+    displayConnections(relation);
 }
 
 void ListOptions::displayScientists(vector <CScientist> scientists)
@@ -83,13 +81,17 @@ void ListOptions::displayComputers(vector <Computer> computers)
     }
 }
 
-void ListOptions::displayConnections(vector <string> scientists, vector <string> computers, vector <int> idRelations)
+void ListOptions::displayConnections(vector<Relation> relations)
 {
-    designRelationsWidget(idRelations);
-    for(int i = 0; i < idRelations.size(); i++)
+    CScientist sci;
+    Computer com;
+    designRelationsWidget(relations);
+    for(int i = 0; i < relations.size(); i++)
     {
-        ui->connectionsList->setItem(i,0,new QTableWidgetItem(QString::fromStdString(scientists[i])));
-        ui->connectionsList->setItem(i,1,new QTableWidgetItem(QString::fromStdString(computers[i])));
+        sci = relations[i].getScientist();
+        com = relations[i].getComputer();
+        ui->connectionsList->setItem(i,0,new QTableWidgetItem(QString::fromStdString(sci.getName())));
+        ui->connectionsList->setItem(i,1,new QTableWidgetItem(QString::fromStdString(com.getName())));
     }
 }
 
@@ -109,10 +111,10 @@ void ListOptions::designComputersWidget(vector <Computer> computers)
 
 }
 
-void ListOptions::designRelationsWidget(vector<int> id)
+void ListOptions::designRelationsWidget(vector<Relation> cRelList)
 {
     ui->connectionsList->clear();
-    int size = id.size();
+    int size = cRelList.size();
     ui->connectionsList->setRowCount(size);
 }
 

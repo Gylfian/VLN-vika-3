@@ -225,7 +225,7 @@ CScientist Domain::findScientist(CScientist cSci)
     CScientist empty;
     data.select(empty, 1, 1);
     allScientists = data.getSciVector();
-    for(int i = 0; i < allScientists.size(); i++)
+    for(unsigned int i = 0; i < allScientists.size(); i++)
     {
         if(allScientists[i].getName() == cSci.getName() && allScientists[i].getGender() == cSci.getGender() && allScientists[i].getDob() == cSci.getDob() && allScientists[i].getDod() == cSci.getDod())
         {
@@ -235,24 +235,25 @@ CScientist Domain::findScientist(CScientist cSci)
     return cSci;
 }
 
-void Domain::getRelationList(vector<string> &strSci, vector<string> &strCom, vector<int> &idRelations)
+void Domain::getRelationList(vector<Relation> &cRelList)
 {
-    vector<Relation> cRelList;
+    vector<Relation> allRelations;
     CScientist sci;
     Computer com;
     Relation rel;
     data.select(rel);
     cRelList = data.getRelVector();
-    for(unsigned int i = 0; i < cRelList.size(); i++)
+    for(unsigned int i = 0; i < allRelations.size(); i++)
     {
-         sci = cRelList[i].getScientist();
-         com = cRelList[i].getComputer();
+         sci = allRelations[i].getScientist();
+         com = allRelations[i].getComputer();
          string sstr = sci.getName();
          string cstr = com.getName();
-         int id = cRelList[i].getId();
-         idRelations.push_back(id);
-         strSci.push_back(sstr);
-         strCom.push_back(cstr);
+         int id = allRelations[i].getId();
+         rel.setScientistName(sstr);
+         rel.setComputerName(cstr);
+         rel.setId(id);
+         cRelList.push_back(rel);
     }
 }
 
