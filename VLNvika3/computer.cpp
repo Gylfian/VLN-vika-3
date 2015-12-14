@@ -49,6 +49,11 @@ bool Computer::getIsActive() const
     return isActive;
 }
 
+string Computer::getAbout() const
+{
+    return about;
+}
+
 void Computer::setName(string nameToSet)
 {
     name = nameToSet;
@@ -77,4 +82,9 @@ void Computer::setIsActive(bool cisActive)
 void Computer::setId(int cId)
 {
     id = cId;
+}
+
+void Computer::setAbout(string aboutToSet)
+{
+    about = aboutToSet;
 }
