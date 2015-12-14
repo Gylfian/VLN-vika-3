@@ -18,12 +18,7 @@ AddConnection::~AddConnection()
 }
 void AddConnection::enable()
 {
-    ui->listScientists->setDragEnabled(true);
-    ui->listComputers->setDragEnabled(true);
-    ui->dragComputers->setAcceptDrops(true);
-    ui->dragScientists->setAcceptDrops(true);
-    ui->dragComputers->setDragDropOverwriteMode(true);
-    ui->dragScientists->setDragDropOverwriteMode(true);
+
 }
 
 void AddConnection::dragEnterEvent(QDragEnterEvent *event)
