@@ -120,18 +120,21 @@ void ListOptions::designRelationsWidget(vector<Relation> cRelList)
 
 void ListOptions::on_scientistsList_clicked(const QModelIndex &index)
 {
+    int row = ui->scientistsList->currentRow();
+    string name = ui->scientistsList->item(row, 0)->text().toStdString();
+    string gender = ui->scientistsList->item(row, 1)->text().toStdString();
+    string yearBorn = ui->scientistsList->item(row, 2)->text().toStdString();
+    string yearOfDeath = ui->scientistsList->item(row, 3)->text().toStdString();
+    CScientist temp(row, name, gender, yearBorn, yearOfDeath, true);
+    cout << "In sci after temp" << endl;
     ui->scientistsList->selectRow(index.row());
     ui->editScientist->setEnabled(true);
     ui->analyzeScientistBotton->setEnabled(true);
     ui->deleteScientistButton->setEnabled(true);
-    int row = ui->scientistsList->currentItem()->row();
     scientist.setName(ui->scientistsList->item(row, 0)->text().toStdString());
     scientist.setGender(ui->scientistsList->item(row, 1)->text().toStdString());
     scientist.setDob(ui->scientistsList->item(row, 2)->text().toStdString());
     scientist.setDod(ui->scientistsList->item(row, 3)->text().toStdString());
-    ui->editScientist->setEnabled(true);
-    ui->analyzeScientistBotton->setEnabled(true);
-    ui->deleteScientistButton->setEnabled(true);
 }
 
 void ListOptions::on_findSciButton_clicked()
@@ -154,7 +157,10 @@ void ListOptions::on_editScientist_clicked()
 {
    Editscientist editscientist;
    editscientist.setScientist(scientist);
+   cout << "Name of scientist membervariable before exec: " << scientist.getName() << endl;
+   cout << "Name of editscientist instance before exec: " << editscientist.name().toStdString() << endl;
    int wasRejected = editscientist.exec();
+   cout << "Name of editscientist instance after exec: " << editscientist.name().toStdString() << endl;
 
    if(wasRejected == QDialog::Rejected)
        return;

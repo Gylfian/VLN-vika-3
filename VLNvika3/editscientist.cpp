@@ -58,15 +58,16 @@ QString Editscientist:: yearOfDeath()
 
 void Editscientist::setScientist(CScientist scientistToSet)
 {
-    scientist.setName(scientistToSet.getName());
-    scientist.setGender(scientistToSet.getGender());
-    scientist.setDob(scientistToSet.getDob());
-    scientist.setDod(scientistToSet.getDod());
+    scientist = scientistToSet;
+    cout << "Name in set function: " << scientist.getName() << endl;
+    cout << "Gender in set function: " << scientist.getGender() << endl;
+    cout << "YB in set function: " << scientist.getDob() << endl;
+    cout << "YD in set function: " << scientist.getDod() << endl;
 }
 
 void Editscientist::setDefault()
 {
-    cout << "Name in edit: " << scientist.getName();
+    cout << "Name in edit: " << scientist.getName() << endl;
 //    ui->sciNameLineEdit->setText(QString::fromStdString(scientist.getName()));
 }
 

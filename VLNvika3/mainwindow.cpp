@@ -63,12 +63,13 @@ void MainWindow::on_pinata_clicked()
     QMediaPlayer *audioplayer = new QMediaPlayer;
     QVideoWidget *videowidget=new QVideoWidget;
     QMediaPlaylist *playlist=new QMediaPlaylist;
-    playlist->addMedia(QUrl::fromLocalFile("HumanPinata.mp4"));
+    playlist->addMedia(QUrl::fromLocalFile("C:/Users/Johanna/Desktop/VLN-vika-3/VLNvika3/HumanPinata.mp4"));
     player->setVideoOutput(videowidget);
     playlist->setCurrentIndex(1);
     player->setPlaylist(playlist);
+   // videowidget->setFullScreen(true);
     player->setMuted(true);
-    audioplayer->setMedia(QUrl::fromLocalFile("pinatasong.mp3"));
+    audioplayer->setMedia(QUrl::fromLocalFile("C:/Users/Johanna/Desktop/VLN-vika-3/VLNvika3/pinatasong.mp3"));
     audioplayer->setVolume(50);
     audioplayer->play();
     player->play();

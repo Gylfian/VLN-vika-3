@@ -20,7 +20,7 @@
       <bool>true</bool>
      </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tabScientists">
       <attribute name="title">
@@ -55,6 +55,9 @@
        </property>
        <property name="showGrid">
         <bool>false</bool>
+       </property>
+       <property name="sortingEnabled">
+        <bool>true</bool>
        </property>
        <property name="rowCount">
         <number>5</number>
@@ -201,6 +204,9 @@
        </property>
        <property name="showGrid">
         <bool>false</bool>
+       </property>
+       <property name="sortingEnabled">
+        <bool>true</bool>
        </property>
        <property name="rowCount">
         <number>5</number>
