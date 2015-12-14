@@ -89,7 +89,7 @@ void ListOptions::designScientistsWidget(vector <CScientist> scientists)
 {
     ui->scientistsList->clear();
     ui->scientistsList->setHorizontalHeaderLabels(QString("Name;Gender;Birth year;Death year").split(";"));
-    int size = scientists.size();  
+    int size = scientists.size();
     ui->scientistsList->setRowCount(size);
 }
 

@@ -14,12 +14,14 @@ public:
     string getType() const;
     string getBuilt() const;
     bool getIsActive() const;
+    string getAbout() const;
     void setId(int idToSet);
     void setName(string nameToSet);
     void setYear(string yearToSet);
     void setType(string typeToSet);
     void setBuilt(string cBuilt);
     void setIsActive(bool cisActive);
+    void setAbout(string aboutToSet);
 
 private:
     int id;
@@ -28,6 +30,7 @@ private:
     string type;
     string built;
     bool isActive;
+    string about;
 };
 
 #endif // COMPUTER_H

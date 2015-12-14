@@ -24,9 +24,12 @@ private slots:
 
 private:
     Ui::Analyze *ui;
-    void printBasicInfo();
-    void printDetailedInfo();
-    void getPicture();
+    void printSciBasicInfo();
+    void printSciDetailedInfo();
+    void getSciPicture();
+    void printComBasicInfo();
+    void printComDetailedInfo();
+    void getComPicture();
     CScientist scientist;
     Computer computer;
 
