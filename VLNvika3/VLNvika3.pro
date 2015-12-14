@@ -32,7 +32,8 @@ SOURCES += main.cpp\
     editcomputer.cpp \
     analyze.cpp \
     pinata.cpp \
-    searchresults.cpp
+    searchresults.cpp \
+    restore.cpp
 
 HEADERS  += mainwindow.h \
     computer.h \
@@ -48,7 +49,8 @@ HEADERS  += mainwindow.h \
     editcomputer.h \
     analyze.h \
     pinata.h \
-    searchresults.h
+    searchresults.h \
+    restore.h
 
 FORMS    += mainwindow.ui \
     listoptions.ui \
@@ -59,6 +61,7 @@ FORMS    += mainwindow.ui \
     editcomputer.ui \
     analyze.ui \
     pinata.ui \
-    searchresults.ui
+    searchresults.ui \
+    restore.ui
 
 DISTFILES +=

@@ -50,7 +50,7 @@ void Search::on_addOrCancelSci_accepted()
 
 void Search::on_addOrCancelSci_rejected()
 {
-    rejected();
+    reject();
 }
 
 
@@ -243,5 +243,5 @@ void Search::on_maybeBuiltRadio_clicked(bool checked)
 
 void Search::on_adddOrCancelComp_rejected()
 {
-    //loka
+    reject();
 }

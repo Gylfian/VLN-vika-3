@@ -7,6 +7,9 @@ CScientist::CScientist()
     gender ="";
     dateBorn = "";
     dateDeath = "";
+    bio = "";
+    quote = "";
+    books = "";
     isActive = false;
 }
 

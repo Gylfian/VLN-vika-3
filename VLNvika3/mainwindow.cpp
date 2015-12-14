@@ -4,6 +4,7 @@
 #include "search.h"
 #include "addentry.h"
 #include "addconnection.h"
+#include "restore.h"
 #include "pinata.h"
 #include "ui_pinata.h"
 #include <QDialog>
@@ -41,9 +42,10 @@ void MainWindow::on_pushButtonSearch_clicked()
     s1.exec();
 }
 
-void MainWindow::on_pushButtonDelete_clicked()
+void MainWindow::on_pushButtonRestore_clicked()
 {
-
+    Restore r1;
+    r1.exec();
 }
 
 void MainWindow::on_pushButtonExit_clicked()
@@ -63,7 +65,7 @@ void MainWindow::on_pinata_clicked()
     QMediaPlayer *audioplayer = new QMediaPlayer;
     QVideoWidget *videowidget=new QVideoWidget;
     QMediaPlaylist *playlist=new QMediaPlaylist;
-    playlist->addMedia(QUrl::fromLocalFile("HumanPinata.mp4"));
+    playlist->addMedia(QUrl("HumanPinata.mp4"));
     player->setVideoOutput(videowidget);
     playlist->setCurrentIndex(1);
     player->setPlaylist(playlist);

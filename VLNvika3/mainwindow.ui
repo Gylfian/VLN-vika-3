@@ -57,9 +57,9 @@
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButtonDelete">
+     <widget class="QPushButton" name="pushButtonRestore">
       <property name="text">
-       <string>Delete</string>
+       <string>Restore</string>
       </property>
      </widget>
     </item>
@@ -89,7 +89,7 @@
      <x>0</x>
      <y>0</y>
      <width>400</width>
-     <height>31</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>
