@@ -119,22 +119,13 @@ void Restore::on_computerList_clicked(const QModelIndex &index)
 {
     int row = ui->computerList->currentRow();
     ui->computerList->selectRow(index.row());
-    ui->restoreButtonSci->setEnabled(true);
+    ui->restoreButtonComp->setEnabled(true);
     computer.setName(ui->computerList->item(row, 0)->text().toStdString());
     computer.setType(ui->computerList->item(row, 1)->text().toStdString());
     computer.setBuilt(ui->computerList->item(row, 2)->text().toStdString());
     computer.setYear(ui->computerList->item(row, 3)->text().toStdString());
 }
 
-/*
-
-
-void Restore::on_computerList_clicked(const QModelIndex &index)
-{
-    int i = ui->computerList->currentRow();
-    qDebug() << i;
-}
-*/
 
 void Restore::on_restoreButtonSci_clicked()
 {
@@ -150,4 +141,20 @@ void Restore::on_restoreButtonSci_clicked()
     string converted = ss.str();
     d1.updateEntrySci(converted);
     displayAllScientists();
+}
+
+void Restore::on_restoreButtonComp_clicked()
+{
+    Domain d1;
+    Computer c1;
+    c1 = d1.findInactiveComputer(computer);
+    string strengur = c1.getName();
+    int id=c1.getId();
+    qDebug() << c1.getId();
+    qDebug() << QString::fromStdString(strengur);
+    stringstream ss;
+    ss << id;
+    string converted = ss.str();
+    d1.updateEntryCom(converted);
+    displayAllComputers();
 }

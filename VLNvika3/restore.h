@@ -32,6 +32,8 @@ private slots:
     void on_computerList_clicked(const QModelIndex &index);
     void on_restoreButtonSci_clicked();
 
+    void on_restoreButtonComp_clicked();
+
 private:
     Ui::Restore *ui;
     CScientist scientist;
