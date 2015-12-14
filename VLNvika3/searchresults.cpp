@@ -1,5 +1,7 @@
 #include "searchresults.h"
 #include "ui_searchresults.h"
+#include "editscientist.h"
+#include "editcomputer.h"
 #include "domain.h"
 
 Searchresults::Searchresults(QWidget *parent) :
@@ -19,6 +21,12 @@ void Searchresults::displayvector(Computer c1)
     vector<Computer> computers;
     Domain d1;
     d1.search(computers,c1);
+    for(int i =0; i<computers.size(); i++)
+    {
+    Computer temp = computers[i];
+    string name = temp.getName();
+    ui->computerList->addItem(QString::fromStdString(name));
+    }
 }
 
 void Searchresults::displayvector(CScientist s1)
@@ -26,16 +34,22 @@ void Searchresults::displayvector(CScientist s1)
     vector<CScientist> scientists;
     Domain d1;
     d1.search(scientists,s1);
+    for(int i =0; i<scientists.size(); i++)
+    {
+    CScientist temp = scientists[i];
+    string name = temp.getName();
+    ui->scientistList->addItem(QString::fromStdString(name));
+    }
 }
 
 void Searchresults::designScientistsList(vector<CScientist> scientists)
 {
-
+    ui->scientistList->clear();
 }
 
 void Searchresults::designComputersList(vector<Computer> computers)
 {
-
+    ui->computerList->clear();
 }
 
 void Searchresults::setindex(int indexnumber)
@@ -56,4 +70,9 @@ void Searchresults::initialize(int indexnumber, Computer c1, CScientist s1)
         setindex(indexnumber);
         displayvector(c1);
     }
+}
+
+void Searchresults::on_editScientist_clicked()
+{
+
 }

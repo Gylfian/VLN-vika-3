@@ -64,11 +64,15 @@ void Editscientist::setScientist(CScientist scientistToSet)
 
 void Editscientist::on_confirmSciEditPushButton_clicked()
 {
-    name();
-    gender();
-    yearBorn();
-    yearOfDeath();
+    CScientist newInfo;
+    Domain dom;
+    //newInfo.setId(3); Hér kemur rétta id!
+    newInfo.setName(name().toStdString());
+    newInfo.setGender(gender().toStdString());
+    newInfo.setDob(yearBorn().toStdString());
+    newInfo.setDod(yearOfDeath().toStdString());
     accept();
+    dom.editEntry(newInfo);
 }
 
 void Editscientist::on_backPushButtonEditSci_clicked()

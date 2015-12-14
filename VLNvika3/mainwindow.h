@@ -23,7 +23,7 @@ private slots:
 
     void on_pushButtonSearch_clicked();
 
-    void on_pushButtonDelete_clicked();
+    void on_pushButtonRestore_clicked();
 
     void on_pushButtonExit_clicked();
 

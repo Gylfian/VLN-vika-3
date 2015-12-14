@@ -22,6 +22,9 @@ public:
     void designComputersList(vector <Computer> computers);
 
 
+private slots:
+    void on_editScientist_clicked();
+
 private:
     Ui::Searchresults *ui;
     void setindex(int indexnumber);

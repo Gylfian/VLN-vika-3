@@ -31,7 +31,8 @@ SOURCES += main.cpp\
     search.cpp \
     editcomputer.cpp \
     analyze.cpp \
-    searchresults.cpp
+    searchresults.cpp \
+    restore.cpp
 
 HEADERS  += mainwindow.h \
     computer.h \
@@ -46,7 +47,8 @@ HEADERS  += mainwindow.h \
     search.h \
     editcomputer.h \
     analyze.h \
-    searchresults.h
+    searchresults.h \
+    restore.h
 
 FORMS    += mainwindow.ui \
     listoptions.ui \
@@ -56,6 +58,7 @@ FORMS    += mainwindow.ui \
     search.ui \
     editcomputer.ui \
     analyze.ui \
-    searchresults.ui
+    searchresults.ui \
+    restore.ui
 
 DISTFILES +=
