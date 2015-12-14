@@ -1,6 +1,7 @@
 #include "editcomputer.h"
 #include "ui_editcomputer.h"
 #include "computer.h"
+#include "listoptions.h"
 #include <iostream>
 using namespace std;
 
@@ -54,11 +55,15 @@ void Editcomputer::on_backPushButtonEditCom_clicked()
 
 void Editcomputer::on_confirmComEditPushButton_clicked()
 {
-    name();
-    type();
-    wasBuilt();
-    yearBuilt();
+    Computer newInfo;
+    Domain dom;
+    //newInfo.setId(3); Hér kemur rétta id!
+    newInfo.setName(name().toStdString());
+    newInfo.setType(type().toStdString());
+    newInfo.setBuilt(wasBuilt().toStdString());
+    newInfo.setYear(yearBuilt().toStdString());
     accept();
+    dom.editEntry(newInfo);
 }
 
 void Editcomputer::on_yesRadioButtonCom_clicked()
