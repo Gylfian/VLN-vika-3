@@ -3,6 +3,7 @@
 
 #include "cscientist.h"
 #include "computer.h"
+#include "domain.h"
 #include <QDialog>
 
 namespace Ui {
@@ -24,6 +25,7 @@ private slots:
 
 private:
     Ui::Analyze *ui;
+    Domain dom;
     void printSciBasicInfo();
     void printSciDetailedInfo();
     void getSciPicture();

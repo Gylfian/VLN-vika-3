@@ -30,7 +30,7 @@
     <rect>
      <x>11</x>
      <y>11</y>
-     <width>251</width>
+     <width>331</width>
      <height>221</height>
     </rect>
    </property>
@@ -68,9 +68,9 @@ p, li { white-space: pre-wrap; }
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>264</x>
-     <y>15</y>
-     <width>270</width>
+     <x>350</x>
+     <y>10</y>
+     <width>180</width>
      <height>210</height>
     </rect>
    </property>

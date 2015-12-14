@@ -1,7 +1,5 @@
 #include "analyze.h"
 #include "ui_analyze.h"
-#include "domain.h"
-#include <QDebug>
 #include <sstream>
 
 void Analyze::setScientist(CScientist scientistToSet)
@@ -15,6 +13,9 @@ void Analyze::setScientist(CScientist scientistToSet)
 void Analyze::setComputer(Computer computerToSet)
 {
     computer = computerToSet;
+    printComBasicInfo();
+    printComDetailedInfo();
+    getComPicture();
 }
 
 Analyze::Analyze(QWidget *parent) :
@@ -31,14 +32,16 @@ Analyze::~Analyze()
 
 void Analyze::printSciBasicInfo()
 {
-    string name = scientist.getName();
-    string gender = "Gender: " + scientist.getGender();
-    string dob = "Year of birth: " + scientist.getDob();
-    string dod = scientist.getDod();
-    string books = scientist.getBooks();
+
+    CScientist sci = dom.findScientist(scientist);
+
+    string name = sci.getName();
+    string gender = "Gender: " + sci.getGender();
+    string dob = "Year of birth: " + sci.getDob();
+    string dod = sci.getDod();
     if (dod == "Alive")
     {
-        if (scientist.getGender() == "Male")
+        if (sci.getGender() == "Male")
         {
             dod = "He is alive";
         }
@@ -49,33 +52,46 @@ void Analyze::printSciBasicInfo()
     }
     else
     {
-        dod = "Year of death: " + scientist.getDod() + '\n' + '\n';
+        dod = "Year of death: " + sci.getDod() + '\n' + '\n';
     }
+
+    string books = sci.getBooks();
     if (books != "")
     {
-        books = "Books by " + scientist.getName() + ": " + scientist.getBooks();
+        books = "Books by " + sci.getName() + ": " + sci.getBooks();
     }
-    string tempText = name + '\n' + '\n' + gender  + '\n' + '\n' + dob  + '\n' + '\n' + dod + '\n' + '\n' + books;
 
+    string tempText = name + '\n' + '\n' + gender  + '\n' + '\n' + dob + '\n' + '\n' + dod + '\n' + '\n' + books;
     QString text = QString::fromStdString(tempText);
     ui->basicInfoText->setText(text);
 }
 
 void Analyze::printSciDetailedInfo()
 {
-    Domain dom;
     CScientist sci = dom.findScientist(scientist);
-    string bio = sci.getBio() + '\n' + '\n' + "Famous words: " + '\n' + " " + sci.getQuote();
+    string bio = "";
+    if (sci.getBio() != "")
+    {
+        bio = sci.getBio() + '\n' + '\n';
+        if (sci.getQuote() != "")
+        {
+            bio = bio + "Famous words: " + '\n' + " " + sci.getQuote();
+
+        }
+    }
+    else
+    {
+        bio = "This person has no additional information";
+    }
     QString text = QString::fromStdString(bio);
     ui->detailedInfoText->setText(text);
 }
 
 void Analyze::getSciPicture()
 {
-    int sizeX = 270;
+    int sizeX = 180;
     int sizeY = 210;
 
-    Domain dom;
     CScientist sci = dom.findScientist(scientist);
     int id = sci.getId();
     stringstream ss;
@@ -91,22 +107,49 @@ void Analyze::getSciPicture()
 
 void Analyze::printComBasicInfo()
 {
+    Computer com = dom.findComputer(computer);
+    string name = com.getName();
+    string type = com.getType();
+    string built = com.getBuilt();
+
+    if (built == "No")
+    {
+        built = "It was never built";
+    }
+    else
+    {
+        built = "It was built in " + com.getYear();
+    }
+
+    string tempText = name + '\n' + '\n' + "Type: " + type + '\n' + '\n' + built + '\n' + '\n';
+    QString text = QString::fromStdString(tempText);
+    ui->basicInfoText->setText(text);
 
 }
 
 void Analyze::printComDetailedInfo()
 {
-
+    Computer com = dom.findComputer(computer);
+    string about = "";
+    if (com.getAbout() != "")
+    {
+        about = com.getAbout();
+    }
+    else
+    {
+        about = "This computer has no additional information";
+    }
+    QString text = QString::fromStdString(about);
+    ui->detailedInfoText->setText(text);
 }
 
 void Analyze::getComPicture()
 {
-    int sizeX = 270;
+    int sizeX = 180;
     int sizeY = 210;
 
-    Domain dom;
-    Computer sci = dom.findComputer(computer);
-    int id = sci.getId();
+    Computer com = dom.findComputer(computer);
+    int id = com.getId();
     stringstream ss;
     ss << id;
     string idi = ss.str();
