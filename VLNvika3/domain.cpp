@@ -235,6 +235,23 @@ CScientist Domain::findScientist(CScientist cSci)
     return cSci;
 }
 
+Computer Domain::findComputer(Computer cCom)
+{
+    vector<Computer> allComputers;
+    Computer empty;
+    data.select(empty, 1, 1);
+    allComputers = data.getComVector();
+    for(unsigned int i = 0; i < allComputers.size(); i++)
+    {
+        if(allComputers[i].getName() == cCom.getName() && allComputers[i].getType() == cCom.getType() && allComputers[i].getBuilt() == cCom.getBuilt() && allComputers[i].getYear() == cCom.getYear())
+        {
+            cCom = allComputers[i];
+        }
+    }
+
+    return cCom;
+}
+
 void Domain::getRelationList(vector<Relation> &cRelList)
 {
     vector<Relation> allRelations;

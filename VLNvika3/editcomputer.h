@@ -34,6 +34,7 @@ private slots:
 
 private:
     Ui::Editcomputer *ui;
+    Computer computer;
 };
 
 #endif // EDITCOMPUTER_H

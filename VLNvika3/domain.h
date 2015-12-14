@@ -30,6 +30,8 @@ public:
 
     CScientist findScientist(CScientist cSci);
 
+    Computer findComputer(Computer cCom);
+
     /*
      * Name: sortBy
      * Parameter/s: vector<CScientist> &cSciList or vector<Computer> &, int child, int child2
