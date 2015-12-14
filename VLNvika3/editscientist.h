@@ -22,7 +22,6 @@ public:
     QString yearBorn();
     QString yearOfDeath();
     void setScientist(CScientist scientist);
-    void setDefault();
 
 private slots:
     void on_confirmSciEditPushButton_clicked();

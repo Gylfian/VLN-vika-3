@@ -1,6 +1,5 @@
 #include "editcomputer.h"
 #include "ui_editcomputer.h"
-#include "computer.h"
 #include <iostream>
 using namespace std;
 
@@ -17,6 +16,24 @@ Editcomputer::Editcomputer(QWidget *parent) :
 Editcomputer::~Editcomputer()
 {
     delete ui;
+}
+
+void Editcomputer:: setComputer(Computer computerToSet)
+{
+    ui->comNameLineEdit->setText(QString::fromStdString(computerToSet.getName()));
+    ui->comTypeComboBox->setCurrentText(QString::fromStdString(computerToSet.getType()));
+    if(computerToSet.getBuilt() == "Yes")
+    {
+        ui->yesRadioButtonCom->setChecked(true);
+        ui->comBuiltYearSpinBox->setEnabled(true);
+    }
+    else if(computerToSet.getBuilt() == "No")
+    {
+        ui->noRadioButtonCom->setChecked(true);
+        ui->comBuiltYearSpinBox->setEnabled(false);
+    }
+    Domain dom;
+    ui->comBuiltYearSpinBox->setValue(dom.convertToInt(computerToSet.getYear()));
 }
 
 QString Editcomputer:: name()

@@ -3,6 +3,7 @@
 #include "ui_listoptions.h"
 #include "ui_editscientist.h"
 #include "cscientist.h"
+#include "domain.h"
 #include <iostream>
 using namespace std;
 
@@ -12,14 +13,6 @@ Editscientist::Editscientist(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowTitle("Edit scientist");
-    cout << "Name: " << scientist.getName() << endl;
-    cout << "Gender: " << scientist.getGender() << endl;
-    cout << "YB: " << scientist.getDob() << endl;
-    cout << "YD: " << scientist.getDod() << endl;
-    ListOptions listo;
-    //scientist = listo.getsci();
-    cout << scientist.getName();
-    setDefault();
 }
 
 Editscientist::~Editscientist()
@@ -59,16 +52,14 @@ QString Editscientist:: yearOfDeath()
 void Editscientist::setScientist(CScientist scientistToSet)
 {
     scientist = scientistToSet;
-    cout << "Name in set function: " << scientist.getName() << endl;
-    cout << "Gender in set function: " << scientist.getGender() << endl;
-    cout << "YB in set function: " << scientist.getDob() << endl;
-    cout << "YD in set function: " << scientist.getDod() << endl;
-}
-
-void Editscientist::setDefault()
-{
-    cout << "Name in edit: " << scientist.getName() << endl;
-//    ui->sciNameLineEdit->setText(QString::fromStdString(scientist.getName()));
+    ui->sciNameLineEdit->setText(QString::fromStdString(scientist.getName()));
+    if(scientist.getGender() == "Female")
+        ui->femaleRadioPushButtonSci->setChecked(true);
+    else if(scientist.getGender() == "Male")
+        ui->maleRadioButton->setChecked(true);
+    Domain dom;
+    ui->sciBirthYearSpinBox->setValue(dom.convertToInt(scientist.getDob()));
+    ui->sciDeathYearSpinBox->setValue(dom.convertToInt(scientist.getDod()));
 }
 
 void Editscientist::on_confirmSciEditPushButton_clicked()

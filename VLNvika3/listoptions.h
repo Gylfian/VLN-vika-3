@@ -43,6 +43,7 @@ private slots:
 
 private:
     CScientist scientist;
+    Computer computer;
     Domain domain;
     void displayAllScientists();
     void displayScientists(std::vector<CScientist> scientists);

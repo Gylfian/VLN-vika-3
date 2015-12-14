@@ -98,6 +98,7 @@ void ListOptions::displayConnections(vector<Relation> relations)
 void ListOptions::designScientistsWidget(vector <CScientist> scientists)
 {
     ui->scientistsList->clear();
+    ui->scientistsList->setHorizontalHeaderLabels(QString("Name;Gender;Birth year;Death year").split(";"));
     int size = scientists.size();  
     ui->scientistsList->setRowCount(size);
 
@@ -121,12 +122,6 @@ void ListOptions::designRelationsWidget(vector<Relation> cRelList)
 void ListOptions::on_scientistsList_clicked(const QModelIndex &index)
 {
     int row = ui->scientistsList->currentRow();
-    string name = ui->scientistsList->item(row, 0)->text().toStdString();
-    string gender = ui->scientistsList->item(row, 1)->text().toStdString();
-    string yearBorn = ui->scientistsList->item(row, 2)->text().toStdString();
-    string yearOfDeath = ui->scientistsList->item(row, 3)->text().toStdString();
-    CScientist temp(row, name, gender, yearBorn, yearOfDeath, true);
-    cout << "In sci after temp" << endl;
     ui->scientistsList->selectRow(index.row());
     ui->editScientist->setEnabled(true);
     ui->analyzeScientistBotton->setEnabled(true);
@@ -157,30 +152,21 @@ void ListOptions::on_editScientist_clicked()
 {
    Editscientist editscientist;
    editscientist.setScientist(scientist);
-   cout << "Name of scientist membervariable before exec: " << scientist.getName() << endl;
-   cout << "Name of editscientist instance before exec: " << editscientist.name().toStdString() << endl;
    int wasRejected = editscientist.exec();
-   cout << "Name of editscientist instance after exec: " << editscientist.name().toStdString() << endl;
-
    if(wasRejected == QDialog::Rejected)
        return;
-   //scientist.setName(editscientist.name().toStdString());
-   //scientist.setGender(editscientist.gender().toStdString());
-   //scientist.setDob(editscientist.yearBorn().toStdString());
-   //scientist.setDod(editscientist.yearOfDeath().toStdString());
-   /*
-   scientist = editscientist.name().toStdString();
-   gender = editscientist.gender().toStdString();
-   yearBorn = editscientist.yearBorn().toStdString();
-   yearOfDeath = editscientist.yearOfDeath().toStdString();
-   temp.setName(name);
-   temp.setGender(gender);
-   temp.setDob(yearBorn);
-   temp.setDod(yearOfDeath);
-   */
-   //Domain dom;
-   //dom.editEntry(scientist);
-   //displayAllScientists();
+   scientist.setName(editscientist.name().toStdString());
+   scientist.setGender(editscientist.gender().toStdString());
+   scientist.setDob(editscientist.yearBorn().toStdString());
+   if(editscientist.yearOfDeath().toStdString() == "0")
+      scientist.setDod("Alive");
+   else
+      scientist.setDod(editscientist.yearOfDeath().toStdString());
+   //domain.findScientist(scientist);
+   CScientist temp = domain.findScientist(scientist);
+   cout << temp.getId();
+   domain.editEntry(temp);
+   displayAllScientists();
 }
 
 void ListOptions::on_scientistsList_doubleClicked(const QModelIndex &index)
@@ -237,10 +223,14 @@ void ListOptions::on_deleteScientistButton_clicked()
 
 void ListOptions::on_computersList_clicked(const QModelIndex &index)
 {
-    //qDebug() << "index: " << index;
+    int row = ui->computersList->currentRow();
     ui->editComputers->setEnabled(true);
     ui->analyzeComButton->setEnabled(true);
     ui->deleteComButton->setEnabled(true);
+    computer.setName(ui->computersList->item(row, 0)->text().toStdString());
+    computer.setType(ui->computersList->item(row, 1)->text().toStdString());
+    computer.setBuilt(ui->computersList->item(row, 2)->text().toStdString());
+    computer.setYear(ui->computersList->item(row, 3)->text().toStdString());
 }
 
 void ListOptions::on_findComButton_clicked()
@@ -260,6 +250,7 @@ void ListOptions::on_findComButton_clicked()
 void ListOptions::on_editComputers_clicked()
 {
     Editcomputer editcomputer;
+    editcomputer.setComputer(computer);
     int wasRejected = editcomputer.exec();
     if(wasRejected == QDialog::Rejected)
         return;

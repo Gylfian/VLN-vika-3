@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include <QComboBox>
+#include "computer.h"
+#include "domain.h"
 
 namespace Ui {
 class Editcomputer;
@@ -15,7 +17,7 @@ class Editcomputer : public QDialog
 public:
     explicit Editcomputer(QWidget *parent = 0);
     ~Editcomputer();
-
+    void setComputer(Computer computerToSet);
     QString name();
     QString type();
     QString wasBuilt();
