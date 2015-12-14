@@ -269,13 +269,22 @@
         </item>
         <item>
          <widget class="QCheckBox" name="checkBox">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
           <property name="text">
            <string>Unknown</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QSpinBox" name="sciBirthInput">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="wrapping">
            <bool>false</bool>
           </property>

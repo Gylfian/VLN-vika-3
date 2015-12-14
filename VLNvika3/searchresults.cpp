@@ -19,6 +19,12 @@ void Searchresults::displayvector(Computer c1)
     vector<Computer> computers;
     Domain d1;
     d1.search(computers,c1);
+    for(int i =0; i<computers.size(); i++)
+    {
+    Computer temp = computers[i];
+    string name = temp.getName();
+    ui->computerList->addItem(QString::fromStdString(name));
+    }
 }
 
 void Searchresults::displayvector(CScientist s1)
@@ -26,16 +32,23 @@ void Searchresults::displayvector(CScientist s1)
     vector<CScientist> scientists;
     Domain d1;
     d1.search(scientists,s1);
+    for(int i =0; i<scientists.size(); i++)
+    {
+    CScientist temp = scientists[i];
+    string name = temp.getName();
+    cout << "strengur " << name;
+    ui->scientistList->addItem(QString::fromStdString(name));
+    }
 }
 
 void Searchresults::designScientistsList(vector<CScientist> scientists)
 {
-
+    ui->scientistList->clear();
 }
 
 void Searchresults::designComputersList(vector<Computer> computers)
 {
-
+    ui->computerList->clear();
 }
 
 void Searchresults::setindex(int indexnumber)
