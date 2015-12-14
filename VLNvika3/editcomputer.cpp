@@ -80,6 +80,8 @@ void Editcomputer::on_confirmComEditPushButton_clicked()
     newInfo.setType(type().toStdString());
     newInfo.setBuilt(wasBuilt().toStdString());
     newInfo.setYear(yearBuilt().toStdString());
+    if(wasBuilt().toStdString() == "No")
+       newInfo.setYear("");
     accept();
     dom.editEntry(newInfo);
 }

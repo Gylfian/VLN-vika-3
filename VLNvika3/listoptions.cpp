@@ -127,6 +127,7 @@ void ListOptions::on_editScientist_clicked()
    int wasRejected = editscientist.exec();
    if(wasRejected == QDialog::Rejected)
        return;
+   /*
    scientist.setName(editscientist.name().toStdString());
    scientist.setGender(editscientist.gender().toStdString());
    scientist.setDob(editscientist.yearBorn().toStdString());
@@ -137,6 +138,7 @@ void ListOptions::on_editScientist_clicked()
    CScientist temp = domain.findScientist(scientist);
    cout << temp.getId();
    domain.editEntry(temp);
+   */
    displayAllScientists();
 }
 

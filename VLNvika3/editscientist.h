@@ -27,9 +27,9 @@ private slots:
     void on_confirmSciEditPushButton_clicked();
     void on_backPushButtonEditSci_clicked();
 
-    void on_yesAliveButton_clicked();
-
     void on_noAliveButton_clicked();
+
+    void on_yesAliveButton_clicked();
 
 private:
     Ui::Editscientist *ui;
