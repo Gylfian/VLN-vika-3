@@ -19,11 +19,6 @@ ListOptions::ListOptions(QWidget *parent) :
     ui->connectionsList->setHorizontalHeaderLabels(QString("Scienist name; Computer name").split(";"));
 }
 
-//CScientist ListOptions::getsci()
-//{
-  //  return scientist;
-//}
-
 ListOptions::~ListOptions()
 {
     delete ui;
@@ -162,7 +157,6 @@ void ListOptions::on_editScientist_clicked()
       scientist.setDod("Alive");
    else
       scientist.setDod(editscientist.yearOfDeath().toStdString());
-   //domain.findScientist(scientist);
    CScientist temp = domain.findScientist(scientist);
    cout << temp.getId();
    domain.editEntry(temp);
@@ -171,13 +165,8 @@ void ListOptions::on_editScientist_clicked()
 
 void ListOptions::on_scientistsList_doubleClicked(const QModelIndex &index)
 {
-    int row = ui->scientistsList->currentRow();
-    string name = ui->scientistsList->item(row, 0)->text().toStdString();
-    string gender = ui->scientistsList->item(row, 1)->text().toStdString();
-    string yearBorn = ui->scientistsList->item(row, 2)->text().toStdString();
-    string yearOfDeath = ui->scientistsList->item(row, 3)->text().toStdString();
-    CScientist temp(row, name, gender, yearBorn, yearOfDeath, true);
     Analyze analyze;
+    analyze.setScientist(scientist);
     analyze.exec();
 }
 
@@ -194,11 +183,10 @@ void ListOptions::on_findSciLineEdit_textChanged(const QString &arg1)
     ui->findSciButton->setEnabled(true);
     string searchString = ui->findSciLineEdit->text().toStdString();
     vector <CScientist> scientists;
-    Domain d1;
     CScientist temp;
-    d1.sortBy(scientists, 1, 1);
+    domain.sortBy(scientists, 1, 1);
     temp.setName(searchString);
-    d1.search(scientists, temp);
+    domain.search(scientists, temp);
     displayScientists(scientists);
 }
 
@@ -237,11 +225,10 @@ void ListOptions::on_findComButton_clicked()
 {
     string searchString = ui->findComLineEdit->text().toStdString();
     vector <Computer> computers;
-    Domain d1;
     Computer temp;
-    d1.sortBy(computers, 1, 1);
+    domain.sortBy(computers, 1, 1);
     temp.setName(searchString);
-    d1.search(computers, temp);
+    domain.search(computers, temp);
     displayComputers(computers);
     if(ui->computersList->rowCount() == 0)
     QMessageBox::warning(this, "WARNING!", "No entries found!");
@@ -254,15 +241,14 @@ void ListOptions::on_editComputers_clicked()
     int wasRejected = editcomputer.exec();
     if(wasRejected == QDialog::Rejected)
         return;
-    int row = ui->computersList->currentItem()->row();
-    int column = ui->computersList->currentItem()->column();
-    string name = editcomputer.name().toStdString();
-    string type = editcomputer.type().toStdString();
-    string wasBuilt = editcomputer.wasBuilt().toStdString();
-    string yearBuilt = editcomputer.yearBuilt().toStdString();
-    Computer temp(row, name, yearBuilt, type, wasBuilt);
-    Domain dom;
-    dom.editEntry(temp);
+    computer.setName(editcomputer.name().toStdString());
+    computer.setType(editcomputer.type().toStdString());
+    computer.setBuilt(editcomputer.wasBuilt().toStdString());
+    if(editcomputer.yearBuilt().toStdString() == "0")
+    ;
+    else
+       computer.setYear(editcomputer.yearBuilt().toStdString());
+    //findcom
     displayAllComputers();
 }
 
@@ -286,9 +272,9 @@ void ListOptions::on_findComLineEdit_textChanged(const QString &arg1)
     vector <Computer> computers;
     Domain d1;
     Computer temp;
-    d1.sortBy(computers, 1, 1);
+    domain.sortBy(computers, 1, 1);
     temp.setName(searchString);
-    d1.search(computers, temp);
+    domain.search(computers, temp);
     displayComputers(computers);
 }
 
