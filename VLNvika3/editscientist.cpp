@@ -66,7 +66,7 @@ void Editscientist::on_confirmSciEditPushButton_clicked()
 {
     CScientist newInfo;
     Domain dom;
-    //newInfo.setId(3); Hér kemur rétta id!
+    newInfo = dom.findScientist(scientist);
     newInfo.setName(name().toStdString());
     newInfo.setGender(gender().toStdString());
     newInfo.setDob(yearBorn().toStdString());
