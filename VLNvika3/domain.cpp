@@ -219,6 +219,15 @@ void Domain::updateEntryCom(string sid)
     data.updateStatus(cCom);
 }
 
+vector<Relation> Domain::findRelation(string filter)
+{
+    vector<Relation> cRelList;
+    data.filterRelation(filter);
+    cRelList = data.getRelVector();
+    return cRelList;
+}
+
+
 CScientist Domain::findScientist(CScientist cSci)
 {
     vector<CScientist> allScientists;

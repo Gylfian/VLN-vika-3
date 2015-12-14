@@ -78,6 +78,8 @@ public:
     void computerToRestore();
     void relationToRestore();
 
+    void filterRelation(string filter);
+
     vector<CScientist> getSciVector();
     vector<Computer> getComVector();
     vector<Relation> getRelVector();

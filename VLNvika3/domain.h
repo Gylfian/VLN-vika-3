@@ -32,6 +32,8 @@ public:
 
     Computer findComputer(Computer cCom);
 
+    vector<Relation> findRelation(string filter);
+
     /*
      * Name: sortBy
      * Parameter/s: vector<CScientist> &cSciList or vector<Computer> &, int child, int child2
