@@ -13,6 +13,7 @@ class Searchresults : public QDialog
     Q_OBJECT
 
 public:
+
     explicit Searchresults(QWidget *parent = 0);
     void initialize(int indexnumber,Computer c1,CScientist s1);
     ~Searchresults();
