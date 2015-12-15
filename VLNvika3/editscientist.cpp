@@ -64,7 +64,7 @@ void Editscientist::setScientist(CScientist scientistToSet)
     }
     Domain dom;
     ui->sciBirthYearSpinBox->setValue(dom.convertToInt(scientist.getDob()));
-    if(scientist.getDod() == "")
+    if(scientist.getDod() == "Alive")
     {
         ui->sciDeathYearSpinBox->setDisabled(true);
         ui->yesAliveButton->setChecked(true);

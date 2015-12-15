@@ -90,6 +90,9 @@
      <property name="enabled">
       <bool>false</bool>
      </property>
+     <property name="minimum">
+      <number>1500</number>
+     </property>
      <property name="maximum">
       <number>2015</number>
      </property>
