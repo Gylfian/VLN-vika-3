@@ -17,14 +17,40 @@ class Editscientist : public QDialog
 public:
     explicit Editscientist(QWidget *parent = 0);
     ~Editscientist();
+
+    /*
+     * Name: name
+     * Description: Changes the name of the scientist
+     * Output/Return: The new name
+     */
     QString name();
+
+    /*
+     * Name: gender
+     * Description: Changes the gender of the scientist
+     * Output/Return: The new gender
+     */
     QString gender();
+
+    /*
+     * Name: yearBorn
+     * Description: Changes the birth year
+     * Output/Return: The new birth year
+     */
     QString yearBorn();
+
+    /*
+     * Name: yearOfDeath
+     * Description: Changes the death year
+     * Output/Return: The new death year
+     */
     QString yearOfDeath();
+
     void setScientist(CScientist scientist);
 
 private slots:
     void on_confirmSciEditPushButton_clicked();
+
     void on_backPushButtonEditSci_clicked();
 
     void on_noAliveButton_clicked();
