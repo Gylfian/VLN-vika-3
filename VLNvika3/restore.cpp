@@ -38,11 +38,6 @@ void Restore::setUp()
     displayAllScientists();
     displayAllComputers();
 
-   //CScientist s1;
-   //Computer c1;
-
-    //displayvector(s1);
-    //displayvector(c1);
 }
 
 void Restore::displayAllScientists()

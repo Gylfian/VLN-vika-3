@@ -143,11 +143,11 @@ string Search::getBuilt()
     string built = "";
     if(ui->yesBuiltRadio->isChecked())
     {
-        built = "yes";
+        built = "Yes";
     }
     if(ui->noBuiltRadio->isChecked())
     {
-        built = "no";
+        built = "No";
     }
     return built;
 }
