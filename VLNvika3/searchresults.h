@@ -22,13 +22,23 @@ public:
     void designComputersList(vector <Computer> computers);
 
 
+    void setUp();
+    void displayAllComputers();
+    void displayAllScientists();
+    void fillvector(Computer c1);
+    void fillvector(CScientist s1);
+    void displayComputers(vector<Computer> computers);
+    void displayScientists(vector<CScientist> scientists);
+    void designScientistsWidget(vector<CScientist> scientists);
+    void designComputersWidget(vector<Computer> computers);
 private slots:
-    void on_editScientist_clicked();
 
 private:
     Ui::Searchresults *ui;
     void setindex(int indexnumber);
     int typeindex;
+    vector<CScientist> sciResults;
+    vector<Computer> compResults;
 };
 
 #endif // SEARCHRESULTS_H

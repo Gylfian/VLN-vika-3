@@ -74,7 +74,7 @@ void AddEntry::on_addOrCancelSci_accepted()
 {
     if (sciErrorCheck())
     {
-        QMessageBox::warning(this, "WARNING!", "You must fill everything out!");
+        QMessageBox::warning(this, "WARNING!", "You must fill out all the necessary information!");
     }
     else
     {
@@ -89,7 +89,7 @@ CScientist AddEntry::getSciData()
 {
     string name = ui->sciNameInput->text().toStdString();
     string Dob = ui->sciBirthInput->text().toStdString();
-    string gender, Dod;
+    string gender, Dod, bio, quote, books;
     if (ui->sciMaleButton->isChecked())
     {
         gender = "Male";
@@ -108,7 +108,17 @@ CScientist AddEntry::getSciData()
         Dod = ui->sciDeathInput->text().toStdString();
     }
 
+    QString Qbio = ui->sciBioInput->toPlainText();
+    bio = Qbio.toStdString();
+
+    quote = ui->sciQuotInput->text().toStdString();
+    books = ui->sciBooksInput->text().toStdString();
+
     CScientist cSci(0, name, gender, Dob, Dod, 1);
+    cSci.setBio(bio);
+    cSci.setQuote(quote);
+    cSci.setBooks(books);
+
     return cSci;
 
 }
@@ -117,7 +127,7 @@ void AddEntry::on_addOrCancelCom_accepted()
 {
     if (comErrorCheck())
     {
-        QMessageBox::warning(this, "WARNING!", "You must fill everything out!");
+        QMessageBox::warning(this, "WARNING!", "You must fill out all the necessary information!");
     }
     else
     {
@@ -132,8 +142,8 @@ Computer AddEntry::getComData()
 {
     string name = ui->comNameInput->text().toStdString();
     string type = ui->comTypeInput->text().toStdString();
-    string built, year;
-    if (ui->comBuiltButton->isEnabled())
+    string built, year, about;
+    if (ui->comBuiltButton->isChecked())
     {
         built = "Yes";
         year = ui->comYearBuiltInput->text().toStdString();
@@ -144,7 +154,11 @@ Computer AddEntry::getComData()
         year = "";
     }
 
+    QString Qabout = ui->comAboutInput->toPlainText();
+    about = Qabout.toStdString();
+
     Computer com(0, name, year, type, built);
+    com.setAbout(about);
     return com;
 }
 

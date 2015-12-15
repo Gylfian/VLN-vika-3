@@ -54,9 +54,24 @@
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QRadioButton" name="femaleRadioPushButtonSci">
+       <property name="whatsThis">
+        <string/>
+       </property>
        <property name="text">
         <string>Female</string>
        </property>
+       <property name="shortcut">
+        <string/>
+       </property>
+       <property name="autoRepeat">
+        <bool>false</bool>
+       </property>
+       <property name="autoRepeatInterval">
+        <number>100</number>
+       </property>
+       <attribute name="buttonGroup">
+        <string notr="true">buttonGroup</string>
+       </attribute>
       </widget>
      </item>
      <item>
@@ -64,6 +79,15 @@
        <property name="text">
         <string>Male</string>
        </property>
+       <property name="autoRepeat">
+        <bool>false</bool>
+       </property>
+       <property name="autoExclusive">
+        <bool>false</bool>
+       </property>
+       <attribute name="buttonGroup">
+        <string notr="true">buttonGroup</string>
+       </attribute>
       </widget>
      </item>
     </layout>
@@ -102,8 +126,8 @@
        <property name="text">
         <string>Yes</string>
        </property>
-       <property name="checked">
-        <bool>true</bool>
+       <property name="autoExclusive">
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -111,6 +135,9 @@
       <widget class="QRadioButton" name="noAliveButton">
        <property name="text">
         <string>No</string>
+       </property>
+       <property name="autoExclusive">
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -157,4 +184,7 @@
  </widget>
  <resources/>
  <connections/>
+ <buttongroups>
+  <buttongroup name="buttonGroup"/>
+ </buttongroups>
 </ui>
