@@ -188,6 +188,9 @@
         </item>
         <item>
          <widget class="QDialogButtonBox" name="addOrCancelCom">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
           <property name="standardButtons">
            <set>QDialogButtonBox::Abort|QDialogButtonBox::Ok</set>
           </property>
@@ -377,6 +380,9 @@
         </item>
         <item>
          <widget class="QDialogButtonBox" name="addOrCancelSci">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>

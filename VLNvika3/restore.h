@@ -31,6 +31,10 @@ private slots:
 
     void on_restoreButtonComp_clicked();
 
+    void on_cancelSci_clicked();
+
+    void on_cancelComp_clicked();
+
 private:
     Ui::Restore *ui;
     CScientist scientist;

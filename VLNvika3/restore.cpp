@@ -148,3 +148,13 @@ void Restore::on_restoreButtonComp_clicked()
     d1.updateEntryCom(converted);
     displayAllComputers();
 }
+
+void Restore::on_cancelSci_clicked()
+{
+    reject();
+}
+
+void Restore::on_cancelComp_clicked()
+{
+    reject();
+}
