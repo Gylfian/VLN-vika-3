@@ -159,7 +159,6 @@ void ListOptions::on_findSciLineEdit_textChanged(const QString &arg1)
 
 void ListOptions::on_deleteScientistButton_clicked()
 {
-    /*
     int ret = QMessageBox::warning(this, tr("Warning"), tr("You are about to delete a scientist!\n" "Do you want to continue?"), QMessageBox::Ok | QMessageBox::Cancel);
     if(ret == QDialog::Rejected)
     {
@@ -172,15 +171,6 @@ void ListOptions::on_deleteScientistButton_clicked()
     //domain.removeConnections(id);
     domain.updateEntrySci(id);
     displayAllScientists();
-    */
-    CScientist cSci;
-    cSci.setId(31);
-    cSci.setName("Gottfried Wilhelm Von Leibniz");
-    cSci.setGender("Male");
-    cSci.setDob("1646");
-    cSci.setDod("1716");
-    domain.deleteAllRelations(cSci);
-    cout << "swag" << endl;
 }
 
 void ListOptions::on_computersList_clicked(const QModelIndex &index)
