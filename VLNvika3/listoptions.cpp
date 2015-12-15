@@ -237,7 +237,7 @@ void ListOptions::on_deleteComButton_clicked()
 
 void ListOptions::analyzeCom()
 {
-    if(ui->scientistsList->rowCount() == 0)
+    if(ui->computersList->rowCount() == 0)
         QMessageBox::warning(this, "WARNING!", "No entries found!");
     else
     {

@@ -30,12 +30,9 @@ QString Editscientist:: name()
 QString Editscientist:: gender()
 {
     bool female = ui->femaleRadioPushButtonSci->isChecked();
-    bool male = ui->maleRadioButton->isChecked();
     if(female)
         return "Female";
-    else if(male)
         return "Male";
-    return "u";
 }
 
 QString Editscientist:: yearBorn()
