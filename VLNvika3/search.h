@@ -53,6 +53,9 @@ private slots:
 
     void on_adddOrCancelComp_rejected();
 
+
+    void on_unknownDeath_clicked(bool checked);
+
 private:
     string getGender();
     string getdob();
