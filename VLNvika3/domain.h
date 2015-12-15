@@ -197,6 +197,8 @@ public:
     void editEntry(Computer cCom);
     void editEntry(CScientist cSci);
 
+    void addRelation(CScientist cSci, Computer cCom);
+
 private:
     /*
      * Name: charToInt
@@ -239,7 +241,7 @@ private:
      */
     void solveIdToDb(vector<CScientist> &cSciList, vector<int> solvedIdList);
     void solveIdToDb(vector<Computer> &cSciList, vector<int> solvedIdList);
-    void addRelation(CScientist cSci, Computer cCom);
+
 
     /*
      * Name: solveString
