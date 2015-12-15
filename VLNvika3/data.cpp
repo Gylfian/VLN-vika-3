@@ -457,18 +457,6 @@ void Data::update(CScientist cSci)
     {
         sql += ", Dod='" + cSci.getDod() + "'";
     }
-    if(!cSci.getBio().empty())
-    {
-        sql += ", Bio='" + cSci.getBio() + "'";
-    }
-    if(!cSci.getQuote().empty())
-    {
-        sql += ", Quotes='" + cSci.getQuote() + "'";
-    }
-    if(!cSci.getBooks().empty())
-    {
-        sql += ", Books= '" + cSci.getBooks() + "'";
-    }
     sql += " WHERE ID=" + sciId;
     sql += ";";
     qsql = QString::fromStdString(sql);
@@ -500,10 +488,6 @@ void Data::update(Computer comp)
     if(!comp.getBuilt().empty())
     {
         sql += ", built='" + comp.getBuilt() + "'";
-    }
-    if(!comp.getAbout().empty())
-    {
-        sql += ", About='" + comp.getAbout() +"'";
     }
 
     sql += " WHERE ID=" + comId;
