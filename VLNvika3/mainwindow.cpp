@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include "listoptions.h"
 #include "search.h"
+#include "pinata.h"
+#include "ui_pinata.h"
 #include "addentry.h"
 #include "addconnection.h"
 #include "restore.h"
@@ -9,10 +11,14 @@
 #include <QtMultimedia/QMediaPlayer>
 #include <QtMultimedia/QMediaPlaylist>
 #include <QVideoWidget>
-#include <QtWidgets>
-#include <QGraphicsVideoItem>
-#include <qvideowidget.h>
-#include <qvideosurfaceformat.h>
+/*
+#include <QDialog>
+#include <QMediaPlayer>
+#include <QMediaPlaylist>
+#include <QVideoWidget>
+#include <QtWebKit/QtWebKit>
+
+*/
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -62,18 +68,30 @@ void MainWindow::on_pushButtonListOptions_clicked()
     listoptions.exec();
 }
 
+
 void MainWindow::on_pinata_clicked()
 {
-            //C:/Users/Johanna/Desktop/VLN-vika-3/VLNvika3/HumanPinata.mp4
-            QMediaPlayer *player = new QMediaPlayer;
-
-            QMediaPlaylist *playlist = new QMediaPlaylist(player);
-            playlist->addMedia(QUrl("C:/Users/Johanna/Desktop/VLN-vika-3/VLNvika3/test.mp4"));
-
-            QVideoWidget *videoWidget = new QVideoWidget;
-            player->setVideoOutput(videoWidget);
-
-            videoWidget->show();
-            playlist->setCurrentIndex(1);
-            player->play();
+    /*
+    QMediaPlayer *player=new QMediaPlayer;
+    QVideoWidget *videowidget=new QVideoWidget;
+    QMediaPlaylist *playlist=new QMediaPlaylist;
+    playlist->addMedia(QUrl("C:/Users/Johanna/Desktop/VLN-vika-3/VLNvika3/test.mp4"));
+    player->setVideoOutput(videowidget);
+    playlist->setCurrentIndex(1);
+    player->setPlaylist(playlist);
+    player->play();
+    videowidget->show();
+    */
+    QMediaPlayer *player=new QMediaPlayer;
+    QVideoWidget *videowidget=new QVideoWidget;
+    QMediaPlaylist *playlist=new QMediaPlaylist;
+    playlist->addMedia(QUrl::fromLocalFile("C:/Users/Johanna/Desktop/VLN-vika-3/VLNvika3/test.mp4"));
+    player->setVideoOutput(videowidget);
+    playlist->setCurrentIndex(1);
+    player->setPlaylist(playlist);
+    videowidget->setFullScreen(true);
+    videowidget->show();
+    player->play();
+    Pinata pinata;
+    pinata.exec();
 }

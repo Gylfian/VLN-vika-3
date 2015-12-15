@@ -136,7 +136,6 @@ void ListOptions::on_editScientist_clicked()
    if(wasRejected == QDialog::Rejected)
        return;
    displayAllScientists();
-   displayAllConnections();
    ui->editScientist->setEnabled(false);
    ui->analyzeScientistBotton->setEnabled(false);
    ui->deleteScientistButton->setEnabled(false);
@@ -180,6 +179,7 @@ void ListOptions::on_deleteScientistButton_clicked()
     //domain.removeConnections(id);
     domain.updateEntrySci(id);
     displayAllScientists();
+    displayAllConnections();
 }
 
 void ListOptions::on_computersList_clicked(const QModelIndex &index)
@@ -247,6 +247,7 @@ void ListOptions::on_deleteComButton_clicked()
     string id = ss.str();
     domain.updateEntryCom(id);
     displayAllComputers();
+    displayAllConnections();
 }
 
 void ListOptions::analyzeCom()
