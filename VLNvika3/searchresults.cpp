@@ -15,6 +15,7 @@ Searchresults::Searchresults(QWidget *parent) :
     ui->scientistList->setRowCount(5);
     ui->computerList->setColumnCount(4);
     ui->scientistList->setColumnCount(4);
+    setWindowTitle("Search Results");
     setUp();
     ui->scientistList->setHorizontalHeaderLabels(QString("Name;Gender;Birth year;Death year").split(";"));
     ui->computerList->setHorizontalHeaderLabels(QString("Name;Type;Built?;Year built").split(";"));
