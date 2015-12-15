@@ -16,10 +16,6 @@ AddConnection::~AddConnection()
 {
     delete ui;
 }
-void AddConnection::enable()
-{
-
-}
 
 void AddConnection::displayAllScientists()
 {
@@ -90,33 +86,6 @@ void AddConnection::setUp()
     displayAllScientists();
     displayAllComputers();
 }
-
-
-void AddConnection::dragEnterEvent(QDragEnterEvent *event)
-{
-    cout << "Drag enter event";
-}
-void AddConnection::dropEvent(QDropEvent *event)
-{
-    exit(1);
-}
-
-void AddConnection::on_dragScientists_entered(const QModelIndex &index)
-{
-
-}
-
-void AddConnection::on_dragScientists_clicked(const QModelIndex &index)
-{
-    cout << "Drag enter event";
-    exit(1);
-}
-
-void AddConnection::on_pushButton_clicked()
-{
-
-}
-
 
 
 void AddConnection::on_scientistsList_clicked(const QModelIndex &index)

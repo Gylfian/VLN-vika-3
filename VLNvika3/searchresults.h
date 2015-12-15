@@ -19,14 +19,44 @@ public:
     explicit Searchresults(QWidget *parent = 0);
     void initialize(int indexnumber,Computer c1,CScientist s1);
     ~Searchresults();
+
+    void setUp();
+
+
+private slots:
+
+    void on_scientistList_clicked(const QModelIndex &index);
+
+    void on_computerList_clicked(const QModelIndex &index);
+
+
+
+    void on_editScientist_clicked();
+
+    void on_editComputer_clicked();
+
+    void on_analyzeComputer_clicked();
+
+    void on_anlyzeScientist_clicked();
+
+    void on_deleteComputer_clicked();
+
+    void on_deleteScientist_clicked();
+
+private:
+    Ui::Searchresults *ui;
+    void setindex(int indexnumber);
+    int typeindex;
+    vector<CScientist> sciResults;
+    vector<Computer> compResults;
+    CScientist scientist;
+    Computer computer;
+    CScientist sciParameter;
+    Computer compParameter;
     void displayvector(Computer c1);
     void displayvector(CScientist s1);
     void designScientistsList(vector <CScientist> scientists);
     void designComputersList(vector <Computer> computers);
-
-
-    void setUp();
-
     /*
      * Name: displayAllComputers
      * Parameter/s: None
@@ -102,36 +132,6 @@ public:
      * Output/Return: The Analyze window
      */
     void analyzeSci();
-private slots:
-
-    void on_scientistList_clicked(const QModelIndex &index);
-
-    void on_computerList_clicked(const QModelIndex &index);
-
-
-
-    void on_editScientist_clicked();
-
-    void on_editComputer_clicked();
-
-    void on_analyzeComputer_clicked();
-
-    void on_anlyzeScientist_clicked();
-
-    void on_deleteComputer_clicked();
-
-    void on_deleteScientist_clicked();
-
-private:
-    Ui::Searchresults *ui;
-    void setindex(int indexnumber);
-    int typeindex;
-    vector<CScientist> sciResults;
-    vector<Computer> compResults;
-    CScientist scientist;
-    Computer computer;
-    CScientist sciParameter;
-    Computer compParameter;
 };
 
 #endif // SEARCHRESULTS_H
