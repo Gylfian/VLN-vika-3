@@ -216,6 +216,8 @@ void Domain::updateEntryCom(string sid)
             cCom = cComList[i];
         }
     }
+    int id=cCom.getId();
+    qDebug() << cCom.getId();
     data.updateStatus(cCom);
 }
 

@@ -159,6 +159,7 @@ void Analyze::getComPicture()
     QPixmap pixmap(path2);
     pixmap = pixmap.scaled(sizeX, sizeY,Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
     ui->label->setPixmap(pixmap);
+
 }
 
 void Analyze::on_analyzeOk_accepted()

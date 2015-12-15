@@ -388,7 +388,7 @@ void Data::insert(CScientist cSci)
     {
      deathStatus = cSci.getDod();
     }
-    string sql = "INSERT INTO Computerscientists (Name, Gender, Dob, Dod) VALUES ('"+ cSci.getName() +"','"+ cSci.getGender() +"','"+ cSci.getDob() +"','"+deathStatus+"')";
+    string sql = "INSERT INTO Computerscientists (Name, Gender, Dob, Dod , Bio, Quotes, Books) VALUES ('"+ cSci.getName() +"','"+ cSci.getGender() +"','"+ cSci.getDob() +"','"+deathStatus+"','"+ cSci.getBio()+"','"+ cSci.getQuote()+"','"+cSci.getBooks() + "')";
     qsql = QString::fromStdString(sql);
     fillVector(database, cSci, qsql);
 }
@@ -396,7 +396,7 @@ void Data::insert(CScientist cSci)
 void Data::insert(Computer comp)
 {
     QString qsql;
-    string sql = "INSERT INTO Computers (Name, Type, Built, Year) VALUES ('"+ comp.getName() +"','"+ comp.getType() +"','"+ comp.getBuilt() + "','"+ comp.getYear() + "')";
+    string sql = "INSERT INTO Computers (Name, Type, Built, Year,About) VALUES ('"+ comp.getName() +"','"+ comp.getType() +"','"+ comp.getBuilt() + "','"+ comp.getYear() +"','"+ comp.getAbout()  + "')";
     qsql = QString::fromStdString(sql);
     fillVector(database, comp, qsql);
 }

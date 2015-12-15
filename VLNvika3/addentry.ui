@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>380</width>
-    <height>490</height>
+    <height>726</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -28,7 +28,7 @@
   <property name="maximumSize">
    <size>
     <width>380</width>
-    <height>490</height>
+    <height>9999</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -71,7 +71,7 @@
    <item>
     <widget class="QStackedWidget" name="whichToAdd">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="page">
       <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -79,8 +79,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>351</width>
-         <height>401</height>
+         <width>341</width>
+         <height>631</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -164,6 +164,16 @@
          </widget>
         </item>
         <item>
+         <widget class="QLabel" name="label_7">
+          <property name="text">
+           <string>About (optional)</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTextEdit" name="comAboutInput"/>
+        </item>
+        <item>
          <spacer name="verticalSpacer_2">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
@@ -193,7 +203,7 @@
          <x>0</x>
          <y>0</y>
          <width>351</width>
-         <height>401</height>
+         <height>641</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -321,6 +331,36 @@
            <number>0</number>
           </property>
          </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>Bio (optional)</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTextEdit" name="sciBioInput"/>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_4">
+          <property name="text">
+           <string>Famous words (optional)</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="sciQuotInput"/>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_6">
+          <property name="text">
+           <string>Books by the person (optional)</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="sciBooksInput"/>
         </item>
         <item>
          <spacer name="verticalSpacer">
