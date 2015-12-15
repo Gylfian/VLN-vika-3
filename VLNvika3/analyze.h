@@ -34,7 +34,7 @@ private:
     void getComPicture();
     CScientist scientist;
     Computer computer;
-
+    void setDefaultPic();
 };
 
 #endif // ANALYZE_H

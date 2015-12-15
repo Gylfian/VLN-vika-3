@@ -41,7 +41,7 @@ void ListOptions::displayAllComputers()
 void ListOptions::displayAllConnections()
 {
     vector <Relation> relation;
-    domain.getRelationList(relation);
+    domain.getRelationList(relation, 1);
     displayConnections(relation);
 }
 
@@ -87,7 +87,6 @@ void ListOptions::displayConnections(vector<Relation> relations)
 
 void ListOptions::designScientistsWidget(vector <CScientist> scientists)
 {
-    ui->scientistsList->setHorizontalHeaderLabels(QString("Name;Gender;Birth year;Death year").split(";"));
     ui->scientistsList->clear();
     ui->scientistsList->setHorizontalHeaderLabels(QString("Name;Gender;Birth year;Death year").split(";"));
     int size = scientists.size();
@@ -96,16 +95,16 @@ void ListOptions::designScientistsWidget(vector <CScientist> scientists)
 
 void ListOptions::designComputersWidget(vector <Computer> computers)
 {
-    ui->computersList->setHorizontalHeaderLabels(QString("Name;Type;Built?;Year built").split(";"));
     ui->computersList->clear();
+    ui->computersList->setHorizontalHeaderLabels(QString("Name;Type;Built?;Year built").split(";"));
     int size = computers.size();
     ui->computersList->setRowCount(size);
 }
 
 void ListOptions::designRelationsWidget(vector<Relation> cRelList)
 {
-    ui->connectionsList->setHorizontalHeaderLabels(QString("Scienist name; Computer name").split(";"));
     ui->connectionsList->clear();
+    ui->connectionsList->setHorizontalHeaderLabels(QString("Scienist name; Computer name").split(";"));
     int size = cRelList.size();
     ui->connectionsList->setRowCount(size);
 }
@@ -131,6 +130,9 @@ void ListOptions::on_editScientist_clicked()
    if(wasRejected == QDialog::Rejected)
        return;
    displayAllScientists();
+   ui->editScientist->setEnabled(false);
+   ui->analyzeScientistBotton->setEnabled(false);
+   ui->deleteScientistButton->setEnabled(false);
 }
 
 void ListOptions::on_scientistsList_doubleClicked(const QModelIndex &index)
@@ -168,6 +170,7 @@ void ListOptions::on_deleteScientistButton_clicked()
     stringstream ss;
     ss << temp.getId();
     string id = ss.str();
+    //domain.removeConnections(id);
     domain.updateEntrySci(id);
     displayAllScientists();
 }
@@ -193,6 +196,9 @@ void ListOptions::on_editComputers_clicked()
     if(wasRejected == QDialog::Rejected)
         return;
     displayAllComputers();
+    ui->editComputers->setEnabled(false);
+    ui->analyzeComButton->setEnabled(false);
+    ui->deleteComButton->setEnabled(false);
 }
 
 void ListOptions::on_computersList_doubleClicked(const QModelIndex &index)
@@ -307,12 +313,19 @@ void ListOptions::on_deletConnPushButton_clicked()
     {
         return;
     }
-    Computer temp = domain.findComputer(computer);
-    stringstream ss;
-    ss << temp.getId();
-    string id = ss.str();
-    domain.updateEntryCom(id);
-    displayAllComputers();
+    if(ui->connectionsList->rowCount() == 0)
+        QMessageBox::warning(this, "WARNING!", "No entries found!");
+    else
+    {
+        //domain.changeRelation("8");
+        int row = ui->connectionsList->currentRow();
+        scientist.setName(ui->connectionsList->item(row, 0)->text().toStdString());
+        computer.setName(ui->connectionsList->item(row, 1)->text().toStdString());
+        int id = domain.findConnectionId(scientist.getName(), computer.getName());
+        domain.removeRelations(id);
+    }
+    displayAllConnections();
+    ui->deletConnPushButton->setEnabled(false);
 }
 
 void ListOptions::on_cancelComPushButton_clicked()

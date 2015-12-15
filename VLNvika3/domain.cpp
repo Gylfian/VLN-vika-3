@@ -187,6 +187,13 @@ void Domain::editEntry(Computer cCom)
     data.update(cCom);
 }
 
+void Domain::removeRelations(int id)
+{
+    Relation rel;
+    rel.setId(id);
+    data.deleteRelation(rel);
+}
+
 void Domain::updateEntrySci(string sid)
 {
     CScientist cSci;
@@ -216,6 +223,8 @@ void Domain::updateEntryCom(string sid)
             cCom = cComList[i];
         }
     }
+    int id=cCom.getId();
+    qDebug() << cCom.getId();
     data.updateStatus(cCom);
 }
 
@@ -290,13 +299,13 @@ Computer Domain::findComputer(Computer cCom)
     return cCom;
 }
 
-void Domain::getRelationList(vector<Relation> &cRelList)
+void Domain::getRelationList(vector<Relation> &cRelList, int active)
 {
     vector<Relation> allRelations;
     CScientist sci;
     Computer com;
     Relation rel;
-    data.select(rel);
+    data.select(rel, active);
     cRelList = data.getRelVector();
     for(unsigned int i = 0; i < allRelations.size(); i++)
     {
@@ -312,13 +321,73 @@ void Domain::getRelationList(vector<Relation> &cRelList)
     }
 }
 
-void Domain::changeRelation(string sid)
+void Domain::deleteAllRelations(CScientist cSci)
 {
+    vector<Relation> allRelations;
+    vector<Relation> deleteRelation;
     Relation rel;
-    int id = convertToInt(sid);
-    rel.setId(id);
-    data.updateStatus(rel);
+    CScientist sci;
+    Computer cComChecker;
+    data.select(rel, 1);
+    allRelations = data.getRelVector();
+    int targetId = cSci.getId();
+    cout << "Size: " << allRelations.size() << endl;
+    for(unsigned int i = 0; i < allRelations.size(); i++)
+    {
+        sci = allRelations[i].getScientist();
+        int id = allRelations[i].getId();
+        cout << "SciID: " << sci.getId() << endl;
+
+        if(targetId == sci.getId())
+        {
+            deleteRelation.push_back(rel);
+        }
+    }
+
+    for(unsigned j = 0; j < deleteRelation.size(); j++)
+    {
+        rel = deleteRelation[j];
+        cout << "I should delete ID: " << rel.getId() << endl;
+    }
 }
+
+void Domain::deleteAllRelations(Computer cCom)
+{
+    vector<Relation> allRelations;
+    vector<Relation> deleteRelation;
+    Relation rel;
+    Computer cComChecker;
+    data.select(rel, 1);
+    allRelations = data.getRelVector();
+    int targetId = cCom.getId();
+    for(unsigned int i = 0; i < allRelations.size(); i++)
+    {
+        rel = allRelations[i];
+        cComChecker = allRelations[i].getComputer();
+        if(targetId == cComChecker.getId())
+        {
+            deleteRelation.push_back(rel);
+        }
+    }
+}
+
+int Domain::findConnectionId(string scientist, string computer)
+{
+    vector<Relation> cRelList;
+    Relation rel;
+    data.select(rel, 1);
+    cRelList = data.getRelVector();
+    for(unsigned int i = 0; i < cRelList.size(); i++)
+    {
+        rel = cRelList[i];
+        if(rel.getScientist().getName() == scientist && rel.getComputer().getName() == computer)
+        {
+            return rel.getId();
+        }
+    }
+    return -1;
+}
+
 
 bool Domain::checkOption(char child)
 {

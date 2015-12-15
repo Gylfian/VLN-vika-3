@@ -4,6 +4,7 @@
 #include "ui_editscientist.h"
 #include "cscientist.h"
 #include "domain.h"
+#include <QButtonGroup>
 #include <iostream>
 using namespace std;
 
@@ -29,6 +30,7 @@ QString Editscientist:: name()
 
 QString Editscientist:: gender()
 {
+
     bool female = ui->femaleRadioPushButtonSci->isChecked();
     if(female)
         return "Female";

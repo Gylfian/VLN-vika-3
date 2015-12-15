@@ -3,6 +3,7 @@
 
 #include "domain.h"
 #include <QDialog>
+#include <QMessageBox>
 
 namespace Ui {
 class AddConnection;
@@ -25,12 +26,28 @@ private slots:
 
     void on_pushButton_clicked();
 
+
+    void on_scientistsList_clicked(const QModelIndex &index);
+
+
+    void on_computersList_clicked(const QModelIndex &index);
+
+    void on_btnConnect_clicked();
+
 private:
     Ui::AddConnection *ui;
     Domain domain;
+    CScientist scientist;
+    Computer computer;
     void displayAllScientists();
+    void displayAllComputers();
+
     void displayScientists(vector <CScientist> scientists);
+    void displayComputers(vector <Computer> computers);
+
     void designScientistsWidget(vector <CScientist> scientists);
+    void designComputersWidget(vector <Computer> computers);
+
     void setUp();
 };
 
