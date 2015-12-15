@@ -43,8 +43,11 @@
        <height>616</height>
       </size>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tabScientists">
       <attribute name="title">
@@ -132,6 +135,9 @@
          <height>34</height>
         </rect>
        </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
        <property name="text">
         <string>Analyze</string>
        </property>
@@ -148,6 +154,9 @@
          <height>34</height>
         </rect>
        </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
        <property name="text">
         <string>Edit</string>
        </property>
@@ -163,6 +172,9 @@
          <width>112</width>
          <height>34</height>
         </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="text">
         <string>Delete</string>
@@ -192,6 +204,9 @@
          <width>112</width>
          <height>34</height>
         </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="text">
         <string>Cancel</string>
@@ -285,6 +300,9 @@
          <height>34</height>
         </rect>
        </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
        <property name="text">
         <string>Edit</string>
        </property>
@@ -317,6 +335,9 @@
          <height>34</height>
         </rect>
        </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
        <property name="text">
         <string>Analyze</string>
        </property>
@@ -333,6 +354,9 @@
          <height>34</height>
         </rect>
        </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
        <property name="text">
         <string>Delete</string>
        </property>
@@ -345,6 +369,9 @@
          <width>112</width>
          <height>34</height>
         </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="text">
         <string>Cancel</string>
@@ -436,6 +463,9 @@
          <height>34</height>
         </rect>
        </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
        <property name="text">
         <string>Delete</string>
        </property>
@@ -448,6 +478,9 @@
          <width>112</width>
          <height>34</height>
         </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="text">
         <string>Cancel</string>

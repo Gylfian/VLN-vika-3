@@ -31,8 +31,11 @@
      <property name="enabled">
       <bool>true</bool>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
@@ -50,6 +53,9 @@
         <widget class="QPushButton" name="restoreButtonSci">
          <property name="enabled">
           <bool>false</bool>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
          </property>
          <property name="text">
           <string>Restore</string>
@@ -74,6 +80,9 @@
         <widget class="QPushButton" name="restoreButtonComp">
          <property name="enabled">
           <bool>false</bool>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
          </property>
          <property name="text">
           <string>Restore</string>

@@ -162,6 +162,9 @@
      <property name="enabled">
       <bool>true</bool>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="text">
       <string>Edit</string>
      </property>
@@ -169,6 +172,9 @@
    </item>
    <item>
     <widget class="QPushButton" name="backPushButtonEditSci">
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="text">
       <string>Back</string>
      </property>
