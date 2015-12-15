@@ -31,7 +31,27 @@ public:
     void displayScientists(vector<CScientist> scientists);
     void designScientistsWidget(vector<CScientist> scientists);
     void designComputersWidget(vector<Computer> computers);
+    void analyzeCom();
+    void analyzeSci();
 private slots:
+
+    void on_scientistList_clicked(const QModelIndex &index);
+
+    void on_computerList_clicked(const QModelIndex &index);
+
+
+
+    void on_editScientist_clicked();
+
+    void on_editComputer_clicked();
+
+    void on_analyzeComputer_clicked();
+
+    void on_anlyzeScientist_clicked();
+
+    void on_deleteComputer_clicked();
+
+    void on_deleteScientist_clicked();
 
 private:
     Ui::Searchresults *ui;
@@ -39,6 +59,8 @@ private:
     int typeindex;
     vector<CScientist> sciResults;
     vector<Computer> compResults;
+    CScientist scientist;
+    Computer computer;
 };
 
 #endif // SEARCHRESULTS_H

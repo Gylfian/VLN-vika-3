@@ -66,6 +66,9 @@
          </item>
          <item>
           <widget class="QPushButton" name="anlyzeScientist">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string>Analyze</string>
            </property>
@@ -86,6 +89,9 @@
          </item>
          <item>
           <widget class="QPushButton" name="editScientist">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string>Edit</string>
            </property>
@@ -106,6 +112,9 @@
          </item>
          <item>
           <widget class="QPushButton" name="deleteScientist">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string>Delete</string>
            </property>
@@ -157,6 +166,9 @@
          </item>
          <item>
           <widget class="QPushButton" name="analyzeComputer">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string>Analyze</string>
            </property>
@@ -177,6 +189,9 @@
          </item>
          <item>
           <widget class="QPushButton" name="editComputer">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string>Edit</string>
            </property>
@@ -197,6 +212,9 @@
          </item>
          <item>
           <widget class="QPushButton" name="deleteComputer">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string>Delete</string>
            </property>

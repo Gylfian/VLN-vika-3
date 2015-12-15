@@ -3,7 +3,8 @@
 #include "editscientist.h"
 #include "editcomputer.h"
 #include "domain.h"
-#include <QDebug>
+#include "analyze.h"
+#include <QMessageBox>
 
 Searchresults::Searchresults(QWidget *parent) :
     QDialog(parent),
@@ -153,14 +154,137 @@ void Searchresults::initialize(int indexnumber, Computer c1, CScientist s1)
 void Searchresults::fillvector(Computer c1){
     Domain d1;
     d1.search(compResults,c1);
-    qDebug() << "size = ";
-    qDebug() << compResults.size();
-    qDebug() << typeindex;
+
 }
 void Searchresults::fillvector(CScientist s1){
     Domain d1;
     d1.search(sciResults,s1);
-    //qDebug() << "size = ";
-    //qDebug() << sciResults.size();
+
 }
 
+
+void Searchresults::on_scientistList_clicked(const QModelIndex &index)
+{
+     int row = ui->scientistList->currentRow();
+     ui->scientistList->selectRow(index.row());
+     ui->anlyzeScientist->setEnabled(true);
+     ui->editScientist->setEnabled(true);
+     ui->deleteScientist->setEnabled(true);
+     scientist.setName(ui->scientistList->item(row, 0)->text().toStdString());
+     scientist.setGender(ui->scientistList->item(row, 1)->text().toStdString());
+     scientist.setDob(ui->scientistList->item(row, 2)->text().toStdString());
+     scientist.setDod(ui->scientistList->item(row, 3)->text().toStdString());
+}
+
+void Searchresults::on_computerList_clicked(const QModelIndex &index)
+{
+   int row = ui->computerList->currentRow();
+   ui->computerList->selectRow(index.row());
+   ui->analyzeComputer->setEnabled(true);
+   ui->editComputer->setEnabled(true);
+   ui->deleteComputer->setEnabled(true);
+   computer.setName(ui->computerList->item(row, 0)->text().toStdString());
+   computer.setType(ui->computerList->item(row, 1)->text().toStdString());
+   computer.setBuilt(ui->computerList->item(row, 2)->text().toStdString());
+   computer.setYear(ui->computerList->item(row, 3)->text().toStdString());
+}
+
+
+void Searchresults::on_editScientist_clicked()
+{
+    Editscientist editscientist;
+    editscientist.setScientist(scientist);
+    int wasRejected = editscientist.exec();
+    if(wasRejected == QDialog::Rejected)
+        return;
+    displayAllScientists();
+}
+
+
+void Searchresults::on_editComputer_clicked()
+{
+    Editcomputer editcomputer;
+    editcomputer.setComputer(computer);
+    int wasRejected = editcomputer.exec();
+    if(wasRejected == QDialog::Rejected)
+        return;
+    displayAllComputers();
+}
+
+void Searchresults::on_analyzeComputer_clicked()
+{
+     analyzeCom();
+}
+
+void Searchresults::on_anlyzeScientist_clicked()
+{
+    analyzeSci();
+}
+
+void Searchresults::analyzeSci()
+{
+    if(ui->scientistList->rowCount() == 0)
+        QMessageBox::warning(this, "WARNING!", "No entries found!");
+    else
+    {
+        int row = ui->scientistList->currentRow();
+        scientist.setName(ui->scientistList->item(row, 0)->text().toStdString());
+        scientist.setGender(ui->scientistList->item(row, 1)->text().toStdString());
+        scientist.setDob(ui->scientistList->item(row, 2)->text().toStdString());
+        scientist.setDod(ui->scientistList->item(row, 3)->text().toStdString());
+        Analyze analyze;
+        analyze.setScientist(scientist);
+        analyze.exec();
+    }
+}
+
+void Searchresults::analyzeCom()
+{
+    if(ui->computerList->rowCount() == 0)
+        QMessageBox::warning(this, "WARNING!", "No entries found!");
+    else
+    {
+        int row = ui->computerList->currentRow();
+        computer.setName(ui->computerList->item(row, 0)->text().toStdString());
+        computer.setType(ui->computerList->item(row, 1)->text().toStdString());
+        computer.setBuilt(ui->computerList->item(row, 2)->text().toStdString());
+        computer.setYear(ui->computerList->item(row, 3)->text().toStdString());
+        Analyze analyze;
+        analyze.setComputer(computer);
+        analyze.exec();
+    }
+}
+
+
+void Searchresults::on_deleteComputer_clicked()
+{
+    int ret = QMessageBox::warning(this, tr("Warning"), tr("You are about to delete a computer!\n" "Do you want to continue?"), QMessageBox::Ok | QMessageBox::Cancel);
+    if(ret == QDialog::Rejected)
+    {
+        return;
+    }
+    Domain d1;
+    Computer temp = d1.findComputer(computer);
+    stringstream ss;
+    ss << temp.getId();
+    string id = ss.str();
+    d1.updateEntryCom(id);
+    displayAllComputers();
+}
+
+
+void Searchresults::on_deleteScientist_clicked()
+{
+    int ret = QMessageBox::warning(this, tr("Warning"), tr("You are about to delete a scientist!\n" "Do you want to continue?"), QMessageBox::Ok | QMessageBox::Cancel);
+    if(ret == QDialog::Rejected)
+    {
+        return;
+    }
+    Domain d1;
+    CScientist temp = d1.findScientist(scientist);
+    stringstream ss;
+    ss << temp.getId();
+    string id = ss.str();
+    d1.updateEntrySci(id);
+    displayAllScientists();
+}
