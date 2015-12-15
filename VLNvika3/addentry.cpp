@@ -34,7 +34,7 @@ void AddEntry::on_sciDeadButton_clicked(bool checked)
     {
         ui->sciDeathInput->setEnabled(true);
         int min = ui->sciBirthInput->value();
-        ui->sciDeathInput->setMinimum(min);
+        ui->sciDeathInput->setValue(min);
     }
 }
 
@@ -75,6 +75,10 @@ void AddEntry::on_addOrCancelSci_accepted()
     if (sciErrorCheck())
     {
         QMessageBox::warning(this, "WARNING!", "You must fill out all the necessary information!");
+    }
+    else if (ui->sciBirthInput->value() > ui->sciDeathInput->value())
+    {
+        QMessageBox::warning(this, "WARNING", "Invalid death year!");
     }
     else
     {
