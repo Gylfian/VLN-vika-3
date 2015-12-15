@@ -140,14 +140,10 @@ void Restore::on_restoreButtonComp_clicked()
     Domain d1;
     Computer c1;
     c1 = d1.findInactiveComputer(computer);
-    string strengur = c1.getName();
     int id=c1.getId();
-    qDebug() << c1.getId();
-    qDebug() << QString::fromStdString(strengur);
     stringstream ss;
     ss << id;
     string converted = ss.str();
     d1.updateEntryCom(converted);
     displayAllComputers();
-
 }

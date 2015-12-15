@@ -164,6 +164,7 @@ void Searchresults::on_editScientist_clicked()
     int wasRejected = editscientist.exec();
     if(wasRejected == QDialog::Rejected)
         return;
+    fillvector(sciParameter);
     displayAllScientists();
 }
 
@@ -175,6 +176,7 @@ void Searchresults::on_editComputer_clicked()
     int wasRejected = editcomputer.exec();
     if(wasRejected == QDialog::Rejected)
         return;
+    fillvector(compParameter);
     displayAllComputers();
 }
 
