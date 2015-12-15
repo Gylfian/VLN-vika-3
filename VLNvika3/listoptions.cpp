@@ -5,8 +5,8 @@
 #include "editcomputer.h"
 #include "analyze.h"
 #include "ui_analyze.h"
-#include <QMessageBox>
 #include <QDebug>
+#include <QMessageBox>
 
 ListOptions::ListOptions(QWidget *parent) :
     QDialog(parent),
@@ -48,6 +48,7 @@ void ListOptions::displayAllConnections()
 void ListOptions::displayScientists(vector <CScientist> scientists)
 {
     designScientistsWidget(scientists);
+    ui->scientistsList->setSortingEnabled(false);
     for(unsigned int i = 0; i < scientists.size(); i++)
     {
         CScientist currentSci = scientists[i];
@@ -56,11 +57,13 @@ void ListOptions::displayScientists(vector <CScientist> scientists)
         ui->scientistsList->setItem(i,2,new QTableWidgetItem(QString::fromStdString(currentSci.getDob())));
         ui->scientistsList->setItem(i,3,new QTableWidgetItem(QString::fromStdString(currentSci.getDod())));
     }
+    ui->scientistsList->setSortingEnabled(true);
 }
 
 void ListOptions::displayComputers(vector <Computer> computers)
 {
     designComputersWidget(computers);
+    ui->computersList->setSortingEnabled(false);
     for(unsigned int i = 0; i < computers.size(); i++)
     {
         Computer currentCom = computers[i];
@@ -69,6 +72,7 @@ void ListOptions::displayComputers(vector <Computer> computers)
         ui->computersList->setItem(i,2,new QTableWidgetItem(QString::fromStdString(currentCom.getBuilt())));
         ui->computersList->setItem(i,3,new QTableWidgetItem(QString::fromStdString(currentCom.getYear())));
     }
+    ui->computersList->setSortingEnabled(true);
 }
 
 void ListOptions::displayConnections(vector<Relation> relations)
@@ -76,6 +80,7 @@ void ListOptions::displayConnections(vector<Relation> relations)
     CScientist sci;
     Computer com;
     designRelationsWidget(relations);
+    ui->connectionsList->setSortingEnabled(false);
     for(unsigned int i = 0; i < relations.size(); i++)
     {
         sci = relations[i].getScientist();
@@ -83,6 +88,7 @@ void ListOptions::displayConnections(vector<Relation> relations)
         ui->connectionsList->setItem(i,0,new QTableWidgetItem(QString::fromStdString(sci.getName())));
         ui->connectionsList->setItem(i,1,new QTableWidgetItem(QString::fromStdString(com.getName())));
     }
+    ui->connectionsList->setSortingEnabled(false);
 }
 
 void ListOptions::designScientistsWidget(vector <CScientist> scientists)
@@ -130,6 +136,7 @@ void ListOptions::on_editScientist_clicked()
    if(wasRejected == QDialog::Rejected)
        return;
    displayAllScientists();
+   displayAllConnections();
    ui->editScientist->setEnabled(false);
    ui->analyzeScientistBotton->setEnabled(false);
    ui->deleteScientistButton->setEnabled(false);
@@ -196,6 +203,7 @@ void ListOptions::on_editComputers_clicked()
     if(wasRejected == QDialog::Rejected)
         return;
     displayAllComputers();
+    displayAllConnections();
     ui->editComputers->setEnabled(false);
     ui->analyzeComButton->setEnabled(false);
     ui->deleteComButton->setEnabled(false);

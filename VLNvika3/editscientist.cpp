@@ -5,6 +5,7 @@
 #include "cscientist.h"
 #include "domain.h"
 #include <QButtonGroup>
+#include <QMessageBox>
 #include <iostream>
 using namespace std;
 
@@ -87,10 +88,15 @@ void Editscientist::on_confirmSciEditPushButton_clicked()
     newInfo.setDod(yearOfDeath().toStdString());
     if(ui->yesAliveButton->isChecked())
        newInfo.setDod("Alive");
-    accept();
-    dom.editEntry(newInfo);
-}
+    if(newInfo.getDod()<newInfo.getDob())
+        QMessageBox::warning(this, tr("Warning"), tr("Invalid death year!"), QMessageBox::Ok);
+    else
+    {
+        accept();
+        dom.editEntry(newInfo);
 
+    }
+}
 void Editscientist::on_backPushButtonEditSci_clicked()
 {
     reject();
