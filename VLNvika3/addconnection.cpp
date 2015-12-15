@@ -1,7 +1,5 @@
 #include "addconnection.h"
 #include "ui_addconnection.h"
-#include <iostream>
-#include <QDebug>
 using namespace std;
 
 AddConnection::AddConnection(QWidget *parent) :

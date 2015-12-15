@@ -1,6 +1,6 @@
 #ifndef SEARCH_H
 #define SEARCH_H
-
+#include "searchresults.h"
 #include <QDialog>
 #include <iostream>
 

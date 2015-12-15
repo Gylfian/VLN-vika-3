@@ -1,8 +1,9 @@
 #ifndef RESTORE_H
 #define RESTORE_H
-#include "computer.h"
 #include "domain.h"
 #include <QDialog>
+#include <QTableWidget>
+#include <sstream>
 
 namespace Ui {
 class Restore;

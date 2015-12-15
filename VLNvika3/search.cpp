@@ -1,6 +1,5 @@
 #include "search.h"
 #include "ui_search.h"
-#include "searchresults.h"
 
 using namespace std;
 
