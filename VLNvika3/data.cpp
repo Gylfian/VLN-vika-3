@@ -227,13 +227,20 @@ void Data::filterRelation(string filter)
     fillVector(database, Rel, qsql);
 }
 
-void Data::select(Relation Rel)
+void Data::select(Relation Rel, int active)
 {
     QString qsql;
     string sql = "SELECT Computerscientists.Name as 'SName', Computers.Name as'CName',scientists_computers.ID,scientists_computers.isActive ";
     sql += "FROM Computerscientists INNER JOIN scientists_computers ON Computerscientists.ID = scientists_computers.scientistID ";
     sql += " INNER JOIN Computers ON Computers.ID = scientists_computers.computerID ";
-    sql += " WHERE scientists_computers.isActive=1";
+    if(active == 1)
+    {
+        sql += " WHERE scientists_computers.isActive=1";
+    }
+    else if(active == 0)
+    {
+        sql += " WHERE scientists_computers.isActive=0";
+    }
     qsql = QString::fromStdString(sql);
     fillVector(database, Rel, qsql);
 }
@@ -365,13 +372,24 @@ void Data::updateStatus(Computer comp)
     fillVector(database, comp, qsql);
 }
 
-void Data::updateStatus(Relation rel)
+void Data::deleteRelation(Relation rel)
 {
     QString qsql;
     string sql;
     int id = rel.getId();
     string reId = convertId(id);
-    sql = "UPDATE scientists_computers SET isActive=0 WHERE ID = " + reId;
+    sql = "UPDATE scientists_computers SET isActive=0 WHERE ID = " +reId;
+    qsql = QString::fromStdString(sql);
+    fillVector(database, rel, qsql);
+}
+
+void Data::restoreRelation(Relation rel)
+{
+    QString qsql;
+    string sql;
+    int id = rel.getId();
+    string reId = convertId(id);
+    sql = "UPDATE scientists_computers SET isActive=1 WHERE ID = " + reId;
     qsql = QString::fromStdString(sql);
     fillVector(database, rel, qsql);
 }

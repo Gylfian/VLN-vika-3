@@ -38,7 +38,7 @@ public:
     */
     void select(CScientist cSci, int index1, int index2);
     void select(Computer comp, int index1, int index2);
-    void select(Relation Rel);
+    void select(Relation Rel, int active);
 
    /*
     * Name: updateStatus
@@ -83,7 +83,9 @@ public:
     vector<CScientist> getSciVector();
     vector<Computer> getComVector();
     vector<Relation> getRelVector();
-    void updateStatus(Relation rel);
+    void deleteRelation(Relation rel);
+    void restoreRelation(Relation rel);
+
 private:
    vector<CScientist> sci;
    vector<Computer> com;

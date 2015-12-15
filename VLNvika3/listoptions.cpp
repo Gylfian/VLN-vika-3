@@ -41,7 +41,7 @@ void ListOptions::displayAllComputers()
 void ListOptions::displayAllConnections()
 {
     vector <Relation> relation;
-    domain.getRelationList(relation);
+    domain.getRelationList(relation, 1);
     displayConnections(relation);
 }
 
@@ -159,6 +159,7 @@ void ListOptions::on_findSciLineEdit_textChanged(const QString &arg1)
 
 void ListOptions::on_deleteScientistButton_clicked()
 {
+    /*
     int ret = QMessageBox::warning(this, tr("Warning"), tr("You are about to delete a scientist!\n" "Do you want to continue?"), QMessageBox::Ok | QMessageBox::Cancel);
     if(ret == QDialog::Rejected)
     {
@@ -168,8 +169,18 @@ void ListOptions::on_deleteScientistButton_clicked()
     stringstream ss;
     ss << temp.getId();
     string id = ss.str();
+    //domain.removeConnections(id);
     domain.updateEntrySci(id);
     displayAllScientists();
+    */
+    CScientist cSci;
+    cSci.setId(31);
+    cSci.setName("Gottfried Wilhelm Von Leibniz");
+    cSci.setGender("Male");
+    cSci.setDob("1646");
+    cSci.setDod("1716");
+    domain.deleteAllRelations(cSci);
+    cout << "swag" << endl;
 }
 
 void ListOptions::on_computersList_clicked(const QModelIndex &index)
@@ -307,12 +318,18 @@ void ListOptions::on_deletConnPushButton_clicked()
     {
         return;
     }
-    Computer temp = domain.findComputer(computer);
-    stringstream ss;
-    ss << temp.getId();
-    string id = ss.str();
-    domain.updateEntryCom(id);
-    displayAllComputers();
+    if(ui->connectionsList->rowCount() == 0)
+        QMessageBox::warning(this, "WARNING!", "No entries found!");
+    else
+    {
+        //domain.changeRelation("8");
+        int row = ui->connectionsList->currentRow();
+        scientist.setName(ui->connectionsList->item(row, 0)->text().toStdString());
+        computer.setName(ui->connectionsList->item(row, 1)->text().toStdString());
+        int id = domain.findConnectionId(scientist.getName(), computer.getName());
+        domain.removeRelations(id);
+    }
+    displayAllConnections();
 }
 
 void ListOptions::on_cancelComPushButton_clicked()

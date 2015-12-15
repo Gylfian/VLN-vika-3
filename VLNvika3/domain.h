@@ -38,6 +38,8 @@ public:
 
     Computer findInactiveComputer(Computer cCom);
 
+    int findConnectionId(string scientist, string computer);
+
     /*
      * Name: sortBy
      * Parameter/s: vector<CScientist> &cSciList or vector<Computer> &, int child, int child2
@@ -50,7 +52,7 @@ public:
 
     void sortBy(vector<Computer> &cComList, char child, char child2);
 
-    void changeRelation(string sid);
+    void changeRelation(int sid);
 
     /*
      * Name: restoreEntry
@@ -75,6 +77,12 @@ public:
     void updateEntrySci(string sid);
 
     void updateEntryCom(string sid);
+
+    void removeRelations(int id);
+
+    void deleteAllRelations(CScientist cSci);
+
+    void deleteAllRelations(Computer cCom);
 
     /*
      * Name: findLongestName
@@ -175,7 +183,7 @@ public:
      * Usage: getRelations(strSci, strCom)
      * Output/Return:
      */
-    void getRelationList(vector<Relation> &cRelList);
+    void getRelationList(vector<Relation> &cRelList, int active);
 
     /*
      * Name: checkIdVector
