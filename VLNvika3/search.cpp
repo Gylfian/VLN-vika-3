@@ -1,7 +1,6 @@
 #include "search.h"
 #include "ui_search.h"
 #include "searchresults.h"
-#include <QDebug>
 
 using namespace std;
 

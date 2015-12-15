@@ -218,7 +218,7 @@ void Data::filterRelation(string filter)
     string sql = "SELECT Computerscientists.Name as 'SName', Computers.Name as'CName',scientists_computers.ID,scientists_computers.isActive ";
     sql += "FROM Computerscientists INNER JOIN scientists_computers ON Computerscientists.ID = scientists_computers.scientistID ";
     sql += " INNER JOIN Computers ON Computers.ID = scientists_computers.computerID ";
-    sql += " WHERE scientists_computers.isActive=1";
+    sql += " WHERE scientists_computers.isActive=1 And Computers.isActive = 1 AND Computerscientists.isActive = 1";
     if(!filter.empty())
     {
         sql += " AND SName LIKE '%"+ filter +"%' OR CName LIKE '%"+ filter +"%'";
@@ -235,11 +235,11 @@ void Data::select(Relation Rel, int active)
     sql += " INNER JOIN Computers ON Computers.ID = scientists_computers.computerID ";
     if(active == 1)
     {
-        sql += " WHERE scientists_computers.isActive=1";
+        sql += " WHERE scientists_computers.isActive=1 And Computers.isActive = 1 AND Computerscientists.isActive = 1";
     }
     else if(active == 0)
     {
-        sql += " WHERE scientists_computers.isActive=0";
+        sql += " WHERE scientists_computers.isActive=0 And Computers.isActive = 1 AND Computerscientists.isActive = 1";
     }
     qsql = QString::fromStdString(sql);
     fillVector(database, Rel, qsql);

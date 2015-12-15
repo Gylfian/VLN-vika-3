@@ -91,42 +91,7 @@ void Searchresults::designComputersWidget(vector <Computer> computers)
 
 }
 
-/*void Searchresults::displayvector(Computer c1)
-{
-    vector<Computer> computers;
-    Domain d1;
-    d1.search(computers,c1);
-    for(int i =0; i<computers.size(); i++)
-    {
-    Computer temp = computers[i];
-    string name = temp.getName();
-    ui->computerList->addItem(QString::fromStdString(name));
-    }
-}
 
-void Searchresults::displayvector(CScientist s1)
-{
-    vector<CScientist> scientists;
-    Domain d1;
-    d1.search(scientists,s1);
-    for(int i =0; i<scientists.size(); i++)
-    {
-    CScientist temp = scientists[i];
-    string name = temp.getName();
-    ui->scientistList->addItem(QString::fromStdString(name));
-    }
-}
-
-void Searchresults::designScientistsList(vector<CScientist> scientists)
-{
-    ui->scientistList->clear();
-}
-
-void Searchresults::designComputersList(vector<Computer> computers)
-{
-    ui->computerList->clear();
-}
-*/
 void Searchresults::setindex(int indexnumber)
 {
     typeindex = indexnumber;
@@ -138,12 +103,14 @@ void Searchresults::initialize(int indexnumber, Computer c1, CScientist s1)
     {
         ui->pageWidget->setCurrentIndex(0);
         setindex(indexnumber);
+        sciParameter = s1;
         fillvector(s1);
     }
     if(indexnumber==1)
     {
         ui->pageWidget->setCurrentIndex(1);
         setindex(indexnumber);
+        compParameter = c1;
         fillvector(c1);
     }
 
@@ -269,6 +236,7 @@ void Searchresults::on_deleteComputer_clicked()
     ss << temp.getId();
     string id = ss.str();
     d1.updateEntryCom(id);
+    fillvector(compParameter);
     displayAllComputers();
 }
 
@@ -286,5 +254,6 @@ void Searchresults::on_deleteScientist_clicked()
     ss << temp.getId();
     string id = ss.str();
     d1.updateEntrySci(id);
+    fillvector(sciParameter);
     displayAllScientists();
 }
