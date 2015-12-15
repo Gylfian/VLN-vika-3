@@ -414,7 +414,7 @@ void Data::insert(CScientist cSci)
 void Data::insert(Computer comp)
 {
     QString qsql;
-    string sql = "INSERT INTO Computers (Name, Type, Built, Year,About) VALUES ('"+ comp.getName() +"','"+ comp.getType() +"','"+ comp.getBuilt() + "','"+ comp.getYear() +"','"+ comp.getAbout()  + "')";
+    string sql = "INSERT INTO Computers (Name, Type, Built, Year, About) VALUES ('"+ comp.getName() +"','"+ comp.getType() +"','"+ comp.getBuilt() + "','"+ comp.getYear() +"','"+ comp.getAbout()  + "')";
     qsql = QString::fromStdString(sql);
     fillVector(database, comp, qsql);
 }
