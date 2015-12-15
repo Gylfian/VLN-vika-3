@@ -51,10 +51,19 @@ private:
     /*
      * Name: printSciDetailedInfo
      * Parameter/s: None
-     * Description: Opens new window with more detailed information.
+     * Description: Prints out the detailed information about the scientist
+     * Usage: The used can read a little bit more about the scientist
+     * Output/Return: The detailed information
      */
     void printSciDetailedInfo();
+
+    /*
+     * Name: getSciPicture
+     * Parameter/s: None
+     * Description: Gets pictures of scientists, resizes them and puts them in the right places.
+     */
     void getSciPicture();
+
     /*
      * Name: printComBasicInfo
      * Parameter/s: None
@@ -63,7 +72,21 @@ private:
      * Output/Return: The basic information
      */
     void printComBasicInfo();
+
+    /*
+     * Name: printComDetailedInfo
+     * Parameter/s: None
+     * Description: Prints out the detailed information about the computer
+     * Usage: The used can read a little bit more about the computer
+     * Output/Return: The detailed information
+     */
     void printComDetailedInfo();
+
+    /*
+     * Name: getComPicture
+     * Parameter/s: None
+     * Description: Gets pictures of computers, resizes them and puts them in the right places.
+     */
     void getComPicture();
     CScientist scientist;
     Computer computer;

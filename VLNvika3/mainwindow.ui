@@ -25,69 +25,125 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="icons.qrc">
+    <normaloff>:/icon/Icons/pinata.png</normaloff>:/icon/Icons/pinata.png</iconset>
+  </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Main menu&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="pushButtonListOptions">
-      <property name="text">
-       <string>List options</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="pushButtonSearch">
-      <property name="text">
-       <string>Search</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="pushButtonAddEntry">
-      <property name="text">
-       <string>Add an entry</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="pushButtonAddConnection">
-      <property name="text">
-       <string>Add connection</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="pushButtonRestore">
-      <property name="text">
-       <string>Restore</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="pushButtonExit">
-      <property name="text">
-       <string>Exit</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="pinata">
-      <property name="text">
-       <string/>
-      </property>
-      <property name="icon">
-       <iconset resource="error.qrc">
-        <normaloff>:/pinata.jpg</normaloff>:/pinata.jpg</iconset>
-      </property>
-     </widget>
-    </item>
-   </layout>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>13</x>
+      <y>13</y>
+      <width>98</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Main menu&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonListOptions">
+    <property name="geometry">
+     <rect>
+      <x>13</x>
+      <y>46</y>
+      <width>374</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>List options</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonSearch">
+    <property name="geometry">
+     <rect>
+      <x>13</x>
+      <y>78</y>
+      <width>374</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Search</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonAddEntry">
+    <property name="geometry">
+     <rect>
+      <x>13</x>
+      <y>111</y>
+      <width>374</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Add an entry</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonAddConnection">
+    <property name="geometry">
+     <rect>
+      <x>13</x>
+      <y>143</y>
+      <width>374</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Add connection</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonRestore">
+    <property name="geometry">
+     <rect>
+      <x>13</x>
+      <y>176</y>
+      <width>374</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Restore</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonExit">
+    <property name="geometry">
+     <rect>
+      <x>13</x>
+      <y>208</y>
+      <width>374</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Exit</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="formLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>250</y>
+      <width>31</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="1">
+      <widget class="QPushButton" name="pinata">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="error.qrc">
+         <normaloff>:/pinata.jpg</normaloff>:/pinata.jpg</iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -95,7 +151,7 @@
      <x>0</x>
      <y>0</y>
      <width>400</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
@@ -112,6 +168,7 @@
  <layoutdefault spacing="6" margin="11"/>
  <resources>
   <include location="error.qrc"/>
+  <include location="icons.qrc"/>
  </resources>
  <connections>
   <connection>
