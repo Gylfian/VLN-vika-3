@@ -151,9 +151,16 @@ void AddConnection::on_btnConnect_clicked()
     Computer cCom = domain.findComputer(computer);
     if(!ui->addSci->text().isEmpty() && !ui->addCom->text().isEmpty())
     {
-        string msg = "Connection between " + cSci.getName() + " and " + cCom.getName() + " has been establied. You can manage this connection in List Options from the main menu.";
-        QString qstr = QString::fromStdString(msg);
-        domain.addRelation(cSci, cCom);
-        QMessageBox::information(this, "Add Connection", qstr);
+        if(domain.findConnectionId(ui->addSci->text().toStdString(), ui->addCom->text().toStdString()) == -1)
+        {
+            string msg = "Connection between " + cSci.getName() + " and " + cCom.getName() + " has been establied. You can manage this connection in List Options from the main menu.";
+            QString qstr = QString::fromStdString(msg);
+            domain.addRelation(cSci, cCom);
+            QMessageBox::information(this, "Add Connection", qstr);
+        }
+        else
+        {
+            QMessageBox::warning(this, "Add Connection", "This connection already exists.");
+        }
     }
 }

@@ -15,6 +15,7 @@ Searchresults::Searchresults(QWidget *parent) :
     ui->scientistList->setRowCount(5);
     ui->computerList->setColumnCount(4);
     ui->scientistList->setColumnCount(4);
+    setWindowTitle("Search Results");
     setUp();
     ui->scientistList->setHorizontalHeaderLabels(QString("Name;Gender;Birth year;Death year").split(";"));
     ui->computerList->setHorizontalHeaderLabels(QString("Name;Type;Built?;Year built").split(";"));
@@ -64,6 +65,7 @@ void Searchresults::displayScientists(vector <CScientist> scientists)
 
 void Searchresults::displayComputers(vector <Computer> computers)
 {
+
     designComputersWidget(computers);
     for(unsigned int i = 0; i < computers.size(); i++)
     {
@@ -73,6 +75,7 @@ void Searchresults::displayComputers(vector <Computer> computers)
         ui->computerList->setItem(i,2,new QTableWidgetItem(QString::fromStdString(currentCom.getBuilt())));
         ui->computerList->setItem(i,3,new QTableWidgetItem(QString::fromStdString(currentCom.getYear())));
     }
+
 }
 
 void Searchresults::designScientistsWidget(vector <CScientist> scientists)
@@ -112,6 +115,10 @@ void Searchresults::initialize(int indexnumber, Computer c1, CScientist s1)
         setindex(indexnumber);
         compParameter = c1;
         fillvector(c1);
+    }
+    if(compResults.size()==0&&sciResults.size() ==0)
+    {
+        QMessageBox::warning(this, "WARNING!", "No entries found!");
     }
 
     displayAllScientists();
@@ -164,6 +171,7 @@ void Searchresults::on_editScientist_clicked()
     int wasRejected = editscientist.exec();
     if(wasRejected == QDialog::Rejected)
         return;
+    fillvector(sciParameter);
     displayAllScientists();
 }
 
@@ -175,6 +183,7 @@ void Searchresults::on_editComputer_clicked()
     int wasRejected = editcomputer.exec();
     if(wasRejected == QDialog::Rejected)
         return;
+    fillvector(compParameter);
     displayAllComputers();
 }
 
