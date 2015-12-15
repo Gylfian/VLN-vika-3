@@ -1,10 +1,5 @@
 #include "searchresults.h"
 #include "ui_searchresults.h"
-#include "editscientist.h"
-#include "editcomputer.h"
-#include "domain.h"
-#include "analyze.h"
-#include <QMessageBox>
 
 Searchresults::Searchresults(QWidget *parent) :
     QDialog(parent),

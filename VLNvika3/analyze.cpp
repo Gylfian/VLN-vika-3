@@ -1,6 +1,5 @@
 #include "analyze.h"
 #include "ui_analyze.h"
-#include <sstream>
 
 void Analyze::setScientist(CScientist scientistToSet)
 {

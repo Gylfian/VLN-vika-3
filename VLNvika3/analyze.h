@@ -1,10 +1,9 @@
 #ifndef ANALYZE_H
 #define ANALYZE_H
 
-#include "cscientist.h"
-#include "computer.h"
 #include "domain.h"
 #include <QDialog>
+#include <sstream>
 
 namespace Ui {
 class Analyze;

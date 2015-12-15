@@ -1,8 +1,11 @@
 #ifndef SEARCHRESULTS_H
 #define SEARCHRESULTS_H
-#include "computer.h"
-#include "cscientist.h"
 #include <QDialog>
+#include "editscientist.h"
+#include "editcomputer.h"
+#include "domain.h"
+#include "analyze.h"
+#include <QMessageBox>
 
 namespace Ui {
 class Searchresults;

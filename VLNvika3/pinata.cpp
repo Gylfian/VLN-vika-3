@@ -4,23 +4,26 @@
 #include <QtMultimedia/QMediaPlayer>
 #include <QtMultimedia/QMediaPlaylist>
 #include <QVideoWidget>
+#include <QPixmap>
+#include <QMovie>
+#include <QLabel>
+#include <QGraphicsScene>
 
 Pinata::Pinata(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Pinata)
 {
-    QMediaPlayer *player=new QMediaPlayer;
-    QVideoWidget *videowidget=new QVideoWidget;
-    //QMediaPlaylist *playlist=new QMediaPlaylist;
-    //playlist->addMedia(QUrl("C:/Users/Johanna/Desktop/VLN-vika-3/VLNvika3/test.mp4"));
-    player->setMedia(QUrl::fromLocalFile("C:/Users/Johanna/Desktop/VLN-vika-3/VLNvika3/test.mp4"));
-    player->setVideoOutput(videowidget);
-    videowidget->setGeometry(100, 100, 400, 400);
-    //playlist->setCurrentIndex(1);
-    //player->setPlaylist(playlist);
-    player->setVolume(50);
-    player->play();
-    videowidget->show();
+    ui->setupUi(this);
+    setWindowTitle("Piñata");
+    ui->pinatalabel->setWindowFlags(Qt::FramelessWindowHint);
+    QMovie *movie = new QMovie(":/icon/giphy.gif");
+    ui->pinatalabel->setMovie(movie);
+    movie->start();
+    ui->pinatalabel->show();
+    QMediaPlayer *audioplayer = new QMediaPlayer;
+    audioplayer->setMedia(QUrl::fromLocalFile("pinatasong.mp3"));
+    audioplayer->setVolume(50);
+    audioplayer->play();
 }
 
 Pinata::~Pinata()

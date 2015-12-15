@@ -1,9 +1,5 @@
 #include "restore.h"
 #include "ui_restore.h"
-#include "domain.h"
-#include <QDebug>
-#include <QTableWidget>
-#include <sstream>
 
 
 Restore::Restore(QWidget *parent) :

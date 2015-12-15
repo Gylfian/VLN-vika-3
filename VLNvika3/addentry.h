@@ -3,8 +3,6 @@
 
 #include <QDialog>
 #include <string>
-#include "cscientist.h"
-#include "computer.h"
 #include "domain.h"
 #include <QMessageBox>
 using namespace std;

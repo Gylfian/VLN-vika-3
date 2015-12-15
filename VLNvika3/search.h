@@ -1,6 +1,6 @@
 #ifndef SEARCH_H
 #define SEARCH_H
-
+#include "searchresults.h"
 #include <QDialog>
 #include <iostream>
 
@@ -52,6 +52,9 @@ private slots:
     void on_maybeBuiltRadio_clicked(bool checked);
 
     void on_adddOrCancelComp_rejected();
+
+
+    void on_unknownDeath_clicked(bool checked);
 
 private:
     string getGender();

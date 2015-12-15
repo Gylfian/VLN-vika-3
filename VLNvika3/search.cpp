@@ -1,6 +1,5 @@
 #include "search.h"
 #include "ui_search.h"
-#include "searchresults.h"
 
 using namespace std;
 
@@ -60,7 +59,11 @@ void Search::on_noRadio_clicked(bool checked)
 {
     if(checked)
     {
-        ui->sciDeathInput->setEnabled(true);
+        if(!ui->unknownDeath->isChecked())
+        {
+            ui->sciDeathInput->setEnabled(true);
+        }
+        ui->unknownDeath->setEnabled(true);
     }
 }
 
@@ -69,6 +72,7 @@ void Search::on_yesRadio_clicked(bool checked)
     if(checked)
     {
         ui->sciDeathInput->setEnabled(false);
+        ui->unknownDeath->setEnabled(false);
     }
 }
 
@@ -77,6 +81,7 @@ void Search::on_unknownRadioAlive_clicked(bool checked)
     if(checked)
     {
         ui->sciDeathInput->setEnabled(false);
+        ui->unknownDeath->setEnabled(false);
     }
 }
 
@@ -133,7 +138,14 @@ string Search::getdod()
     }
     if(ui->noRadio->isChecked())
     {
+        if(ui->unknownDeath->isChecked())
+        {
+            return dod;
+        }
+        else
+        {
         dod=ui->sciDeathInput->text().toStdString();
+        }
     }
 
     return dod;
@@ -245,4 +257,17 @@ void Search::on_maybeBuiltRadio_clicked(bool checked)
 void Search::on_adddOrCancelComp_rejected()
 {
     reject();
+}
+
+
+void Search::on_unknownDeath_clicked(bool checked)
+{
+    if(checked)
+    {
+    ui->sciDeathInput->setEnabled(false);
+    }
+    else
+    {
+    ui->sciDeathInput->setEnabled(true);
+    }
 }

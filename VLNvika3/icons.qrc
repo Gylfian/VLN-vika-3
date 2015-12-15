@@ -7,5 +7,6 @@
         <file>Icons/pinata.png</file>
         <file>Icons/RestoreIcon.jpg</file>
         <file>Icons/SearchIcon.png</file>
+        <file>giphy.gif</file>
     </qresource>
 </RCC>

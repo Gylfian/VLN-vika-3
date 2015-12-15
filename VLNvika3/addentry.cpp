@@ -76,7 +76,7 @@ void AddEntry::on_addOrCancelSci_accepted()
     {
         QMessageBox::warning(this, "WARNING!", "You must fill out all the necessary information!");
     }
-    else if (ui->sciBirthInput->value() > ui->sciDeathInput->value())
+    else if (ui->sciBirthInput->value() > ui->sciDeathInput->value()&&ui->sciDeadButton->isChecked())
     {
         QMessageBox::warning(this, "WARNING", "Invalid death year!");
     }
