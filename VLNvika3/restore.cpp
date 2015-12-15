@@ -16,6 +16,7 @@ Restore::Restore(QWidget *parent) :
     ui->computerList->setColumnCount(4);
     ui->scientistList->setColumnCount(4);
     setUp();
+    setWindowTitle("Recycle Bin");
     ui->scientistList->setHorizontalHeaderLabels(QString("Name;Gender;Birth year;Death year").split(";"));
     ui->computerList->setHorizontalHeaderLabels(QString("Name;Type;Built?;Year built").split(";"));
 }
