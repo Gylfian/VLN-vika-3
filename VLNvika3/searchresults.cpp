@@ -65,6 +65,7 @@ void Searchresults::displayScientists(vector <CScientist> scientists)
 
 void Searchresults::displayComputers(vector <Computer> computers)
 {
+
     designComputersWidget(computers);
     for(unsigned int i = 0; i < computers.size(); i++)
     {
@@ -74,6 +75,7 @@ void Searchresults::displayComputers(vector <Computer> computers)
         ui->computerList->setItem(i,2,new QTableWidgetItem(QString::fromStdString(currentCom.getBuilt())));
         ui->computerList->setItem(i,3,new QTableWidgetItem(QString::fromStdString(currentCom.getYear())));
     }
+
 }
 
 void Searchresults::designScientistsWidget(vector <CScientist> scientists)
@@ -113,6 +115,10 @@ void Searchresults::initialize(int indexnumber, Computer c1, CScientist s1)
         setindex(indexnumber);
         compParameter = c1;
         fillvector(c1);
+    }
+    if(compResults.size()==0&&sciResults.size() ==0)
+    {
+        QMessageBox::warning(this, "WARNING!", "No entries found!");
     }
 
     displayAllScientists();
