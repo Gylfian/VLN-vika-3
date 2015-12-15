@@ -16,15 +16,7 @@ class Restore : public QDialog
 public:
     explicit Restore(QWidget *parent = 0);
     ~Restore();
-    void setUp();
 
-
-    void displayScientists(vector<CScientist> scientists);
-    void displayComputers(vector<Computer> computers);
-    void designScientistsWidget(vector<CScientist> scientists);
-    void designComputersWidget(vector<Computer> computers);
-    void displayAllScientists();
-    void displayAllComputers();
 private slots:
     void on_scientistList_clicked(const QModelIndex &index);
     void on_computerList_clicked(const QModelIndex &index);
@@ -38,6 +30,13 @@ private slots:
 
 private:
     Ui::Restore *ui;
+    void setUp();
+    void displayScientists(vector<CScientist> scientists);
+    void displayComputers(vector<Computer> computers);
+    void designScientistsWidget(vector<CScientist> scientists);
+    void designComputersWidget(vector<Computer> computers);
+    void displayAllScientists();
+    void displayAllComputers();
     CScientist scientist;
     Computer computer;
 };

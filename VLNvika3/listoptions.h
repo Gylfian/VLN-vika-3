@@ -19,7 +19,6 @@ class ListOptions : public QDialog
 
 public:
     explicit ListOptions(QWidget *parent = 0);
-    //CScientist getsci();
     Ui::ListOptions *ui;
     ~ListOptions();
     void setUp();

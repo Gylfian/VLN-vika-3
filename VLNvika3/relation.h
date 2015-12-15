@@ -18,6 +18,7 @@ public:
     void setId(int idToSet);
     void setIsActive(bool isAcToSet);
 private:
+
     Computer computer;
     CScientist scientist;
     int id;

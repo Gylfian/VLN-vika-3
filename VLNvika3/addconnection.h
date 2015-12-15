@@ -18,15 +18,7 @@ public:
     explicit AddConnection(QWidget *parent = 0);
     ~AddConnection();
     void enable();
-    void dragEnterEvent(QDragEnterEvent *event);
-    void dropEvent(QDropEvent *event);
 private slots:
-    void on_dragScientists_entered(const QModelIndex &index);
-
-    void on_dragScientists_clicked(const QModelIndex &index);
-
-    void on_pushButton_clicked();
-
 
     void on_scientistsList_clicked(const QModelIndex &index);
 
