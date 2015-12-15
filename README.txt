@@ -6,9 +6,6 @@ How do I display the list of the scientist?
 	This will display the first tab, which includes the scientists.
 	There you can also search for an individual in the search bar below the tabs, then you can analyze that specific scientist that you have searched for.
 
-How can I edit a scientist?
-	Form the "List option" window, you press the "Edit" button... (gat ekki klárað því það vantaði listann) 
-
 How do I display the list of computers?
 	In the main menu, press the "List options" button.
 	This will display the first tab, which includes the scientists, from there you can press the second tab "Computers" which will then display the list of 	computers.
@@ -19,9 +16,13 @@ How do I display the the connections between computers and scientists?
 	This will display the first tab, which includes the scientists, from there you can press the third tab "Connections" which will then display the list of 	connections.
 	There you can also search for a connection in the search bar below the tabs.
 
+How do I add connections between scientists and computers
+	In the main menu press the "Add connection button.
+	Select a scientist from the scientist menu and a computer from the computer menu and press connect.
+	The connection has now been added to the database.
 
 How do I search the list?
-	From the main menu window, press the "Search" button. 
+	From the main menu window, press the "Advanced Search" button. 
 	There you can choose in which list you want to search in.
 	Then you just fill out the information that you know about the computer/scientist.
 
@@ -35,10 +36,11 @@ How to enter computers?
 	Then you choose in the top bar, that you want to add a computer.
 	After that you can fill out the information needed, and press "OK".
 
-Oh my god i made an error, how do I delete persons from the list?
+Oh my god I made an error, how do I delete persons from the list?
 	From the main menu window, press the "Search" button. 
 	Then search for what you want to delete from the list.
-	Then you can press the "Delete" button. 
+	Then you can press the "Delete" button.
+	You can also delete from the list options table. 
 
 How do I edit lists?
 	From the main menu window, press "list options".
