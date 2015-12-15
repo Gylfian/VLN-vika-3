@@ -14,7 +14,8 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = VLNvika3
 TEMPLATE = app
 
-RESOURCES +=    error.qrc
+RESOURCES +=    error.qrc \
+    icons.qrc
 
 
 SOURCES += main.cpp\

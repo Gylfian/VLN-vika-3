@@ -16,6 +16,7 @@ Restore::Restore(QWidget *parent) :
     ui->computerList->setColumnCount(4);
     ui->scientistList->setColumnCount(4);
     setUp();
+    setWindowTitle("Recycle Bin");
     ui->scientistList->setHorizontalHeaderLabels(QString("Name;Gender;Birth year;Death year").split(";"));
     ui->computerList->setHorizontalHeaderLabels(QString("Name;Type;Built?;Year built").split(";"));
 }
@@ -140,14 +141,20 @@ void Restore::on_restoreButtonComp_clicked()
     Domain d1;
     Computer c1;
     c1 = d1.findInactiveComputer(computer);
-    string strengur = c1.getName();
     int id=c1.getId();
-    qDebug() << c1.getId();
-    qDebug() << QString::fromStdString(strengur);
     stringstream ss;
     ss << id;
     string converted = ss.str();
     d1.updateEntryCom(converted);
     displayAllComputers();
+}
 
+void Restore::on_cancelSci_clicked()
+{
+    reject();
+}
+
+void Restore::on_cancelComp_clicked()
+{
+    reject();
 }

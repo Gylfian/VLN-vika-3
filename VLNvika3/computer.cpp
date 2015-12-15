@@ -8,6 +8,7 @@ Computer::Computer()
     yearBuilt = "";
     type = "";
     built = "";
+    isActive = false;
 }
 
 Computer::Computer(int cId,string cName, string cYear, string cType, string cBuilt)

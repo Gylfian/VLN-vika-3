@@ -34,6 +34,10 @@
   <property name="windowTitle">
    <string>Search</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="icons.qrc">
+    <normaloff>:/icon/Icons/SearchIcon.png</normaloff>:/icon/Icons/SearchIcon.png</iconset>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
     <number>8</number>
@@ -195,6 +199,9 @@
         </item>
         <item>
          <widget class="QDialogButtonBox" name="adddOrCancelComp">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
           <property name="standardButtons">
            <set>QDialogButtonBox::Abort|QDialogButtonBox::Ok</set>
           </property>
@@ -384,6 +391,9 @@
         </item>
         <item>
          <widget class="QDialogButtonBox" name="addOrCancelSci">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
           <property name="whatsThis">
            <string/>
           </property>
@@ -406,7 +416,9 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="icons.qrc"/>
+ </resources>
  <connections/>
  <buttongroups>
   <buttongroup name="buttonGroup"/>

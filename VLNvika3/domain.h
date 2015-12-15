@@ -28,15 +28,47 @@ public:
 
     void search(vector<Computer> &cComList, Computer cCom);
 
+    /*
+     * Name: findScientist / findComputer
+     * Parameter/s: CScientist cSci / Computer cCom
+     * Description: Finds scientist or computer based on full information without id.
+     * Usage: findScientist(cSci)
+     * Output/Return: Completed instance of cSci, if information is valid.
+     */
+
     CScientist findScientist(CScientist cSci);
 
     Computer findComputer(Computer cCom);
 
+    /*
+     * Name: findRelation
+     * Parameter/s: string filter
+     * Description: Finds either a scientist name or a computer based on filter.
+     * Usage: findRelation("ada");
+     * Output/Return: Finds anything including 'ada' in connection list.
+     */
+
     vector<Relation> findRelation(string filter);
+
+    /*
+     * Name: findInactiveScientist / findInactiveComputer
+     * Parameter/s: CScientist cSci / Computer cCom
+     * Description: Lists everyone that is inactive (deleted).
+     * Usage: findInactiveScientists(cSci / cCom)
+     * Output/Return: Finds inactive instance based on the parameter instance.
+     */
 
     CScientist findInactiveScientist(CScientist cSci);
 
     Computer findInactiveComputer(Computer cCom);
+
+    /*
+     * Name: findConnectionId
+     * Parameter/s: string scientist, string computer
+     * Description: Finds a connection based on names of connection.
+     * Usage:findConnectionId("Blaise Pascal", "Pascaline");
+     * Output/Return: Returns ID of specific connection.
+     */
 
     int findConnectionId(string scientist, string computer);
 
@@ -78,52 +110,7 @@ public:
 
     void updateEntryCom(string sid);
 
-    void removeRelations(int id);
-
-    void deleteAllRelations(CScientist cSci);
-
-    void deleteAllRelations(Computer cCom);
-
-    /*
-     * Name: findLongestName
-     * Parameter/s: vector<CScientist> cSciList
-     * Description: Goes through the whole list and finds the longest name.
-     * Usage: **
-     * Output/Return: The longest scientist name.
-     */
-    int findLongestName(vector<CScientist> cSciList);
-
-    /*
-     * Name: findLongestName
-     * Parameter/s: vector<Computer> cComList or vector<CScientist> cSciList or vector<string> cStrList
-     * Description: Goes through the whole list and finds the longest name, used to determine width length in console.
-     * Usage: findLongestName(cSciList)
-     * Output/Return: The longest scientist name.
-     */
-    int findLongestName(vector<Computer> cComList);
-
-    int findLongestName(vector<string> cStrList);
-
-    /*
-     * Name:findLongestType
-     * Parameter/s: vector<Computer> cComList
-     * Description: Goes through the whole list and finds the longest type name.
-     * Usage: **
-     * Output/Return: The longest type.
-     */
-    int findLongestType(vector<Computer> cComList);
-
-    int checkStrInput(string str);
-    bool normalizeYear(string born, string death);
     void editEntry(string id);
-    /*
-     * Name: verifyBirthyear
-     * Parameter/s: string year
-     * Description: Makes sure that the input is in correct form and is accurrate.
-     * Usage: verifyBirthyear(-1993)
-     * Output/Return: false
-     */
-    bool verifyBirthyear(string year);
 
     /*
      * Name: addEntry
@@ -145,22 +132,6 @@ public:
     bool normalizeName(string &name);
 
     /*
-     * Name: checkIfLegitId
-     * Parameter/s: string sid
-     * Description: Checks for legitimate Id
-     * Usage: checkIfLegitId(id)
-     * Output/Return: true, or false.
-     */
-    bool checkIfLegitId(string sid);
-    /*
-     * Name: convertToString
-     * Parameter/s: int n
-     * Description: Converts integer to a string
-     * Usage: convertToString(53)
-     * Output/Return: 53, in string.
-     */
-    string convertToString(int n);
-    /*
      * Name: convertToInt
      * Description: Converts string to an integer
      * Usage: convertToInt("53")
@@ -169,31 +140,23 @@ public:
     int convertToInt(string str);
 
     /*
+     * Name: checkStrInput
+     * Parameter/s: string str
+     * Description: Verifies string input
+     * Usage: checkStrInput(str)
+     * Output/Return: Returns whether string is valid or not.
+     */
+    int checkStrInput(string str);
+
+    /*
      * Name: createRelation
      * Parameter/s: string str
      * Description: Creates a relation.
      * Usage: createRelation("1", "5")
      * Output/Return: 1 and 5 are connected.
      */
-    void createRelation(string scientists, string computers);
-    /*
-     * Name: getRelationList
-     * Parameter/s: string scientists, string computers
-     * Description: Fills up vector with all relations
-     * Usage: getRelations(strSci, strCom)
-     * Output/Return:
-     */
-    void getRelationList(vector<Relation> &cRelList, int active);
 
-    /*
-     * Name: checkIdVector
-     * Parameter/s: vector<string> &strSci, vector<string> &strCom
-     * Description: Checks if an Id exists within a vector.
-     * Usage: checkIdVector(cSciList, 5)
-     * Output/Return: If cSciList has the ID 5, return true, else false.
-     */
-    bool checkIdVector(vector<CScientist> cSciList, string id);
-    bool checkIdVector(vector<Computer> cComList, string id);
+    void getRelationList(vector<Relation> &cRelList, int active);
 
     /*
      * Name: editEntry
@@ -205,9 +168,27 @@ public:
     void editEntry(Computer cCom);
     void editEntry(CScientist cSci);
 
+    /*
+     * Name: addRelation
+     * Parameter/s: Computer cCom and CScientist cSci
+     * Description: Creates a relation between the two parameters.
+     * Usage: addRelation(cSci, cCom)
+     * Output/Return: Establishes a connection between cSci and cCom.
+     */
     void addRelation(CScientist cSci, Computer cCom);
 
+    /*
+     * Name: removeRelations
+     * Parameter/s: int id
+     * Description: Deletes a relation by id
+     * Usage: addRelation(5)
+     * Output/Return: Deletes relation from the parameter, in this case id = 5.
+     */
+    void removeRelations(int id);
+
 private:
+    Data data;
+
     /*
      * Name: charToInt
      * Parameter/s: char chr
@@ -216,8 +197,6 @@ private:
      * Output/Return: 5 in integer.
      */
     int charToInt(char chr);
-    Data data;
-
 
     /*
      * Name: get functions
@@ -238,27 +217,6 @@ private:
     void getComBuilt(vector<Computer> &cComList, char child2);
     void getComId(vector<Computer> &cComList, char child2);
     void getComActive(vector<Computer> &cComList);
-    bool checkOption(char child);
-
-    /*
-     * Name: solveIdToDb
-     * Parameter/s: vector<CScientist> &cSciList, vector<int> solvedIdList
-     * Description: Changes vector with integer IDs into actual instances.
-     * Usage: solveIdToDb(cSciLast, solvedIdList);
-     * Output/Return: ...
-     */
-    void solveIdToDb(vector<CScientist> &cSciList, vector<int> solvedIdList);
-    void solveIdToDb(vector<Computer> &cSciList, vector<int> solvedIdList);
-
-
-    /*
-     * Name: solveString
-     * Parameter/s: string str
-     * Description: Makes sure right input from string is put into the vector int.
-     * Usage: solveString("1,5,7");
-     * Output/Return: ...
-     */
-    vector<int> solveString(string str);
 };
 
 #endif // DOMAIN_H

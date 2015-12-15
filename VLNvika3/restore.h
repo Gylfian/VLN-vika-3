@@ -17,9 +17,7 @@ public:
     ~Restore();
     void setUp();
 
-    // void displayvector(Computer c1);
-    //void displayvector(CScientist s1);
-    //void restoreScientist();
+
     void displayScientists(vector<CScientist> scientists);
     void displayComputers(vector<Computer> computers);
     void designScientistsWidget(vector<CScientist> scientists);
@@ -27,12 +25,15 @@ public:
     void displayAllScientists();
     void displayAllComputers();
 private slots:
-   // void on_computerList_clicked(const QModelIndex &index);
     void on_scientistList_clicked(const QModelIndex &index);
     void on_computerList_clicked(const QModelIndex &index);
     void on_restoreButtonSci_clicked();
 
     void on_restoreButtonComp_clicked();
+
+    void on_cancelSci_clicked();
+
+    void on_cancelComp_clicked();
 
 private:
     Ui::Restore *ui;

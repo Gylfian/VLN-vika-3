@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="icons.qrc">
+    <normaloff>:/icon/Icons/pinata.png</normaloff>:/icon/Icons/pinata.png</iconset>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QLabel" name="label">
     <property name="geometry">
@@ -147,7 +151,7 @@
      <x>0</x>
      <y>0</y>
      <width>400</width>
-     <height>31</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
@@ -164,6 +168,7 @@
  <layoutdefault spacing="6" margin="11"/>
  <resources>
   <include location="error.qrc"/>
+  <include location="icons.qrc"/>
  </resources>
  <connections>
   <connection>

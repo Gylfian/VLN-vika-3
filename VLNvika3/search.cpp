@@ -9,6 +9,8 @@ Search::Search(QWidget *parent) :
     ui(new Ui::Search)
 {
     ui->setupUi(this);
+    setWindowTitle("Advanced Search");
+
 }
 
 Search::~Search()

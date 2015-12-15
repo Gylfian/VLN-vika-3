@@ -223,8 +223,6 @@ void Domain::updateEntryCom(string sid)
             cCom = cComList[i];
         }
     }
-    int id=cCom.getId();
-    qDebug() << cCom.getId();
     data.updateStatus(cCom);
 }
 
@@ -321,56 +319,6 @@ void Domain::getRelationList(vector<Relation> &cRelList, int active)
     }
 }
 
-void Domain::deleteAllRelations(CScientist cSci)
-{
-    vector<Relation> allRelations;
-    vector<Relation> deleteRelation;
-    Relation rel;
-    CScientist sci;
-    Computer cComChecker;
-    data.select(rel, 1);
-    allRelations = data.getRelVector();
-    int targetId = cSci.getId();
-    cout << "Size: " << allRelations.size() << endl;
-    for(unsigned int i = 0; i < allRelations.size(); i++)
-    {
-        sci = allRelations[i].getScientist();
-        int id = allRelations[i].getId();
-        cout << "SciID: " << sci.getId() << endl;
-
-        if(targetId == sci.getId())
-        {
-            deleteRelation.push_back(rel);
-        }
-    }
-
-    for(unsigned j = 0; j < deleteRelation.size(); j++)
-    {
-        rel = deleteRelation[j];
-        cout << "I should delete ID: " << rel.getId() << endl;
-    }
-}
-
-void Domain::deleteAllRelations(Computer cCom)
-{
-    vector<Relation> allRelations;
-    vector<Relation> deleteRelation;
-    Relation rel;
-    Computer cComChecker;
-    data.select(rel, 1);
-    allRelations = data.getRelVector();
-    int targetId = cCom.getId();
-    for(unsigned int i = 0; i < allRelations.size(); i++)
-    {
-        rel = allRelations[i];
-        cComChecker = allRelations[i].getComputer();
-        if(targetId == cComChecker.getId())
-        {
-            deleteRelation.push_back(rel);
-        }
-    }
-}
-
 int Domain::findConnectionId(string scientist, string computer)
 {
     vector<Relation> cRelList;
@@ -388,123 +336,10 @@ int Domain::findConnectionId(string scientist, string computer)
     return -1;
 }
 
-
-bool Domain::checkOption(char child)
-{
-    if(child == '1')
-        return true;
-
-    return false;
-}
-
-int Domain::findLongestType(vector<Computer> cComList)
-{
-    unsigned int length = 0;
-    for(unsigned int i = 0; i < cComList.size(); i++)
-    {
-        if(i+1 > cComList.size())
-            break;
-
-        if(length < cComList[i].getType().length())
-        {
-           length = cComList[i].getType().length();
-        }
-    }
-    return length;
-}
-
-bool Domain::checkIdVector(vector<CScientist> cSciList, string sid)
-{
-    int id = convertToInt(sid);
-    for(unsigned int i = 0; i < cSciList.size(); i++)
-    {
-        if(cSciList[i].getId() == id)
-        {
-            return true;
-        }
-    }
-    return false;
-}
-
-bool Domain::checkIdVector(vector<Computer> cComList, string sid)
-{
-    int id = convertToInt(sid);
-    for(unsigned int i = 0; i < cComList.size(); i++)
-    {
-        if(cComList[i].getId() == id)
-        {
-            return true;
-        }
-    }
-    return false;
-}
-
 int Domain::charToInt(char chr)
 {
     return (int)chr - 48;
 
-}
-
-int Domain::findLongestName(vector<CScientist> cSciList)
-{
-    unsigned int length = 0;
-    for(unsigned int i = 0; i < cSciList.size(); i++)
-    {
-        if(i+1 > cSciList.size())
-            break;
-
-        if(length < cSciList[i].getName().length())
-        {
-           length = cSciList[i].getName().length();
-        }
-    }
-    return length;
-}
-
-int Domain::findLongestName(vector<string> cStrList)
-{
-    unsigned int length = 0;
-    for(unsigned int i = 0; i < cStrList.size(); i++)
-    {
-        if(i+1 > cStrList.size())
-            break;
-
-        if(length < cStrList[i].length())
-        {
-           length = cStrList[i].length();
-        }
-    }
-    return length;
-}
-
-int Domain::findLongestName(vector<Computer> cComList)
-{
-    unsigned int length = 0;
-    for(unsigned int i = 0; i < cComList.size(); i++)
-    {
-        if(i+1 > cComList.size())
-            break;
-
-        if(length < cComList[i].getName().length())
-        {
-           length = cComList[i].getName().length();
-        }
-    }
-    return length;
-}
-
-bool Domain::checkIfLegitId(string sid)
-{
-    if(sid == "")
-        return false;
-
-    for(unsigned int i = 0; i < sid.length(); i++)
-    {
-        if(!isdigit(sid[i]))
-            return false;
-    }
-
-    return true;
 }
 
 int Domain::convertToInt(string str)
@@ -525,125 +360,9 @@ int Domain::checkStrInput(string str)
     return n;
 }
 
-void Domain::solveIdToDb(vector<CScientist> &cSciList, vector<int> solvedIdList)
-{
-    vector<CScientist> allScientists;
-    CScientist empty;
-    data.select(empty, 5, 1);
-    allScientists = data.getSciVector();
-    for(unsigned int i = 0; i < allScientists.size(); i++)
-    {
-        for(unsigned int j = 0; j < solvedIdList.size(); j++)
-        {
-            if(solvedIdList[j] == allScientists[i].getId())
-            {
-                CScientist cSci = allScientists[i];
-                cSciList.push_back(cSci);
-            }
-        }
-    }
-}
-
-void Domain::createRelation(string scientists, string computers)
-{
-    vector<int> sciId = solveString(scientists);
-    vector<int> comId = solveString(computers);
-    vector<CScientist> cSciList;
-    solveIdToDb(cSciList, sciId);
-    vector<Computer> cComList;
-    solveIdToDb(cComList, comId);
-
-    for(unsigned int i = 0; i < cSciList.size(); i++)
-    {
-        for(unsigned int j = 0; j < cComList.size(); j++)
-        {
-            addRelation(cSciList[i], cComList[j]);
-        }
-    }
-}
-
-void Domain::solveIdToDb(vector<Computer> &cComList, vector<int> solvedIdList)
-{
-    vector<Computer> allComputers;
-    Computer empty;
-    data.select(empty, 5, 1);
-    allComputers = data.getComVector();
-    for(unsigned int i = 0; i < allComputers.size(); i++)
-    {
-        for(unsigned int j = 0; j < solvedIdList.size(); j++)
-        {
-            if(solvedIdList[j] == allComputers[i].getId())
-            {
-                Computer cCom = allComputers[i];
-                cComList.push_back(cCom);
-            }
-        }
-    }
-}
-
 void Domain::addRelation(CScientist cSci, Computer cCom)
 {
     data.insert(cCom, cSci);
-}
-
-vector<int> Domain::solveString(string str)
-{
-    vector<int> vect;
-    stringstream ss(str);
-    int i;
-    while (ss >> i)
-    {
-        vect.push_back(i);
-
-        if (ss.peek() == ',')
-            ss.ignore();
-    }
-    return vect;
-}
-
-bool Domain::verifyBirthyear(string year)
-{
-    istringstream buffer(year);
-    int value;
-    buffer >> value;
-    for(unsigned int i = 0; i < year.length(); i++)
-    {
-        if(!isdigit(year[i]))
-            return false;
-    }
-    if(value < 0 || value > 3000)
-    {
-        return false;
-    }
-    return true;
-}
-
-bool Domain::normalizeYear(string born, string death)
-{
-    int yearBorn = convertToInt(born);
-    int yearDeath = convertToInt(death);
-    if(yearBorn > yearDeath)
-        return false;
-
-    for(unsigned int i = 0; i < born.length(); i++)
-    {
-        if(!isdigit(born[i]))
-            return false;
-    }
-    for(unsigned int j = 0; j < death.length(); j++)
-    {
-        if(!isdigit(death[j]))
-            return false;
-    }
-    if(yearBorn < 0 || yearBorn > 3000)
-    {
-        return false;
-    }
-    if(yearDeath < 0 || yearDeath > 3000)
-    {
-        return false;
-    }
-    return true;
 }
 
 bool Domain::normalizeName(string &name)
