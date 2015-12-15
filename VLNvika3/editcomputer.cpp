@@ -11,6 +11,7 @@ Editcomputer::Editcomputer(QWidget *parent) :
     ui->setupUi(this);
     QStringList types;
     types << "Homecomputer" << "Mechanical" << "Electromechanical" << "Electronic Digital" << "Chess computer" << "Electronic digital programmable" << "Microcomputer";
+    setWindowTitle("Edit computer");
     ui->comTypeComboBox->addItems(types);
 }
 

@@ -42,10 +42,21 @@ private slots:
 
     void on_findConnLineEdit_textChanged(const QString &arg1);
 
+    void on_cancelConnPushButton_clicked();
+
+    void on_deletConnPushButton_clicked();
+
+    void on_cancelComPushButton_clicked();
+
+    void on_cancelSciPushButton_clicked();
+
+    void on_connectionsList_clicked(const QModelIndex &index);
+
 private:
     CScientist scientist;
     Computer computer;
     Domain domain;
+    Relation relation;
     void displayAllScientists();
     void displayScientists(std::vector<CScientist> scientists);
     void designScientistsWidget(vector <CScientist> scientists);

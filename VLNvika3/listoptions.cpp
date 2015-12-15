@@ -87,6 +87,7 @@ void ListOptions::displayConnections(vector<Relation> relations)
 
 void ListOptions::designScientistsWidget(vector <CScientist> scientists)
 {
+    ui->scientistsList->setHorizontalHeaderLabels(QString("Name;Gender;Birth year;Death year").split(";"));
     ui->scientistsList->clear();
     ui->scientistsList->setHorizontalHeaderLabels(QString("Name;Gender;Birth year;Death year").split(";"));
     int size = scientists.size();
@@ -95,6 +96,7 @@ void ListOptions::designScientistsWidget(vector <CScientist> scientists)
 
 void ListOptions::designComputersWidget(vector <Computer> computers)
 {
+    ui->computersList->setHorizontalHeaderLabels(QString("Name;Type;Built?;Year built").split(";"));
     ui->computersList->clear();
     int size = computers.size();
     ui->computersList->setRowCount(size);
@@ -102,6 +104,7 @@ void ListOptions::designComputersWidget(vector <Computer> computers)
 
 void ListOptions::designRelationsWidget(vector<Relation> cRelList)
 {
+    ui->connectionsList->setHorizontalHeaderLabels(QString("Scienist name; Computer name").split(";"));
     ui->connectionsList->clear();
     int size = cRelList.size();
     ui->connectionsList->setRowCount(size);
@@ -127,18 +130,6 @@ void ListOptions::on_editScientist_clicked()
    int wasRejected = editscientist.exec();
    if(wasRejected == QDialog::Rejected)
        return;
-   /*
-   scientist.setName(editscientist.name().toStdString());
-   scientist.setGender(editscientist.gender().toStdString());
-   scientist.setDob(editscientist.yearBorn().toStdString());
-   if(editscientist.yearOfDeath().toStdString() == "0")
-      scientist.setDod("Alive");
-   else
-      scientist.setDod(editscientist.yearOfDeath().toStdString());
-   CScientist temp = domain.findScientist(scientist);
-   cout << temp.getId();
-   domain.editEntry(temp);
-   */
    displayAllScientists();
 }
 
@@ -168,21 +159,17 @@ void ListOptions::on_findSciLineEdit_textChanged(const QString &arg1)
 
 void ListOptions::on_deleteScientistButton_clicked()
 {
-    int row = ui->scientistsList->currentRow();
-    string name = ui->scientistsList->item(row, 0)->text().toStdString();
-    string gender = ui->scientistsList->item(row, 1)->text().toStdString();
-    string yearBorn = ui->scientistsList->item(row, 2)->text().toStdString();
-    string yearOfDeath = ui->scientistsList->item(row, 3)->text().toStdString();
-    CScientist temp(row, name, gender, yearBorn, yearOfDeath, true);
-    stringstream ss;
-    ss << row;
-    string id = ss.str();
     int ret = QMessageBox::warning(this, tr("Warning"), tr("You are about to delete a scientist!\n" "Do you want to continue?"), QMessageBox::Ok | QMessageBox::Cancel);
     if(ret == QDialog::Rejected)
     {
         return;
     }
+    CScientist temp = domain.findScientist(scientist);
+    stringstream ss;
+    ss << temp.getId();
+    string id = ss.str();
     domain.updateEntrySci(id);
+    displayAllScientists();
 }
 
 void ListOptions::on_computersList_clicked(const QModelIndex &index)
@@ -205,14 +192,6 @@ void ListOptions::on_editComputers_clicked()
     int wasRejected = editcomputer.exec();
     if(wasRejected == QDialog::Rejected)
         return;
-    computer.setName(editcomputer.name().toStdString());
-    computer.setType(editcomputer.type().toStdString());
-    computer.setBuilt(editcomputer.wasBuilt().toStdString());
-    if(editcomputer.yearBuilt().toStdString() == "0")
-    ;
-    else
-       computer.setYear(editcomputer.yearBuilt().toStdString());
-    //findcom
     displayAllComputers();
 }
 
@@ -243,21 +222,17 @@ void ListOptions::on_findComLineEdit_textChanged(const QString &arg1)
 
 void ListOptions::on_deleteComButton_clicked()
 {
-    int row = ui->computersList->currentRow();
-    string name = ui->computersList->item(row, 0)->text().toStdString();
-    string type = ui->computersList->item(row, 1)->text().toStdString();
-    string wasBuilt = ui->computersList->item(row, 2)->text().toStdString();
-    string yearBuilt = ui->computersList->item(row, 3)->text().toStdString();
-    Computer temp(row, name, yearBuilt, type, wasBuilt);
-    stringstream ss;
-    ss << row;
-    string id = ss.str();
     int ret = QMessageBox::warning(this, tr("Warning"), tr("You are about to delete a computer!\n" "Do you want to continue?"), QMessageBox::Ok | QMessageBox::Cancel);
     if(ret == QDialog::Rejected)
     {
         return;
     }
+    Computer temp = domain.findComputer(computer);
+    stringstream ss;
+    ss << temp.getId();
+    string id = ss.str();
     domain.updateEntryCom(id);
+    displayAllComputers();
 }
 
 void ListOptions::analyzeCom()
@@ -297,16 +272,16 @@ void ListOptions::analyzeSci()
 void ListOptions::setUp()
 {
     setWindowTitle("List options");
-    ui->scientistsList->setColumnWidth(0, 160);
+    ui->scientistsList->setColumnWidth(0, 183);
     ui->scientistsList->setColumnWidth(1, 70);
     ui->scientistsList->setColumnWidth(2, 90);
     ui->scientistsList->setColumnWidth(3, 100);
-    ui->computersList->setColumnWidth(0, 150);
-    ui->computersList->setColumnWidth(1, 115);
+    ui->computersList->setColumnWidth(0, 140);
+    ui->computersList->setColumnWidth(1, 153);
     ui->computersList->setColumnWidth(2, 55);
     ui->computersList->setColumnWidth(3, 100);
     ui->connectionsList->setColumnWidth(0, 230);
-    ui->connectionsList->setColumnWidth(1, 210);
+    ui->connectionsList->setColumnWidth(1, 230);
     displayAllScientists();
     displayAllComputers();
     displayAllConnections();
@@ -314,14 +289,47 @@ void ListOptions::setUp()
 
 void ListOptions::on_findConnLineEdit_textChanged(const QString &arg1)
 {
-    //ui->editComputers->setEnabled(false);
-    //ui->deleteComButton->setEnabled(false);
+    ui->deletConnPushButton->setEnabled(false);
     string searchString = ui->findConnLineEdit->text().toStdString();
-    vector <Computer> computers;
-    Domain d1;
-    Computer temp;
-    domain.sortBy(computers, 1, 1);
-    temp.setName(searchString);
-    domain.search(computers, temp);
-    displayComputers(computers);
+    vector <Relation> relations = domain.findRelation(searchString);
+    displayConnections(relations);
+}
+
+void ListOptions::on_cancelConnPushButton_clicked()
+{
+    reject();
+}
+
+void ListOptions::on_deletConnPushButton_clicked()
+{
+    int ret = QMessageBox::warning(this, tr("Warning"), tr("You are about to delete a connection!\n" "Do you want to continue?"), QMessageBox::Ok | QMessageBox::Cancel);
+    if(ret == QDialog::Rejected)
+    {
+        return;
+    }
+    Computer temp = domain.findComputer(computer);
+    stringstream ss;
+    ss << temp.getId();
+    string id = ss.str();
+    domain.updateEntryCom(id);
+    displayAllComputers();
+}
+
+void ListOptions::on_cancelComPushButton_clicked()
+{
+    reject();
+}
+
+void ListOptions::on_cancelSciPushButton_clicked()
+{
+    reject();
+}
+
+void ListOptions::on_connectionsList_clicked(const QModelIndex &index)
+{
+    ui->connectionsList->selectRow(index.row());
+    int row = ui->connectionsList->currentRow();
+    ui->deletConnPushButton->setEnabled(true);
+    relation.setScientistName(ui->computersList->item(row, 0)->text().toStdString());
+    relation.setComputerName(ui->computersList->item(row, 1)->text().toStdString());
 }
