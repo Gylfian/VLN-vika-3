@@ -126,18 +126,12 @@
        <property name="text">
         <string>Yes</string>
        </property>
-       <property name="autoExclusive">
-        <bool>false</bool>
-       </property>
       </widget>
      </item>
      <item>
       <widget class="QRadioButton" name="noAliveButton">
        <property name="text">
         <string>No</string>
-       </property>
-       <property name="autoExclusive">
-        <bool>false</bool>
        </property>
       </widget>
      </item>
