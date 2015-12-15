@@ -85,6 +85,13 @@ private:
     void designScientistsWidget(vector <CScientist> scientists);
     void designComputersWidget(vector <Computer> computers);
 
+    /*
+     * Name: setUp
+     * Parameter/s: None
+     * Description: Sets the appearance
+     * Usage: Setting the title and size of the columns.
+     * Output/Return: **
+     */
     void setUp();
 };
 
