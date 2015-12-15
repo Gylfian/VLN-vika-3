@@ -163,4 +163,6 @@ void AddConnection::on_btnConnect_clicked()
             QMessageBox::warning(this, "Add Connection", "This connection already exists.");
         }
     }
+    else
+        QMessageBox::warning(this, "Add Connection", "Please select both scientist and computer!");
 }

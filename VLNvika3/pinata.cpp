@@ -11,11 +11,14 @@ Pinata::Pinata(QWidget *parent) :
 {
     QMediaPlayer *player=new QMediaPlayer;
     QVideoWidget *videowidget=new QVideoWidget;
-    QMediaPlaylist *playlist=new QMediaPlaylist;
-    playlist->addMedia(QUrl("C:/Users/Johanna/Desktop/VLN-vika-3/VLNvika3/test.mp4"));
+    //QMediaPlaylist *playlist=new QMediaPlaylist;
+    //playlist->addMedia(QUrl("C:/Users/Johanna/Desktop/VLN-vika-3/VLNvika3/test.mp4"));
+    player->setMedia(QUrl::fromLocalFile("C:/Users/Johanna/Desktop/VLN-vika-3/VLNvika3/test.mp4"));
     player->setVideoOutput(videowidget);
-    playlist->setCurrentIndex(1);
-    player->setPlaylist(playlist);
+    videowidget->setGeometry(100, 100, 400, 400);
+    //playlist->setCurrentIndex(1);
+    //player->setPlaylist(playlist);
+    player->setVolume(50);
     player->play();
     videowidget->show();
 }

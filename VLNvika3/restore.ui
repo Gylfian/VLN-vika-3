@@ -48,6 +48,9 @@
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
         <widget class="QTableWidget" name="scientistList">
+         <property name="horizontalScrollBarPolicy">
+          <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
          <property name="sortingEnabled">
           <bool>true</bool>
          </property>
@@ -86,6 +89,9 @@
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
         <widget class="QTableWidget" name="computerList">
+         <property name="horizontalScrollBarPolicy">
+          <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
          <property name="sortingEnabled">
           <bool>true</bool>
          </property>

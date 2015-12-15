@@ -8,17 +8,14 @@
 #include "addconnection.h"
 #include "restore.h"
 #include <QDialog>
-#include <QtMultimedia/QMediaPlayer>
-#include <QtMultimedia/QMediaPlaylist>
+//#include <QtMultimedia/QMediaPlayer>
+//#include <QtMultimedia/QMediaPlaylist>
+#include <QtMultimediaWidgets>
 #include <QVideoWidget>
-/*
-#include <QDialog>
 #include <QMediaPlayer>
-#include <QMediaPlaylist>
-#include <QVideoWidget>
-#include <QtWebKit/QtWebKit>
 
-*/
+
+
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -81,7 +78,6 @@ void MainWindow::on_pinata_clicked()
     player->setPlaylist(playlist);
     player->play();
     videowidget->show();
-    */
     QMediaPlayer *player=new QMediaPlayer;
     QVideoWidget *videowidget=new QVideoWidget;
     QMediaPlaylist *playlist=new QMediaPlaylist;
@@ -89,9 +85,23 @@ void MainWindow::on_pinata_clicked()
     player->setVideoOutput(videowidget);
     playlist->setCurrentIndex(1);
     player->setPlaylist(playlist);
-    videowidget->setFullScreen(true);
+    //videowidget->setFullScreen(true);
     videowidget->show();
     player->play();
-    Pinata pinata;
-    pinata.exec();
+    */
+
+    //Pinata pinata;
+    //pinata.exec();
+    QMediaPlayer *player=new QMediaPlayer;
+    QVideoWidget *videowidget=new QVideoWidget;
+    //QMediaPlaylist *playlist=new QMediaPlaylist;
+    //playlist->addMedia(QUrl("C:/Users/Johanna/Desktop/VLN-vika-3/VLNvika3/test.mp4"));
+    player->setMedia(QUrl::fromLocalFile("C:/Users/Johanna/Desktop/VLN-vika-3/VLNvika3/test.mp4"));
+    player->setVideoOutput(videowidget);
+    videowidget->setGeometry(100, 100, 400, 400);
+    //playlist->setCurrentIndex(1);
+    //player->setPlaylist(playlist);
+    player->setVolume(50);
+    player->play();
+    videowidget->show();
 }
