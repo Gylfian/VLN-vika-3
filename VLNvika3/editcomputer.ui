@@ -59,7 +59,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QComboBox" name="comTypeComboBox"/>
+    <widget class="QLineEdit" name="lineEditType"/>
    </item>
    <item>
     <widget class="QLabel" name="wasBuiltLabel">

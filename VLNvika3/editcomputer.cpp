@@ -10,9 +10,7 @@ Editcomputer::Editcomputer(QWidget *parent) :
 {
     ui->setupUi(this);
     QStringList types;
-    types << "Homecomputer" << "Mechanical" << "Electromechanical" << "Electronic Digital" << "Chess computer" << "Electronic digital programmable" << "Microcomputer";
     setWindowTitle("Edit computer");
-    ui->comTypeComboBox->addItems(types);
 }
 
 Editcomputer::~Editcomputer()
@@ -24,7 +22,7 @@ void Editcomputer:: setComputer(Computer computerToSet)
 {
     computer = computerToSet;
     ui->comNameLineEdit->setText(QString::fromStdString(computer.getName()));
-    ui->comTypeComboBox->setCurrentText(QString::fromStdString(computer.getType()));
+    ui->lineEditType->setText(QString::fromStdString(computer.getType()));
     if(computerToSet.getBuilt() == "Yes")
     {
         ui->yesRadioButtonCom->setChecked(true);
@@ -47,7 +45,7 @@ QString Editcomputer:: name()
 
 QString Editcomputer:: type()
 {
-    QString type = ui->comTypeComboBox->currentText();
+    QString type = ui->lineEditType->text();
     return type;
 }
 
