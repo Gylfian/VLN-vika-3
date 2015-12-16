@@ -15,15 +15,15 @@ Pinata::Pinata(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowTitle("Piñata");
+    QMediaPlayer *audioplayer = new QMediaPlayer;
+    audioplayer->setMedia(QUrl::fromLocalFile("pinatasong.mp3"));
+    audioplayer->setVolume(50);
+    audioplayer->play();
     ui->pinatalabel->setWindowFlags(Qt::FramelessWindowHint);
     QMovie *movie = new QMovie(":/icon/giphy.gif");
     ui->pinatalabel->setMovie(movie);
     movie->start();
     ui->pinatalabel->show();
-    QMediaPlayer *audioplayer = new QMediaPlayer;
-    audioplayer->setMedia(QUrl::fromLocalFile("pinatasong.mp3"));
-    audioplayer->setVolume(50);
-    audioplayer->play();
 }
 
 Pinata::~Pinata()

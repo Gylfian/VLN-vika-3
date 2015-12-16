@@ -8,24 +8,13 @@
 #include "addconnection.h"
 #include "restore.h"
 #include <QDialog>
-#include <QPixmap>
-#include <QLabel>
-#include <QtMultimediaWidgets>
-#include <QPixmap>
-#include <QMovie>
-#include <QLabel>
-//#include <QGraphicsScene>
-
-
-
-
-
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    setWindowTitle("Main menu");
 }
 
 MainWindow::~MainWindow()

@@ -124,10 +124,10 @@
    <widget class="QWidget" name="formLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>250</y>
-      <width>36</width>
-      <height>26</height>
+      <x>350</x>
+      <y>240</y>
+      <width>31</width>
+      <height>21</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout">
@@ -151,7 +151,7 @@
      <x>0</x>
      <y>0</y>
      <width>400</width>
-     <height>21</height>
+     <height>31</height>
     </rect>
    </property>
   </widget>
@@ -167,8 +167,8 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="error.qrc"/>
   <include location="icons.qrc"/>
+  <include location="error.qrc"/>
  </resources>
  <connections>
   <connection>

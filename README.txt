@@ -1,5 +1,6 @@
 Dear user 
 Descriptions on how to use the program are listed here below.
+Please note that you must copy the files "pinatasong.mp3" and "VLN1.sqlite" to your build folder, aswell as the folders "comPictures" and "sciPictures".
 
 How do I display the list of the scientist?
 	In the main menu, press the "List options" button.
